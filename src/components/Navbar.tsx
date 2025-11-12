@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/logo.svg" alt="Inkless Is More" className="h-10 w-10" />
+            <img src="https://harmless-tapir-303.convex.cloud/api/storage/2645f8db-e50b-48c1-b891-e120118b0715" alt="Inkless Is More" className="h-10 w-10" />
             <span className="font-bold text-lg hidden sm:inline-block">Inkless Is More</span>
           </Link>
 

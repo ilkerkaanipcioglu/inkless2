@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center space-x-2 mb-4">
-              <img src="/logo.svg" alt="Inkless Is More" className="h-10 w-10" />
+              <img src="https://harmless-tapir-303.convex.cloud/api/storage/2645f8db-e50b-48c1-b891-e120118b0715" alt="Inkless Is More" className="h-10 w-10" />
               <span className="font-bold text-lg">Inkless Is More</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
