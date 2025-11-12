@@ -217,35 +217,39 @@ export default function BookNow() {
                         />
                       </div>
 
-                      <div className="bg-muted/50 p-6 rounded-xl border">
-                        <h4 className="font-semibold mb-3 flex items-center text-lg">
-                          <Phone className="h-5 w-5 mr-2" />
-                          Prefer to call us directly?
-                        </h4>
-                        <p className="text-muted-foreground mb-3">
-                          Our friendly team is ready to answer your questions:
-                        </p>
-                        <a 
-                          href="tel:+254708901505" 
-                          className="text-primary font-semibold text-lg hover:underline inline-flex items-center gap-2"
-                        >
-                          <Phone className="h-5 w-5" />
-                          +254 708 901 505
-                        </a>
+                      <div className="bg-primary/5 p-6 rounded-xl border-2 border-primary/20">
+                        <div className="text-center mb-4">
+                          <p className="text-lg font-bold mb-2">✓ Free Consultation</p>
+                          <p className="text-sm text-muted-foreground">No payment required now</p>
+                        </div>
                       </div>
 
                       <Button 
                         type="submit" 
-                        className="w-full h-14 text-lg font-semibold" 
+                        className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]" 
                         size="lg" 
                         disabled={isSubmitting}
                       >
-                        {isSubmitting ? "Submitting..." : "Submit Booking Request"}
+                        {isSubmitting ? "Submitting..." : "Reserve Your Free Consultation →"}
                       </Button>
 
+                      <div className="bg-muted/50 p-6 rounded-xl border text-center">
+                        <h4 className="font-semibold mb-3 flex items-center justify-center text-base">
+                          <Phone className="h-5 w-5 mr-2" />
+                          Prefer to call?
+                        </h4>
+                        <a 
+                          href="tel:+254708901505" 
+                          className="text-primary font-semibold text-lg hover:underline inline-flex items-center gap-2"
+                        >
+                          +254 708 901 505
+                        </a>
+                      </div>
+
                       <p className="text-xs text-center text-muted-foreground">
-                        By submitting this form, you agree to be contacted by Inkless Is More regarding your appointment.
+                        We'll contact you within 24 hours to confirm your appointment
                       </p>
+=======
                     </form>
                   </CardContent>
                 </Card>

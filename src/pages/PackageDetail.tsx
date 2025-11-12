@@ -213,7 +213,8 @@ export default function PackageDetail() {
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                               required
                               placeholder="John Doe"
-                              className="h-12 text-base border-2 focus:border-primary transition-colors"
+                              className="h-12 text-base border-2 focus:border-primary transition-all"
+                              autoComplete="name"
                             />
                           </div>
 
@@ -226,7 +227,8 @@ export default function PackageDetail() {
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                               required
                               placeholder="john@example.com"
-                              className="h-12 text-base border-2 focus:border-primary transition-colors"
+                              className="h-12 text-base border-2 focus:border-primary transition-all"
+                              autoComplete="email"
                             />
                           </div>
 
@@ -239,32 +241,40 @@ export default function PackageDetail() {
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                               required
                               placeholder="+254 700 000 000"
-                              className="h-12 text-base border-2 focus:border-primary transition-colors"
+                              className="h-12 text-base border-2 focus:border-primary transition-all"
+                              autoComplete="tel"
                             />
                           </div>
 
                           <div className="space-y-2">
-                            <Label htmlFor="notes" className="text-base font-semibold">Additional Notes</Label>
+                            <Label htmlFor="notes" className="text-base font-semibold">Additional Notes (Optional)</Label>
                             <Textarea
                               id="notes"
                               value={formData.message}
                               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                              placeholder="Any special requests or questions?"
-                              rows={4}
-                              className="resize-none text-base border-2 focus:border-primary transition-colors"
+                              placeholder="Tell us about your tattoo: size, location, colors..."
+                              rows={3}
+                              className="resize-none text-base border-2 focus:border-primary transition-all"
                             />
+                          </div>
+
+                          <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                            <p className="text-sm text-center font-medium">
+                              ✓ Free consultation included<br/>
+                              ✓ No payment required now
+                            </p>
                           </div>
 
                           <Button 
                             type="submit"
-                            className="w-full font-bold py-6 text-lg h-auto shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+                            className="w-full font-bold py-6 text-lg h-auto shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
                             disabled={isSubmitting}
                           >
-                            {isSubmitting ? "Submitting..." : "Book Now →"}
+                            {isSubmitting ? "Submitting..." : "Reserve Your Spot →"}
                           </Button>
 
                           <p className="text-xs text-center text-muted-foreground leading-relaxed">
-                            By booking, you agree to our terms and conditions
+                            We'll contact you within 24 hours to confirm your appointment
                           </p>
                         </form>
 
