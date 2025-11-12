@@ -59,6 +59,7 @@ export default function Blog() {
                           <img
                             src={post.imageUrl}
                             alt={post.title}
+                            loading="lazy"
                             className="w-full h-48 object-cover rounded-t-lg"
                           />
                         )}
