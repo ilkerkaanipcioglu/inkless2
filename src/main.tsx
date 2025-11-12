@@ -18,6 +18,7 @@ import Gallery from "./pages/Gallery.tsx";
 import Training from "./pages/Training.tsx";
 import Blog from "./pages/Blog.tsx";
 import FAQ from "./pages/FAQ.tsx";
+import PackageDetail from "./pages/PackageDetail.tsx";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -54,6 +55,7 @@ createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/packages" element={<Packages />} />
+            <Route path="/packages/:id" element={<PackageDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/training" element={<Training />} />
