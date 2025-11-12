@@ -238,6 +238,15 @@ export default function PackageDetail() {
                       </CardHeader>
                       <CardContent className="px-8 pb-8">
                         <form onSubmit={handleSubmit} className="space-y-5">
+                          <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/30 mb-6">
+                            <p className="text-sm font-semibold text-center">
+                              💡 Ready to purchase this package?
+                            </p>
+                            <p className="text-xs text-muted-foreground text-center mt-1">
+                              Fill out the form below. No payment needed now - we'll confirm details and arrange payment during your consultation.
+                            </p>
+                          </div>
+
                           <div className="space-y-2">
                             <Label htmlFor="name" className="text-base font-semibold">Full Name *</Label>
                             <Input
@@ -396,7 +405,8 @@ export default function PackageDetail() {
                           <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
                             <p className="text-sm text-center font-medium">
                               ✓ Free consultation included<br/>
-                              ✓ No payment required now
+                              ✓ No payment required now<br/>
+                              ✓ We'll discuss payment options during your visit
                             </p>
                           </div>
 

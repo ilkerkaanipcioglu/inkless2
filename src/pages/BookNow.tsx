@@ -218,21 +218,24 @@ export default function BookNow() {
 
                       <div className="space-y-2">
                         <Label htmlFor="package" className="text-base font-medium">
-                          Select Package (Optional)
+                          What would you like to do? *
                         </Label>
-                        <Select value={selectedPackage} onValueChange={setSelectedPackage}>
+                        <Select value={selectedPackage} onValueChange={setSelectedPackage} required>
                           <SelectTrigger id="package" className="h-12 text-base">
-                            <SelectValue placeholder="Choose a package or discuss during consultation" />
+                            <SelectValue placeholder="Choose an option" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="consultation-only">Free Consultation Only</SelectItem>
+                            <SelectItem value="consultation-only">📅 Free Consultation Only - Discuss my options</SelectItem>
                             {availablePackages.map((pkg) => (
                               <SelectItem key={pkg._id} value={pkg.title}>
-                                {pkg.title} - KSh {pkg.price.toLocaleString()}
+                                ✅ Purchase {pkg.title} - KSh {pkg.price.toLocaleString()}
                               </SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Not sure? Choose "Free Consultation" and we'll help you decide!
+                        </p>
                       </div>
 
                       <div className="space-y-4">
@@ -374,7 +377,6 @@ export default function BookNow() {
                       <p className="text-xs text-center text-muted-foreground">
                         We'll contact you within 24 hours to confirm your appointment
                       </p>
-=======
                     </form>
                   </CardContent>
                 </Card>

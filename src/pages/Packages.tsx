@@ -51,7 +51,7 @@ export default function Packages() {
                 Our Packages
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Choose a plan that works for you. All packages are tailored to your specific needs during your free consultation.
+                Choose a plan that works for you. Book a free consultation to discuss options, or select a package directly if you're ready to start your journey.
               </p>
             </motion.div>
 
