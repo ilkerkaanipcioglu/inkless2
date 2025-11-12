@@ -242,7 +242,7 @@ export default function PackageDetail() {
 
                         <Button 
                           type="submit"
-                          className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 rounded-full text-lg h-auto"
+                          className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 rounded-full text-lg h-auto"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? "Submitting..." : "Book Now →"}

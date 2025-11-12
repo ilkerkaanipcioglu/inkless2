@@ -50,9 +50,9 @@ export default function Packages() {
                       transition={{ delay: index * 0.1 }}
                       className={isPopular ? "md:col-span-1 lg:row-span-2" : ""}
                     >
-                      <Card className={`h-full flex flex-col border-0 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl ${
+                      <Card className={`h-full flex flex-col border-0 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
                         isPopular 
-                          ? "bg-gradient-to-br from-blue-100 to-purple-200 dark:from-blue-900/40 dark:to-purple-900/40 ring-2 ring-primary/50" 
+                          ? "bg-gradient-to-br from-white to-cyan-50 dark:from-slate-900 dark:to-cyan-950/20 ring-2 ring-cyan-400/50" 
                           : "bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm"
                       }`}>
                         <CardHeader className={`pb-4 ${isPopular ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-white" : ""}`}>
@@ -63,7 +63,7 @@ export default function Packages() {
                               </CardTitle>
                             </div>
                             {isPopular && (
-                              <Badge className="bg-white text-primary">POPULAR</Badge>
+                              <Badge className="bg-white text-cyan-600 font-semibold">✨ POPULAR</Badge>
                             )}
                             {!pkg.isAvailable && (
                               <Badge variant="secondary">Coming Soon</Badge>
@@ -81,7 +81,7 @@ export default function Packages() {
                                 KSh {pkg.originalPrice.toLocaleString()}
                               </span>
                             )}
-                            <span className={`text-4xl font-bold ${isPopular ? "text-primary" : ""}`}>
+                            <span className={`text-4xl font-bold ${isPopular ? "text-cyan-600" : ""}`}>
                               KSh {pkg.price.toLocaleString()}
                             </span>
                           </div>
@@ -95,8 +95,8 @@ export default function Packages() {
                           <div className="space-y-3">
                             {pkg.features.map((feature, i) => (
                               <div key={i} className="flex items-start space-x-3">
-                                <CheckCircle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isPopular ? "text-white" : "text-primary"}`} />
-                                <span className={`text-sm ${isPopular ? "text-white/95" : "text-muted-foreground"}`}>
+                                <CheckCircle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isPopular ? "text-cyan-600" : "text-cyan-500"}`} />
+                                <span className={`text-sm ${isPopular ? "text-foreground" : "text-muted-foreground"}`}>
                                   {feature}
                                 </span>
                               </div>
@@ -113,14 +113,14 @@ export default function Packages() {
                                 className="flex-1"
                               >
                                 <Link to={`/packages/${pkg._id}`} className="flex items-center justify-center gap-2">
-                                  Learn More <ArrowRight className="h-4 w-4" />
+                                  Details <ArrowRight className="h-4 w-4" />
                                 </Link>
                               </Button>
                               <Button 
                                 asChild 
-                                className={`flex-1 ${isPopular ? "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700" : ""}`}
+                                className={`flex-1 ${isPopular ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700" : ""}`}
                               >
-                                <Link to="/book">Book Now</Link>
+                                <Link to={`/packages/${pkg._id}`}>Book Now</Link>
                               </Button>
                             </>
                           ) : (
