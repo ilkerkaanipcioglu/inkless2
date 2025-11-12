@@ -67,7 +67,7 @@ export default function Blog() {
                             <Calendar className="h-4 w-4" />
                             <span>{new Date(post._creationTime).toLocaleDateString()}</span>
                           </div>
-                          <CardTitle className="line-clamp-2">{post.title}</CardTitle>
+                          <CardTitle className="line-clamp-2 text-xl font-bold hover:text-primary transition-colors">{post.title}</CardTitle>
                           <CardDescription className="line-clamp-3">{post.excerpt}</CardDescription>
                         </CardHeader>
                         <CardContent>
