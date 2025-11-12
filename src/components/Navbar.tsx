@@ -4,6 +4,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +48,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
+            <ThemeToggle />
             {isAuthenticated && user?.role === "admin" && (
               <Button asChild variant="outline" size="sm" className="hidden md:inline-flex">
                 <Link to="/admin">Admin</Link>
