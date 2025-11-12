@@ -22,8 +22,7 @@ export default function BookNow() {
   const submitBooking = useMutation(api.contacts.submit);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string>("");
-  const [date, setDate] = useState<Date>();
-  const [selectedTime, setSelectedTime] = useState<string>("");
+  const [sessions, setSessions] = useState<Array<{ date?: Date; time: string }>>([{ time: "" }]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -41,11 +40,23 @@ export default function BookNow() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const packageInfo = selectedPackage ? `Package: ${selectedPackage}` : "";
-    const dateInfo = date ? `\nPreferred Date: ${format(date, "PPP")}` : "";
-    const timeInfo = selectedTime ? `\nPreferred Time: ${selectedTime}` : "";
+    const packageInfo = selectedPackage ? `Package: ${selectedPackage}` : "Package: To be determined during consultation";
+    
+    const sessionsInfo = sessions
+      .filter(s => s.date || s.time)
+      .map((s, i) => {
+        const dateStr = s.date ? format(s.date, "PPP") : "TBD";
+        const timeStr = s.time || "TBD";
+        return `Session ${i + 1}: ${dateStr} at ${timeStr}`;
+      })
+      .join("\n");
+
+    const schedulingNote = sessions.every(s => !s.date && !s.time) 
+      ? "\n\nScheduling: Client prefers to schedule during consultation"
+      : sessionsInfo ? `\n\nPreferred Schedule:\n${sessionsInfo}` : "";
+
     const additionalInfo = formData.message;
-    const fullMessage = packageInfo + dateInfo + timeInfo + (additionalInfo ? `\n\nAdditional Information:\n${additionalInfo}` : "");
+    const fullMessage = packageInfo + schedulingNote + (additionalInfo ? `\n\nAdditional Information:\n${additionalInfo}` : "");
 
     try {
       await submitBooking({
@@ -58,6 +69,7 @@ export default function BookNow() {
       toast.success("Booking request submitted! We'll contact you shortly to confirm your appointment.");
       setFormData({ name: "", email: "", phone: "", message: "" });
       setSelectedPackage("");
+      setSessions([{ time: "" }]);
     } catch (error) {
       toast.error("Something went wrong. Please try again or call us directly.");
     } finally {
@@ -216,55 +228,96 @@ export default function BookNow() {
                         </Select>
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
                           <Label className="text-base font-medium flex items-center gap-2">
                             <CalendarIcon className="h-4 w-4" />
-                            Preferred Date (Optional)
+                            Schedule Sessions (Optional)
                           </Label>
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button
-                                variant="outline"
-                                className={cn(
-                                  "w-full h-12 justify-start text-left font-normal text-base",
-                                  !date && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? format(date, "PPP") : "Pick a date"}
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0" align="start">
-                              <CalendarComponent
-                                mode="single"
-                                selected={date}
-                                onSelect={setDate}
-                                disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
-                                initialFocus
-                              />
-                            </PopoverContent>
-                          </Popover>
                         </div>
+                        <p className="text-sm text-muted-foreground">
+                          Schedule your sessions now or decide during your free consultation
+                        </p>
 
-                        <div className="space-y-2">
-                          <Label className="text-base font-medium flex items-center gap-2">
-                            <Clock className="h-4 w-4" />
-                            Preferred Time (Optional)
-                          </Label>
-                          <Select value={selectedTime} onValueChange={setSelectedTime}>
-                            <SelectTrigger className="h-12 text-base">
-                              <SelectValue placeholder="Select a time slot" />
-                            </SelectTrigger>
-                            <SelectContent className="max-h-[300px]">
-                              {timeSlots.map((time) => (
-                                <SelectItem key={time} value={time}>
-                                  {time}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
+                        {sessions.map((session, index) => (
+                          <div key={index} className="p-4 border-2 rounded-lg space-y-3 bg-muted/20">
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-semibold">Session {index + 1}</span>
+                              {sessions.length > 1 && (
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => setSessions(sessions.filter((_, i) => i !== index))}
+                                  className="h-8 text-xs"
+                                >
+                                  Remove
+                                </Button>
+                              )}
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-3">
+                              <Popover>
+                                <PopoverTrigger asChild>
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    className={cn(
+                                      "w-full h-10 justify-start text-left font-normal text-sm",
+                                      !session.date && "text-muted-foreground"
+                                    )}
+                                  >
+                                    <CalendarIcon className="mr-2 h-4 w-4" />
+                                    {session.date ? format(session.date, "MMM d") : "Date"}
+                                  </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto p-0" align="start">
+                                  <CalendarComponent
+                                    mode="single"
+                                    selected={session.date}
+                                    onSelect={(date) => {
+                                      const newSessions = [...sessions];
+                                      newSessions[index].date = date;
+                                      setSessions(newSessions);
+                                    }}
+                                    disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+
+                              <Select
+                                value={session.time}
+                                onValueChange={(time) => {
+                                  const newSessions = [...sessions];
+                                  newSessions[index].time = time;
+                                  setSessions(newSessions);
+                                }}
+                              >
+                                <SelectTrigger className="h-10 text-sm">
+                                  <SelectValue placeholder="Time" />
+                                </SelectTrigger>
+                                <SelectContent className="max-h-[300px]">
+                                  {timeSlots.map((time) => (
+                                    <SelectItem key={time} value={time}>
+                                      {time}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+                        ))}
+
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setSessions([...sessions, { time: "" }])}
+                          className="w-full"
+                        >
+                          + Add Another Session
+                        </Button>
                       </div>
 
                       <div className="space-y-2">
