@@ -3,13 +3,17 @@ import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle, Mail, Phone } from "lucide-react";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { Link, useParams } from "react-router";
-import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function PackageDetail() {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +21,35 @@ export default function PackageDetail() {
     api.packages.getById,
     id ? { id: id as Id<"packages"> } : "skip"
   );
+  const submitBooking = useMutation(api.contacts.submit);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await submitBooking({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        type: "booking",
+      });
+      toast.success("Booking request submitted! We'll contact you shortly.");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (packageData === undefined) {
     return (
@@ -76,7 +109,7 @@ export default function PackageDetail() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <Card className="border-0 shadow-2xl overflow-hidden">
+                  <Card className="border-0 shadow-2xl overflow-hidden bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm">
                     <CardContent className="p-8">
                       <div className="mb-6">
                         {packageData.originalPrice && (
@@ -92,7 +125,7 @@ export default function PackageDetail() {
                         </p>
                       </div>
 
-                      <div className="mb-8">
+                      <div className="mb-8 p-6 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/20 dark:to-blue-950/20 rounded-lg">
                         <div className="flex items-baseline gap-2 mb-2">
                           {packageData.originalPrice && (
                             <span className="text-2xl text-muted-foreground line-through">
@@ -132,7 +165,7 @@ export default function PackageDetail() {
                         </div>
 
                         {packageData.sessions && (
-                          <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg">
+                          <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg border border-blue-200 dark:border-blue-900/30">
                             <h3 className="font-semibold mb-2">Treatment Timeline</h3>
                             <p className="text-sm text-muted-foreground">
                               {packageData.sessions} {packageData.sessions === 1 ? "session" : "sessions"}, spaced 4-6 weeks apart for optimal results.
@@ -150,64 +183,69 @@ export default function PackageDetail() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Card className="border-0 shadow-2xl sticky top-20">
+                  <Card className="border-0 shadow-2xl sticky top-20 bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm">
                     <CardContent className="p-8">
                       <h2 className="text-2xl font-bold mb-2">Book This Package</h2>
                       <p className="text-muted-foreground mb-6">Fill in your details to reserve your spot</p>
 
-                      <form className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="space-y-2">
                           <Label htmlFor="name" className="text-sm font-medium">Full Name *</Label>
-                          <input
+                          <Input
                             id="name"
                             type="text"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            required
                             placeholder="John Doe"
-                            className="w-full px-4 py-2 rounded-lg bg-muted/50 border border-border focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="h-11"
                           />
                         </div>
 
                         <div className="space-y-2">
                           <Label htmlFor="email" className="text-sm font-medium">Email Address *</Label>
-                          <input
+                          <Input
                             id="email"
                             type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            required
                             placeholder="john@example.com"
-                            className="w-full px-4 py-2 rounded-lg bg-muted/50 border border-border focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="h-11"
                           />
                         </div>
 
                         <div className="space-y-2">
                           <Label htmlFor="phone" className="text-sm font-medium">Phone Number *</Label>
-                          <input
+                          <Input
                             id="phone"
                             type="tel"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            required
                             placeholder="+254 700 000 000"
-                            className="w-full px-4 py-2 rounded-lg bg-muted/50 border border-border focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="date" className="text-sm font-medium">Preferred Date/Time</Label>
-                          <input
-                            id="date"
-                            type="text"
-                            placeholder="e.g., Monday, Jan 15 at 2pm"
-                            className="w-full px-4 py-2 rounded-lg bg-muted/50 border border-border focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="h-11"
                           />
                         </div>
 
                         <div className="space-y-2">
                           <Label htmlFor="notes" className="text-sm font-medium">Additional Notes</Label>
-                          <textarea
+                          <Textarea
                             id="notes"
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             placeholder="Any special requests or questions?"
                             rows={3}
-                            className="w-full px-4 py-2 rounded-lg bg-muted/50 border border-border focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
+                            className="resize-none"
                           />
                         </div>
 
-                        <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 rounded-full text-lg h-auto">
-                          Book Now →
+                        <Button 
+                          type="submit"
+                          className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 rounded-full text-lg h-auto"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? "Submitting..." : "Book Now →"}
                         </Button>
 
                         <p className="text-xs text-center text-muted-foreground">

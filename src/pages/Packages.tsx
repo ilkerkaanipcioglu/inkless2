@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import { useQuery } from "convex/react";
 import { Link } from "react-router";
 
@@ -17,18 +17,18 @@ export default function Packages() {
       <Navbar />
 
       <div className="flex-1">
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
+        <section className="py-20 bg-gradient-to-br from-cyan-100 via-blue-100 to-purple-200 dark:from-blue-950/20 dark:to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                Smart Packages for Clearer Skin
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+                Our Packages
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Transparent pricing, no hidden fees. Choose the package that fits your journey.
+                Choose a plan that works for you. All packages are tailored to your specific needs during your free consultation.
               </p>
             </motion.div>
 
@@ -39,68 +39,100 @@ export default function Packages() {
                 No packages available at the moment. Please check back soon.
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                {packages.map((pkg, index) => (
-                  <motion.div
-                    key={pkg._id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card className="h-full flex flex-col border-2 hover:border-primary transition-colors">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-2">
-                          <CardTitle className="text-xl">{pkg.title}</CardTitle>
-                          {!pkg.isAvailable && (
-                            <Badge variant="secondary">Coming Soon</Badge>
-                          )}
-                        </div>
-                        <CardDescription>{pkg.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="flex-1">
-                        <div className="mb-4">
-                          {pkg.originalPrice && (
-                            <span className="text-lg text-muted-foreground line-through mr-2">
-                              KSh {pkg.originalPrice.toLocaleString()}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                {packages.map((pkg, index) => {
+                  const isPopular = pkg.originalPrice && pkg.originalPrice > pkg.price;
+                  return (
+                    <motion.div
+                      key={pkg._id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={isPopular ? "md:col-span-1 lg:row-span-2" : ""}
+                    >
+                      <Card className={`h-full flex flex-col border-0 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl ${
+                        isPopular 
+                          ? "bg-gradient-to-br from-blue-100 to-purple-200 dark:from-blue-900/40 dark:to-purple-900/40 ring-2 ring-primary/50" 
+                          : "bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm"
+                      }`}>
+                        <CardHeader className={`pb-4 ${isPopular ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-white" : ""}`}>
+                          <div className="flex items-start justify-between mb-3">
+                            <div>
+                              <CardTitle className={`text-2xl ${isPopular ? "text-white" : ""}`}>
+                                {pkg.title}
+                              </CardTitle>
+                            </div>
+                            {isPopular && (
+                              <Badge className="bg-white text-primary">POPULAR</Badge>
+                            )}
+                            {!pkg.isAvailable && (
+                              <Badge variant="secondary">Coming Soon</Badge>
+                            )}
+                          </div>
+                          <CardDescription className={isPopular ? "text-white/90" : ""}>
+                            {pkg.description}
+                          </CardDescription>
+                        </CardHeader>
+
+                        <CardContent className="flex-1 pt-6">
+                          <div className="mb-6">
+                            {pkg.originalPrice && (
+                              <span className="text-lg text-muted-foreground line-through mr-3">
+                                KSh {pkg.originalPrice.toLocaleString()}
+                              </span>
+                            )}
+                            <span className={`text-4xl font-bold ${isPopular ? "text-primary" : ""}`}>
+                              KSh {pkg.price.toLocaleString()}
                             </span>
+                          </div>
+
+                          {pkg.sessions && (
+                            <p className="text-sm text-muted-foreground mb-6 font-medium">
+                              {pkg.sessions} {pkg.sessions === 1 ? "Session" : "Sessions"}
+                            </p>
                           )}
-                          <span className="text-3xl font-bold">
-                            KSh {pkg.price.toLocaleString()}
-                          </span>
-                        </div>
-                        {pkg.sessions && (
-                          <p className="text-sm text-muted-foreground mb-4">
-                            {pkg.sessions} {pkg.sessions === 1 ? "Session" : "Sessions"}
-                          </p>
-                        )}
-                        <ul className="space-y-2">
-                          {pkg.features.map((feature, i) => (
-                            <li key={i} className="flex items-start space-x-2 text-sm">
-                              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                      <CardFooter className="flex gap-2">
-                        {pkg.isAvailable ? (
-                          <>
-                            <Button asChild variant="outline" size="sm">
-                              <Link to={`/packages/${pkg._id}`}>Details</Link>
+
+                          <div className="space-y-3">
+                            {pkg.features.map((feature, i) => (
+                              <div key={i} className="flex items-start space-x-3">
+                                <CheckCircle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isPopular ? "text-white" : "text-primary"}`} />
+                                <span className={`text-sm ${isPopular ? "text-white/95" : "text-muted-foreground"}`}>
+                                  {feature}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+
+                        <CardFooter className="flex gap-3 pt-6">
+                          {pkg.isAvailable ? (
+                            <>
+                              <Button 
+                                asChild 
+                                variant={isPopular ? "secondary" : "outline"} 
+                                className="flex-1"
+                              >
+                                <Link to={`/packages/${pkg._id}`} className="flex items-center justify-center gap-2">
+                                  Learn More <ArrowRight className="h-4 w-4" />
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild 
+                                className={`flex-1 ${isPopular ? "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700" : ""}`}
+                              >
+                                <Link to="/book">Book Now</Link>
+                              </Button>
+                            </>
+                          ) : (
+                            <Button asChild variant="outline" className="w-full">
+                              <Link to="/about#contact">Enquire</Link>
                             </Button>
-                            <Button asChild className="flex-1">
-                              <Link to="/book">Book Now</Link>
-                            </Button>
-                          </>
-                        ) : (
-                          <Button asChild variant="outline" className="w-full">
-                            <Link to="/about#contact">Enquire</Link>
-                          </Button>
-                        )}
-                      </CardFooter>
-                    </Card>
-                  </motion.div>
-                ))}
+                          )}
+                        </CardFooter>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
               </div>
             )}
           </div>
