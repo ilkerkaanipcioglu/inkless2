@@ -116,6 +116,7 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   }
   body {
     @apply bg-background text-foreground;
@@ -129,7 +130,7 @@
   }
 }
 
-/* Glassmorphism enhancements for light theme */
+/* Enhanced Glassmorphism for light theme */
 :root {
   backdrop-filter: blur(10px);
 }
@@ -138,6 +139,14 @@
 [class*="card"] {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover,
+[class*="card"]:hover {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateY(-2px);
 }
 
 /* Glassmorphism for buttons in light theme */
@@ -145,7 +154,7 @@
 :root [role="button"]:not(.dark [role="button"]) {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root button:hover:not(.dark button):not([disabled]),
@@ -153,4 +162,23 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transitions for inputs */
+input, textarea, select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, textarea:focus, select:focus {
+  transform: scale(1.01);
+}
+
+/* Enhanced link transitions */
+a {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+  transform: translateX(2px);
 }
