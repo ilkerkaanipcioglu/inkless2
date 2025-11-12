@@ -157,6 +157,154 @@ export const seedData = internalMutation({
       await ctx.db.insert("faqs", faq);
     }
 
-    return { message: "Database seeded successfully" };
+    // Create a dummy admin user for blog posts
+    const adminUser = await ctx.db.insert("users", {
+      name: "Inkless Team",
+      email: "admin@inklessismore.ke",
+      role: "admin",
+    });
+
+    // Seed blog posts
+    await ctx.db.insert("blogPosts", {
+      title: "Join Our Ambassador Program: Earn While You Share",
+      slug: "ambassador-program-launch",
+      excerpt: "Become an Inkless Is More Ambassador and earn commissions while helping others discover the freedom of clear skin. Learn about our exciting new program with exclusive benefits.",
+      content: `# Join Our Ambassador Program
+
+We're thrilled to announce the launch of the Inkless Is More Ambassador Program! This is your opportunity to be part of Kenya's leading tattoo removal revolution while earning attractive commissions.
+
+## What is the Ambassador Program?
+
+Our Ambassador Program is designed for passionate individuals who want to share the transformative power of laser tattoo removal with their community. Whether you're a beauty influencer, wellness advocate, or simply someone who believes in our mission, this program is for you.
+
+## Program Benefits
+
+### Earn Generous Commissions
+- Earn up to 15% commission on every successful referral
+- No cap on earnings - the more you refer, the more you earn
+- Fast payment processing within 7 days
+
+### Exclusive Training
+- Free comprehensive training on laser tattoo removal
+- Access to educational materials and resources
+- Regular updates on the latest techniques and technology
+
+### Marketing Support
+- Professional marketing materials provided
+- Social media content templates
+- Dedicated ambassador portal with tracking tools
+
+### Special Perks
+- Exclusive discounts for you and your referrals
+- Priority booking for your clients
+- VIP access to new services and promotions
+
+## Who Can Join?
+
+We're looking for:
+- Beauty and wellness professionals
+- Social media influencers and content creators
+- Healthcare professionals
+- Anyone passionate about helping others
+
+## How It Works
+
+1. **Apply**: Fill out our simple application form
+2. **Get Trained**: Complete our online training program
+3. **Start Referring**: Share your unique referral code
+4. **Earn Rewards**: Get paid for every successful booking
+
+## Ready to Get Started?
+
+Visit our Training page or contact us at info@inklessismore.ke to learn more about becoming an Inkless Is More Ambassador.
+
+Together, let's help more people rediscover their confidence and embrace clear, beautiful skin!`,
+      imageUrl: "https://harmless-tapir-303.convex.cloud/api/storage/2645f8db-e50b-48c1-b891-e120118b0715",
+      published: true,
+      authorId: adminUser,
+    });
+
+    await ctx.db.insert("blogPosts", {
+      title: "Limited Time Offer: Save Up to KSh 29,000 on Removal Packages",
+      slug: "special-discount-packages",
+      excerpt: "Don't miss out! Our biggest savings ever on multi-session packages. Get professional laser tattoo removal at unbeatable prices. Book now before this offer ends!",
+      content: `# Exclusive Discount: Your Journey to Clear Skin Starts Now
+
+For a limited time only, we're offering our biggest discounts ever on laser tattoo removal packages. This is your chance to finally say goodbye to that unwanted ink at prices that won't break the bank.
+
+## Special Package Pricing
+
+### The Starter Pack (3 Sessions)
+**Was: KSh 13,500 | Now: KSh 10,000**
+- Save KSh 3,500
+- Perfect for small tattoos
+- Ideal for first-time clients
+
+### The Popular Choice (5 Sessions)
+**Was: KSh 22,500 | Now: KSh 15,000**
+- Save KSh 7,500
+- Our best-selling package
+- Great for medium-sized tattoos
+
+### Complete Removal Package
+**Was: KSh 54,000 | Now: KSh 25,000**
+- Save KSh 29,000 - Our biggest discount!
+- Unlimited sessions until complete removal
+- Best value for money
+
+## Why Choose Inkless Is More?
+
+### Advanced Technology
+We use the latest Picosecond laser technology, which is:
+- Faster and more effective than traditional lasers
+- Completely scar-free
+- Suitable for all skin types
+- Minimal downtime
+
+### Expert Care
+- Certified and experienced technicians
+- Free consultation included
+- Personalized treatment plans
+- Comprehensive aftercare support
+
+### Convenient Location
+Located at Two Rivers Mall, 1st Floor - easy to access with ample parking and a comfortable, private treatment environment.
+
+## What Our Clients Say
+
+"I was amazed at how quickly my tattoo faded. The team was professional, and the process was much less painful than I expected!" - Sarah M.
+
+"Best decision I ever made. The package deal made it affordable, and the results speak for themselves." - James K.
+
+## How to Claim This Offer
+
+1. **Book Your Free Consultation**: Call us at +254 708 901 505 or book online
+2. **Choose Your Package**: Our experts will recommend the best option for your needs
+3. **Start Your Journey**: Begin your transformation to clear, confident skin
+
+## Terms & Conditions
+
+- Offer valid for new bookings only
+- Packages must be purchased upfront
+- Sessions must be completed within 12 months
+- Cannot be combined with other offers
+- Subject to availability
+
+## Don't Wait - Book Today!
+
+This special pricing won't last forever. Take advantage of these incredible savings and start your journey to clear skin today.
+
+**Contact us now:**
+- Phone: +254 708 901 505
+- Email: info@inklessismore.ke
+- Visit: Two Rivers Mall, 1st Floor, Nairobi
+
+Your new beginning is just one call away!`,
+      imageUrl: "https://harmless-tapir-303.convex.cloud/api/storage/08647076-bb2b-45e1-a230-3adf8c90a821",
+      published: true,
+      authorId: adminUser,
+    });
+
+    return { message: "Database seeded successfully with blog posts" };
   },
 });
