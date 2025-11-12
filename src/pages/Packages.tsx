@@ -3,27 +3,37 @@ import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight, Filter } from "lucide-react";
+import { CheckCircle, ArrowRight, Filter, Search } from "lucide-react";
 import { useQuery } from "convex/react";
 import { Link } from "react-router";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export default function Packages() {
   const packages = useQuery(api.packages.list);
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [availabilityFilter, setAvailabilityFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const filteredPackages = packages?.filter((pkg) => {
-    const matchesCategory = categoryFilter === "all" || pkg.category === categoryFilter;
-    const matchesAvailability = 
-      availabilityFilter === "all" || 
-      (availabilityFilter === "available" && pkg.isAvailable) ||
-      (availabilityFilter === "coming-soon" && !pkg.isAvailable);
-    return matchesCategory && matchesAvailability;
-  });
+  const filteredPackages = useMemo(() => {
+    if (!packages) return undefined;
+    
+    return packages.filter((pkg) => {
+      const matchesSearch = searchQuery === "" || 
+        pkg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        pkg.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = categoryFilter === "all" || pkg.category === categoryFilter;
+      const matchesAvailability = 
+        availabilityFilter === "all" || 
+        (availabilityFilter === "available" && pkg.isAvailable) ||
+        (availabilityFilter === "coming-soon" && !pkg.isAvailable);
+      
+      return matchesSearch && matchesCategory && matchesAvailability;
+    });
+  }, [packages, searchQuery, categoryFilter, availabilityFilter]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -56,8 +66,23 @@ export default function Packages() {
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-2 mb-4">
                     <Filter className="h-5 w-5 text-primary" />
-                    <h3 className="text-lg font-semibold">Filter Packages</h3>
+                    <h3 className="text-lg font-semibold">Search & Filter Packages</h3>
                   </div>
+                  
+                  {/* Search Bar */}
+                  <div className="mb-4">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <Input
+                        type="text"
+                        placeholder="Search packages by name or description..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-10 h-12 text-base border-2 focus:border-primary transition-colors"
+                      />
+                    </div>
+                  </div>
+
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Category</label>
@@ -86,7 +111,7 @@ export default function Packages() {
                       </Select>
                     </div>
                   </div>
-                  {(categoryFilter !== "all" || availabilityFilter !== "all") && (
+                  {(searchQuery !== "" || categoryFilter !== "all" || availabilityFilter !== "all") && (
                     <div className="mt-4 flex items-center justify-between">
                       <p className="text-sm text-muted-foreground">
                         Showing {filteredPackages?.length || 0} of {packages?.length || 0} packages
@@ -95,6 +120,7 @@ export default function Packages() {
                         variant="ghost"
                         size="sm"
                         onClick={() => {
+                          setSearchQuery("");
                           setCategoryFilter("all");
                           setAvailabilityFilter("all");
                         }}
