@@ -3,14 +3,27 @@ import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, Filter } from "lucide-react";
 import { useQuery } from "convex/react";
 import { Link } from "react-router";
+import { useState } from "react";
 
 export default function Packages() {
   const packages = useQuery(api.packages.list);
+  const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [availabilityFilter, setAvailabilityFilter] = useState<string>("all");
+
+  const filteredPackages = packages?.filter((pkg) => {
+    const matchesCategory = categoryFilter === "all" || pkg.category === categoryFilter;
+    const matchesAvailability = 
+      availabilityFilter === "all" || 
+      (availabilityFilter === "available" && pkg.isAvailable) ||
+      (availabilityFilter === "coming-soon" && !pkg.isAvailable);
+    return matchesCategory && matchesAvailability;
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -32,15 +45,91 @@ export default function Packages() {
               </p>
             </motion.div>
 
+            {/* Filter Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="max-w-4xl mx-auto mb-12"
+            >
+              <Card className="border-2 shadow-lg backdrop-blur-xl bg-card/90">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Filter className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-semibold">Filter Packages</h3>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Category</label>
+                      <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                        <SelectTrigger className="h-11">
+                          <SelectValue placeholder="All Categories" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Categories</SelectItem>
+                          <SelectItem value="tattoo-removal">Tattoo Removal</SelectItem>
+                          <SelectItem value="specialized">Specialized Services</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Availability</label>
+                      <Select value={availabilityFilter} onValueChange={setAvailabilityFilter}>
+                        <SelectTrigger className="h-11">
+                          <SelectValue placeholder="All Packages" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Packages</SelectItem>
+                          <SelectItem value="available">Available Now</SelectItem>
+                          <SelectItem value="coming-soon">Coming Soon</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  {(categoryFilter !== "all" || availabilityFilter !== "all") && (
+                    <div className="mt-4 flex items-center justify-between">
+                      <p className="text-sm text-muted-foreground">
+                        Showing {filteredPackages?.length || 0} of {packages?.length || 0} packages
+                      </p>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          setCategoryFilter("all");
+                          setAvailabilityFilter("all");
+                        }}
+                      >
+                        Clear Filters
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+
             {packages === undefined ? (
               <div className="text-center py-12">Loading packages...</div>
-            ) : packages.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground">
-                No packages available at the moment. Please check back soon.
+            ) : filteredPackages && filteredPackages.length === 0 ? (
+              <div className="text-center py-12">
+                <Card className="max-w-md mx-auto border-2">
+                  <CardContent className="pt-6">
+                    <p className="text-muted-foreground mb-4">
+                      No packages match your current filters.
+                    </p>
+                    <Button
+                      onClick={() => {
+                        setCategoryFilter("all");
+                        setAvailabilityFilter("all");
+                      }}
+                    >
+                      Clear Filters
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {packages.map((pkg, index) => {
+                {filteredPackages?.map((pkg, index) => {
                   const isPopular = pkg.originalPrice && pkg.originalPrice > pkg.price;
                   return (
                     <motion.div
