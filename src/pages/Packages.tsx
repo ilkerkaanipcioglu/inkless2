@@ -82,14 +82,19 @@ export default function Packages() {
                           ))}
                         </ul>
                       </CardContent>
-                      <CardFooter>
+                      <CardFooter className="flex gap-2">
                         {pkg.isAvailable ? (
-                          <Button asChild className="w-full">
-                            <Link to={`/package/${pkg._id}`}>Learn More</Link>
-                          </Button>
+                          <>
+                            <Button asChild variant="outline" size="sm">
+                              <Link to={`/packages/${pkg._id}`}>Details</Link>
+                            </Button>
+                            <Button asChild className="flex-1">
+                              <Link to="/packages#book">Book Now</Link>
+                            </Button>
+                          </>
                         ) : (
                           <Button asChild variant="outline" className="w-full">
-                            <Link to="/contact?type=notify">Enquire for Availability</Link>
+                            <Link to="/about#contact">Enquire</Link>
                           </Button>
                         )}
                       </CardFooter>
