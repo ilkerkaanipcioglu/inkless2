@@ -144,7 +144,7 @@ export default function PackageDetail() {
 
                         {packageData.isAvailable ? (
                           <Button asChild className="w-full" size="lg">
-                            <Link to="/packages#book">Book Now</Link>
+                            <Link to="/book">Book Now</Link>
                           </Button>
                         ) : (
                           <Button asChild variant="outline" className="w-full" size="lg">

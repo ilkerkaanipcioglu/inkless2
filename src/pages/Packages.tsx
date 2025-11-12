@@ -89,7 +89,7 @@ export default function Packages() {
                               <Link to={`/packages/${pkg._id}`}>Details</Link>
                             </Button>
                             <Button asChild className="flex-1">
-                              <Link to="/packages#book">Book Now</Link>
+                              <Link to="/book">Book Now</Link>
                             </Button>
                           </>
                         ) : (
