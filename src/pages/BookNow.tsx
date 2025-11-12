@@ -58,6 +58,8 @@ export default function BookNow() {
     const additionalInfo = formData.message;
     const fullMessage = packageInfo + schedulingNote + (additionalInfo ? `\n\nAdditional Information:\n${additionalInfo}` : "");
 
+    const selectedPkg = packages?.find(p => p.title === selectedPackage);
+    
     try {
       await submitBooking({
         name: formData.name,
@@ -65,6 +67,11 @@ export default function BookNow() {
         phone: formData.phone,
         message: fullMessage,
         type: "booking",
+        packageId: selectedPkg?._id,
+        sessions: sessions.map(s => ({
+          date: s.date ? format(s.date, "yyyy-MM-dd") : undefined,
+          time: s.time || undefined,
+        })),
       });
       toast.success("Booking request submitted! We'll contact you shortly to confirm your appointment.");
       setFormData({ name: "", email: "", phone: "", message: "" });

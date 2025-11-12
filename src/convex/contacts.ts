@@ -9,6 +9,11 @@ export const submit = mutation({
     phone: v.string(),
     message: v.optional(v.string()),
     type: v.string(),
+    packageId: v.optional(v.id("packages")),
+    sessions: v.optional(v.array(v.object({
+      date: v.optional(v.string()),
+      time: v.optional(v.string()),
+    }))),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("contacts", { ...args, status: "new" });

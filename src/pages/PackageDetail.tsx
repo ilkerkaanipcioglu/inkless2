@@ -69,6 +69,11 @@ export default function PackageDetail() {
         phone: formData.phone,
         message: fullMessage,
         type: "booking",
+        packageId: packageData?._id,
+        sessions: sessions.map(s => ({
+          date: s.date ? format(s.date, "yyyy-MM-dd") : undefined,
+          time: s.time || undefined,
+        })),
       });
       toast.success("Booking request submitted! We'll contact you shortly.");
       setFormData({ name: "", email: "", phone: "", message: "" });
