@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, Phone } from "lucide-react";
+import { Calendar, Clock, MapPin, Phone, User, Mail, MessageSquare } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -18,26 +18,31 @@ export default function BookNow() {
   const submitBooking = useMutation(api.contacts.submit);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string>("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
     const packageInfo = selectedPackage ? `Package: ${selectedPackage}` : "";
-    const additionalInfo = formData.get("message") as string;
+    const additionalInfo = formData.message;
     const fullMessage = packageInfo + (additionalInfo ? `\n\nAdditional Information:\n${additionalInfo}` : "");
 
     try {
       await submitBooking({
-        name: formData.get("name") as string,
-        email: formData.get("email") as string,
-        phone: formData.get("phone") as string,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
         message: fullMessage,
         type: "booking",
       });
       toast.success("Booking request submitted! We'll contact you shortly to confirm your appointment.");
-      e.currentTarget.reset();
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setSelectedPackage("");
     } catch (error) {
       toast.error("Something went wrong. Please try again or call us directly.");
@@ -58,33 +63,43 @@ export default function BookNow() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="max-w-4xl mx-auto"
+              className="max-w-5xl mx-auto"
             >
-              <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                  Book Your Appointment
-                </h1>
-                <p className="text-lg text-muted-foreground">
-                  Take the first step towards clear, ink-free skin. Fill out the form below and we'll contact you to schedule your consultation.
-                </p>
+              <div className="text-center mb-16">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+                >
+                  Book Your <span className="text-primary">Transformation</span>
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-xl text-muted-foreground max-w-3xl mx-auto"
+                >
+                  Take the first step towards clear, ink-free skin. Your journey to confidence starts here.
+                </motion.p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="grid md:grid-cols-3 gap-8 mb-16">
                 {[
                   {
                     icon: Calendar,
                     title: "Flexible Scheduling",
-                    description: "Choose a time that works for you",
+                    description: "Choose a time that works perfectly for your lifestyle",
                   },
                   {
                     icon: Clock,
                     title: "Quick Response",
-                    description: "We'll confirm within 24 hours",
+                    description: "We'll confirm your appointment within 24 hours",
                   },
                   {
                     icon: MapPin,
-                    title: "Convenient Location",
-                    description: "Two Rivers Mall, Nairobi",
+                    title: "Premium Location",
+                    description: "Two Rivers Mall, Nairobi - Easy to find and access",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -93,94 +108,148 @@ export default function BookNow() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="text-center border-2">
-                      <CardContent className="pt-6">
-                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-3">
-                          <item.icon className="h-6 w-6 text-primary" />
+                    <Card className="h-full text-center border-2 hover:border-primary transition-all duration-300 hover:shadow-lg">
+                      <CardContent className="pt-8">
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                          <item.icon className="h-8 w-8 text-primary" />
                         </div>
-                        <h3 className="font-semibold mb-1">{item.title}</h3>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                        <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                        <p className="text-muted-foreground">{item.description}</p>
                       </CardContent>
                     </Card>
                   </motion.div>
                 ))}
               </div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Booking Information</CardTitle>
-                  <CardDescription>
-                    Please provide your details and we'll get back to you to confirm your appointment.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input id="name" name="name" required placeholder="John Doe" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Card className="border-2 shadow-xl">
+                  <CardHeader className="text-center pb-8">
+                    <CardTitle className="text-3xl mb-2">Reserve Your Spot</CardTitle>
+                    <CardDescription className="text-lg">
+                      Fill in your details and we'll get back to you to confirm your consultation
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="px-8 pb-8">
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="name" className="text-base font-medium flex items-center gap-2">
+                            <User className="h-4 w-4" />
+                            Full Name *
+                          </Label>
+                          <Input 
+                            id="name" 
+                            value={formData.name}
+                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                            required 
+                            placeholder="John Doe" 
+                            className="h-12 text-base"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="phone" className="text-base font-medium flex items-center gap-2">
+                            <Phone className="h-4 w-4" />
+                            Phone Number *
+                          </Label>
+                          <Input 
+                            id="phone" 
+                            type="tel" 
+                            value={formData.phone}
+                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            required 
+                            placeholder="+254 700 000 000" 
+                            className="h-12 text-base"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number *</Label>
-                        <Input id="phone" name="phone" type="tel" required placeholder="+254 700 000 000" />
+
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-base font-medium flex items-center gap-2">
+                          <Mail className="h-4 w-4" />
+                          Email Address *
+                        </Label>
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          required 
+                          placeholder="john@example.com" 
+                          className="h-12 text-base"
+                        />
                       </div>
-                    </div>
 
-                    <div>
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" name="email" type="email" required placeholder="john@example.com" />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="package" className="text-base font-medium">
+                          Select Package (Optional)
+                        </Label>
+                        <Select value={selectedPackage} onValueChange={setSelectedPackage}>
+                          <SelectTrigger id="package" className="h-12 text-base">
+                            <SelectValue placeholder="Choose a package or discuss during consultation" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="consultation-only">Free Consultation Only</SelectItem>
+                            {availablePackages.map((pkg) => (
+                              <SelectItem key={pkg._id} value={pkg.title}>
+                                {pkg.title} - KSh {pkg.price.toLocaleString()}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    <div>
-                      <Label htmlFor="package">Select Package (Optional)</Label>
-                      <Select value={selectedPackage} onValueChange={setSelectedPackage}>
-                        <SelectTrigger id="package">
-                          <SelectValue placeholder="Choose a package or discuss during consultation" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="consultation-only">Free Consultation Only</SelectItem>
-                          {availablePackages.map((pkg) => (
-                            <SelectItem key={pkg._id} value={pkg.title}>
-                              {pkg.title} - KSh {pkg.price.toLocaleString()}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message" className="text-base font-medium flex items-center gap-2">
+                          <MessageSquare className="h-4 w-4" />
+                          Tell us about your tattoo (Optional)
+                        </Label>
+                        <Textarea
+                          id="message"
+                          value={formData.message}
+                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          placeholder="Size, location, colors, age of tattoo, or any questions you have..."
+                          rows={4}
+                          className="text-base resize-none"
+                        />
+                      </div>
 
-                    <div>
-                      <Label htmlFor="message">Additional Information (Optional)</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        placeholder="Tell us about your tattoo (size, location, colors) or any questions you have..."
-                        rows={4}
-                      />
-                    </div>
+                      <div className="bg-muted/50 p-6 rounded-xl border">
+                        <h4 className="font-semibold mb-3 flex items-center text-lg">
+                          <Phone className="h-5 w-5 mr-2" />
+                          Prefer to call us directly?
+                        </h4>
+                        <p className="text-muted-foreground mb-3">
+                          Our friendly team is ready to answer your questions:
+                        </p>
+                        <a 
+                          href="tel:+254708901505" 
+                          className="text-primary font-semibold text-lg hover:underline inline-flex items-center gap-2"
+                        >
+                          <Phone className="h-5 w-5" />
+                          +254 708 901 505
+                        </a>
+                      </div>
 
-                    <div className="bg-muted/50 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-2 flex items-center">
-                        <Phone className="h-4 w-4 mr-2" />
-                        Prefer to call?
-                      </h4>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        You can also reach us directly at:
+                      <Button 
+                        type="submit" 
+                        className="w-full h-14 text-lg font-semibold" 
+                        size="lg" 
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Submitting..." : "Submit Booking Request"}
+                      </Button>
+
+                      <p className="text-xs text-center text-muted-foreground">
+                        By submitting this form, you agree to be contacted by Inkless Is More regarding your appointment.
                       </p>
-                      <a href="tel:+254708901505" className="text-primary font-semibold hover:underline">
-                        +254 708 901 505
-                      </a>
-                    </div>
-
-                    <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                      {isSubmitting ? "Submitting..." : "Submit Booking Request"}
-                    </Button>
-
-                    <p className="text-xs text-center text-muted-foreground">
-                      By submitting this form, you agree to be contacted by Inkless Is More regarding your appointment.
-                    </p>
-                  </form>
-                </CardContent>
-              </Card>
+                    </form>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </motion.div>
           </div>
         </section>
