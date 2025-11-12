@@ -33,7 +33,7 @@ export default function Footer() {
               <li><Link to="/packages" className="text-sm text-muted-foreground hover:text-primary">Packages</Link></li>
               <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary">About Us</Link></li>
               <li><Link to="/gallery" className="text-sm text-muted-foreground hover:text-primary">Gallery</Link></li>
-              <li><Link to="/training" className="text-sm text-muted-foreground hover:text-primary">Training</Link></li>
+              <li><Link to="/training" className="text-sm text-muted-foreground hover:text-primary">Ambassador Program</Link></li>
               <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-primary">Blog</Link></li>
               <li><Link to="/faq" className="text-sm text-muted-foreground hover:text-primary">FAQ</Link></li>
             </ul>
@@ -79,6 +79,16 @@ export default function Footer() {
               <Input type="email" placeholder="Your email" required />
               <Button type="submit" className="w-full" size="sm">Subscribe</Button>
             </form>
+            <div className="mt-6 pt-4 border-t">
+              <p className="text-xs text-muted-foreground mb-2">
+                <Link to="/training" className="hover:text-primary font-medium">
+                  Ambassador Program
+                </Link>
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Education • Training • Affiliate Opportunities
+              </p>
+            </div>
           </div>
         </div>
 
