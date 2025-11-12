@@ -263,7 +263,7 @@ export default function BookNow() {
                               )}
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                               <Popover>
                                 <PopoverTrigger asChild>
                                   <Button
@@ -278,7 +278,7 @@ export default function BookNow() {
                                     {session.date ? format(session.date, "MMM d") : "Date"}
                                   </Button>
                                 </PopoverTrigger>
-                                <PopoverContent className="w-auto p-0" align="start">
+                                <PopoverContent className="w-auto p-0" align="center" side="bottom">
                                   <CalendarComponent
                                     mode="single"
                                     selected={session.date}
