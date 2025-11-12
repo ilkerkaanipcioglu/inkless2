@@ -6,14 +6,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, Mail, Phone } from "lucide-react";
+import { ArrowLeft, CheckCircle, Mail, Phone, CalendarIcon, Clock } from "lucide-react";
 import { useQuery, useMutation } from "convex/react";
 import { Link, useParams } from "react-router";
 import { useState } from "react";
 import { toast } from "sonner";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 export default function PackageDetail() {
   const { id } = useParams<{ id: string }>();
@@ -23,6 +28,8 @@ export default function PackageDetail() {
   );
   const submitBooking = useMutation(api.contacts.submit);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [date, setDate] = useState<Date>();
+  const [selectedTime, setSelectedTime] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,20 +37,32 @@ export default function PackageDetail() {
     message: "",
   });
 
+  const timeSlots = [
+    "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
+    "12:00 PM", "12:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM",
+    "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM"
+  ];
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const dateInfo = date ? `\nPreferred Date: ${format(date, "PPP")}` : "";
+    const timeInfo = selectedTime ? `\nPreferred Time: ${selectedTime}` : "";
+    const fullMessage = `Package: ${packageData?.title}${dateInfo}${timeInfo}${formData.message ? `\n\nAdditional Notes:\n${formData.message}` : ""}`;
 
     try {
       await submitBooking({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        message: formData.message,
+        message: fullMessage,
         type: "booking",
       });
       toast.success("Booking request submitted! We'll contact you shortly.");
       setFormData({ name: "", email: "", phone: "", message: "" });
+      setDate(undefined);
+      setSelectedTime("");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -244,6 +263,55 @@ export default function PackageDetail() {
                               className="h-12 text-base border-2 focus:border-primary transition-all"
                               autoComplete="tel"
                             />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label className="text-base font-semibold flex items-center gap-2">
+                              <CalendarIcon className="h-4 w-4" />
+                              Preferred Date (Optional)
+                            </Label>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  className={cn(
+                                    "w-full h-12 justify-start text-left font-normal text-base border-2 focus:border-primary transition-all",
+                                    !date && "text-muted-foreground"
+                                  )}
+                                >
+                                  <CalendarIcon className="mr-2 h-4 w-4" />
+                                  {date ? format(date, "PPP") : "Pick a date"}
+                                </Button>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-auto p-0" align="start">
+                                <CalendarComponent
+                                  mode="single"
+                                  selected={date}
+                                  onSelect={setDate}
+                                  disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                                  initialFocus
+                                />
+                              </PopoverContent>
+                            </Popover>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="time" className="text-base font-semibold flex items-center gap-2">
+                              <Clock className="h-4 w-4" />
+                              Preferred Time (Optional)
+                            </Label>
+                            <Select value={selectedTime} onValueChange={setSelectedTime}>
+                              <SelectTrigger id="time" className="h-12 text-base border-2 focus:border-primary transition-all">
+                                <SelectValue placeholder="Select a time slot" />
+                              </SelectTrigger>
+                              <SelectContent className="max-h-[300px]">
+                                {timeSlots.map((time) => (
+                                  <SelectItem key={time} value={time}>
+                                    {time}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                           </div>
 
                           <div className="space-y-2">
