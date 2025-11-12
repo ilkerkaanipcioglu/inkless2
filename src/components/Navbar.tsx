@@ -28,7 +28,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="https://harmless-tapir-303.convex.cloud/api/storage/2645f8db-e50b-48c1-b891-e120118b0715" alt="Inkless Is More" className="h-14 w-14" />
+            <img 
+              src="https://harmless-tapir-303.convex.cloud/api/storage/2645f8db-e50b-48c1-b891-e120118b0715" 
+              alt="Inkless Is More" 
+              className="h-16 w-16 sm:h-20 sm:w-20 object-contain brightness-100 dark:brightness-110 contrast-125 dark:contrast-150" 
+            />
             <span className="font-bold text-lg hidden sm:inline-block">Inkless Is More</span>
           </Link>
 
