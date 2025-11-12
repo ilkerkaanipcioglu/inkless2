@@ -55,82 +55,62 @@ export default function Packages() {
               </p>
             </motion.div>
 
-            {/* Filter Section */}
+            {/* Compact Filter Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="max-w-4xl mx-auto mb-12"
+              className="max-w-4xl mx-auto mb-8"
             >
-              <Card className="border-2 shadow-lg backdrop-blur-xl bg-card/90">
-                <CardContent className="pt-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Filter className="h-5 w-5 text-primary" />
-                    <h3 className="text-lg font-semibold">Search & Filter Packages</h3>
-                  </div>
-                  
-                  {/* Search Bar */}
-                  <div className="mb-4">
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        type="text"
-                        placeholder="Search packages by name or description..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-10 h-12 text-base border-2 focus:border-primary transition-colors"
-                      />
-                    </div>
-                  </div>
+              <div className="flex flex-wrap items-center gap-3 justify-center">
+                <div className="relative w-full sm:w-64">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Search packages..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-9 h-9 text-sm"
+                  />
+                </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Category</label>
-                      <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                        <SelectTrigger className="h-11">
-                          <SelectValue placeholder="All Categories" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Categories</SelectItem>
-                          <SelectItem value="tattoo-removal">Tattoo Removal</SelectItem>
-                          <SelectItem value="specialized">Specialized Services</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Availability</label>
-                      <Select value={availabilityFilter} onValueChange={setAvailabilityFilter}>
-                        <SelectTrigger className="h-11">
-                          <SelectValue placeholder="All Packages" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Packages</SelectItem>
-                          <SelectItem value="available">Available Now</SelectItem>
-                          <SelectItem value="coming-soon">Coming Soon</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  {(searchQuery !== "" || categoryFilter !== "all" || availabilityFilter !== "all") && (
-                    <div className="mt-4 flex items-center justify-between">
-                      <p className="text-sm text-muted-foreground">
-                        Showing {filteredPackages?.length || 0} of {packages?.length || 0} packages
-                      </p>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => {
-                          setSearchQuery("");
-                          setCategoryFilter("all");
-                          setAvailabilityFilter("all");
-                        }}
-                      >
-                        Clear Filters
-                      </Button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                  <SelectTrigger className="h-9 w-full sm:w-40 text-sm">
+                    <SelectValue placeholder="Category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="tattoo-removal">Tattoo Removal</SelectItem>
+                    <SelectItem value="specialized">Specialized</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <Select value={availabilityFilter} onValueChange={setAvailabilityFilter}>
+                  <SelectTrigger className="h-9 w-full sm:w-40 text-sm">
+                    <SelectValue placeholder="Availability" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Packages</SelectItem>
+                    <SelectItem value="available">Available</SelectItem>
+                    <SelectItem value="coming-soon">Coming Soon</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                {(searchQuery !== "" || categoryFilter !== "all" || availabilityFilter !== "all") && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setCategoryFilter("all");
+                      setAvailabilityFilter("all");
+                    }}
+                    className="h-9 text-sm"
+                  >
+                    Clear
+                  </Button>
+                )}
+              </div>
             </motion.div>
 
             {packages === undefined ? (
