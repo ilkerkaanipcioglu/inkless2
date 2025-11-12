@@ -17,7 +17,7 @@ export default function Packages() {
       <Navbar />
 
       <div className="flex-1">
-        <section className="py-20 bg-gradient-to-br from-cyan-100 via-blue-100 to-purple-200 dark:from-blue-950/20 dark:to-background">
+        <section className="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -50,26 +50,26 @@ export default function Packages() {
                       transition={{ delay: index * 0.1 }}
                       className={isPopular ? "md:col-span-1 lg:row-span-2" : ""}
                     >
-                      <Card className={`h-full flex flex-col border-0 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+                      <Card className={`h-full flex flex-col border-2 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
                         isPopular 
-                          ? "bg-gradient-to-br from-white to-cyan-50 dark:from-slate-900 dark:to-cyan-950/20 ring-2 ring-cyan-400/50" 
-                          : "bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm"
+                          ? "ring-2 ring-primary/50" 
+                          : ""
                       }`}>
-                        <CardHeader className={`pb-4 ${isPopular ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-white" : ""}`}>
+                        <CardHeader className="pb-4">
                           <div className="flex items-start justify-between mb-3">
                             <div>
-                              <CardTitle className={`text-2xl ${isPopular ? "text-white" : ""}`}>
+                              <CardTitle className="text-2xl">
                                 {pkg.title}
                               </CardTitle>
                             </div>
                             {isPopular && (
-                              <Badge className="bg-white text-cyan-600 font-semibold">✨ POPULAR</Badge>
+                              <Badge className="bg-primary text-primary-foreground font-semibold">✨ POPULAR</Badge>
                             )}
                             {!pkg.isAvailable && (
                               <Badge variant="secondary">Coming Soon</Badge>
                             )}
                           </div>
-                          <CardDescription className={isPopular ? "text-white/90" : ""}>
+                          <CardDescription>
                             {pkg.description}
                           </CardDescription>
                         </CardHeader>
@@ -81,7 +81,7 @@ export default function Packages() {
                                 KSh {pkg.originalPrice.toLocaleString()}
                               </span>
                             )}
-                            <span className={`text-4xl font-bold ${isPopular ? "text-cyan-600" : ""}`}>
+                            <span className="text-4xl font-bold text-primary">
                               KSh {pkg.price.toLocaleString()}
                             </span>
                           </div>
@@ -95,8 +95,8 @@ export default function Packages() {
                           <div className="space-y-3">
                             {pkg.features.map((feature, i) => (
                               <div key={i} className="flex items-start space-x-3">
-                                <CheckCircle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isPopular ? "text-cyan-600" : "text-cyan-500"}`} />
-                                <span className={`text-sm ${isPopular ? "text-foreground" : "text-muted-foreground"}`}>
+                                <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5 text-primary" />
+                                <span className="text-sm text-muted-foreground">
                                   {feature}
                                 </span>
                               </div>
@@ -118,7 +118,7 @@ export default function Packages() {
                               </Button>
                               <Button 
                                 asChild 
-                                className={`flex-1 ${isPopular ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700" : ""}`}
+                                className="flex-1"
                               >
                                 <Link to={`/packages/${pkg._id}`}>Book Now</Link>
                               </Button>

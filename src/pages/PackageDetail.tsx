@@ -88,7 +88,7 @@ export default function PackageDetail() {
       <Navbar />
 
       <div className="flex-1">
-        <section className="py-12 bg-gradient-to-br from-cyan-100 via-blue-100 to-purple-200 dark:from-blue-950/20 dark:to-background min-h-screen">
+        <section className="py-12 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background min-h-screen">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -109,7 +109,7 @@ export default function PackageDetail() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <Card className="border-0 shadow-2xl overflow-hidden bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm">
+                  <Card className="border-2 shadow-xl overflow-hidden">
                     <CardContent className="p-8">
                       <div className="mb-6">
                         {packageData.originalPrice && (
@@ -125,14 +125,14 @@ export default function PackageDetail() {
                         </p>
                       </div>
 
-                      <div className="mb-8 p-6 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/20 dark:to-blue-950/20 rounded-lg">
+                      <div className="mb-8 p-6 bg-muted/50 rounded-lg">
                         <div className="flex items-baseline gap-2 mb-2">
                           {packageData.originalPrice && (
                             <span className="text-2xl text-muted-foreground line-through">
                               KSh {packageData.originalPrice.toLocaleString()}
                             </span>
                           )}
-                          <span className="text-5xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                          <span className="text-5xl font-bold text-primary">
                             KSh {packageData.price.toLocaleString()}
                           </span>
                         </div>
@@ -183,7 +183,7 @@ export default function PackageDetail() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Card className="border-0 shadow-2xl sticky top-20 bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm">
+                  <Card className="border-2 shadow-xl sticky top-20">
                     <CardContent className="p-8">
                       <h2 className="text-2xl font-bold mb-2">Book This Package</h2>
                       <p className="text-muted-foreground mb-6">Fill in your details to reserve your spot</p>
@@ -242,7 +242,7 @@ export default function PackageDetail() {
 
                         <Button 
                           type="submit"
-                          className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 rounded-full text-lg h-auto"
+                          className="w-full font-semibold py-3 text-lg h-auto"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? "Submitting..." : "Book Now →"}
