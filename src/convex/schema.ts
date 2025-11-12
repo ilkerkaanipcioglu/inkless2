@@ -32,12 +32,50 @@ const schema = defineSchema(
       role: v.optional(roleValidator), // role of the user. do not remove
     }).index("email", ["email"]), // index for the email. do not remove or modify
 
-    // add other tables here
+    packages: defineTable({
+      title: v.string(),
+      description: v.string(),
+      price: v.number(),
+      originalPrice: v.optional(v.number()),
+      sessions: v.optional(v.number()),
+      isAvailable: v.boolean(),
+      features: v.array(v.string()),
+      category: v.string(),
+    }),
 
-    // tableName: defineTable({
-    //   ...
-    //   // table fields
-    // }).index("by_field", ["field"])
+    gallery: defineTable({
+      title: v.string(),
+      description: v.string(),
+      beforeImageUrl: v.string(),
+      afterImageUrl: v.string(),
+      sessions: v.number(),
+      category: v.string(),
+    }),
+
+    blogPosts: defineTable({
+      title: v.string(),
+      slug: v.string(),
+      excerpt: v.string(),
+      content: v.string(),
+      imageUrl: v.optional(v.string()),
+      published: v.boolean(),
+      authorId: v.id("users"),
+    }).index("by_slug", ["slug"]),
+
+    faqs: defineTable({
+      question: v.string(),
+      answer: v.string(),
+      order: v.number(),
+    }),
+
+    contacts: defineTable({
+      name: v.string(),
+      email: v.string(),
+      phone: v.string(),
+      message: v.optional(v.string()),
+      type: v.string(),
+      status: v.string(),
+    }),
   },
   {
     schemaValidation: false,
