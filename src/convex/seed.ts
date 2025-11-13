@@ -22,6 +22,7 @@ export const seedData = internalMutation({
         "Safe and scar-free",
       ],
       category: "tattoo-removal",
+      imageUrl: "/assets/1-single-laser-tattoo-removal-session-994.webp",
     });
 
     await ctx.db.insert("packages", {
@@ -39,6 +40,7 @@ export const seedData = internalMutation({
         "Complete aftercare support",
       ],
       category: "tattoo-removal",
+      imageUrl: "/assets/1111__1_.jpg",
     });
 
     await ctx.db.insert("packages", {
@@ -56,6 +58,7 @@ export const seedData = internalMutation({
         "Priority booking",
       ],
       category: "tattoo-removal",
+      imageUrl: "/assets/B0A79D7D-80DC-43C6-AC34-23ACC6E164A7_1_105_c_480x480.jpg",
     });
 
     await ctx.db.insert("packages", {
@@ -72,6 +75,7 @@ export const seedData = internalMutation({
         "VIP support",
       ],
       category: "tattoo-removal",
+      imageUrl: "/assets/1-single-laser-tattoo-removal-session-994.webp",
     });
 
     await ctx.db.insert("packages", {

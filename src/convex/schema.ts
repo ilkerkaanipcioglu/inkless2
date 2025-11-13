@@ -41,6 +41,8 @@ const schema = defineSchema(
       isAvailable: v.boolean(),
       features: v.array(v.string()),
       category: v.string(),
+      imageUrl: v.optional(v.string()),
+      images: v.optional(v.array(v.string())),
     }),
 
     gallery: defineTable({

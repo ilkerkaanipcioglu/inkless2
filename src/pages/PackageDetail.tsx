@@ -145,6 +145,15 @@ export default function PackageDetail() {
                   className="lg:col-span-3"
                 >
                   <Card className="border-2 shadow-2xl overflow-hidden backdrop-blur-xl bg-card/80">
+                    {packageData.imageUrl && (
+                      <div className="w-full h-80 overflow-hidden">
+                        <img 
+                          src={packageData.imageUrl} 
+                          alt={packageData.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
                     <CardContent className="p-10">
                       <div className="mb-8">
                         {packageData.originalPrice && (
