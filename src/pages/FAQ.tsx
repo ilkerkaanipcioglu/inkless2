@@ -62,12 +62,16 @@ export default function FAQ() {
                 </p>
               </div>
 
-              <Card className="mb-12">
-                <CardContent className="pt-6">
-                  <Accordion type="single" collapsible className="w-full">
+              <Card className="mb-12 border-2 shadow-xl backdrop-blur-sm bg-card/95">
+                <CardContent className="pt-8 pb-6 px-6 md:px-8">
+                  <Accordion type="single" collapsible className="w-full space-y-2">
                     {displayFAQs.map((faq, index) => (
-                      <AccordionItem key={index} value={`item-${index}`}>
-                        <AccordionTrigger className="text-left">
+                      <AccordionItem 
+                        key={index} 
+                        value={`item-${index}`}
+                        className="border-b-2 last:border-b-0 hover:bg-primary/5 rounded-lg px-4 transition-colors"
+                      >
+                        <AccordionTrigger className="text-left hover:no-underline">
                           {faq.question}
                         </AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
@@ -79,28 +83,28 @@ export default function FAQ() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-primary text-primary-foreground">
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-4 text-center">Still Have Questions?</h2>
-                  <p className="text-center mb-6 opacity-90">
+              <Card className="bg-primary text-primary-foreground shadow-2xl border-2 border-primary">
+                <CardContent className="pt-8 pb-8 px-6 md:px-8">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">Still Have Questions?</h2>
+                  <p className="text-center mb-6 opacity-90 text-base md:text-lg">
                     We're here to help! Get in touch with our team.
                   </p>
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center justify-center space-x-2">
-                      <MapPin className="h-5 w-5" />
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center justify-center space-x-3 text-sm md:text-base">
+                      <MapPin className="h-5 w-5 flex-shrink-0" />
                       <span>Two Rivers Mall, 1st Floor, Nairobi, Kenya</span>
                     </div>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Phone className="h-5 w-5" />
-                      <a href="tel:+254708901505" className="hover:underline">+254 708 901 505</a>
+                    <div className="flex items-center justify-center space-x-3 text-sm md:text-base">
+                      <Phone className="h-5 w-5 flex-shrink-0" />
+                      <a href="tel:+254708901505" className="hover:underline font-medium">+254 708 901 505</a>
                     </div>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-5 w-5" />
-                      <a href="mailto:info@inklessismore.ke" className="hover:underline">info@inklessismore.ke</a>
+                    <div className="flex items-center justify-center space-x-3 text-sm md:text-base">
+                      <Mail className="h-5 w-5 flex-shrink-0" />
+                      <a href="mailto:info@inklessismore.ke" className="hover:underline font-medium">info@inklessismore.ke</a>
                     </div>
                   </div>
                   <div className="text-center">
-                    <Button asChild variant="secondary" size="lg">
+                    <Button asChild variant="secondary" size="lg" className="font-semibold shadow-lg hover:shadow-xl transition-all">
                       <Link to="/packages">View Our Packages</Link>
                     </Button>
                   </div>
