@@ -385,20 +385,31 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="h-full border-2 hover:shadow-xl transition-all duration-300">
-                  <CardContent className="pt-6 text-center">
-                    <div className="mb-4 relative">
+                <Card className="h-full border-2 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden backdrop-blur-sm bg-gradient-to-br from-card/95 to-card/80">
+                  <CardContent className="pt-6 text-center relative">
+                    {/* Decorative background element */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10" />
+                    
+                    <div className="mb-4 relative inline-block">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-md" />
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto object-cover border-4 border-primary/20 shadow-lg"
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto object-cover border-4 border-background shadow-xl relative z-10"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23ddd" width="80" height="80" rx="40"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="24"%3E' + testimonial.name.charAt(0) + '%3C/text%3E%3C/svg%3E';
                         }}
                       />
+                      {/* Verified badge */}
+                      <div className="absolute bottom-0 right-0 bg-primary text-primary-foreground rounded-full p-1 shadow-lg">
+                        <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="flex justify-center gap-0.5 sm:gap-1 mb-3">
+                    
+                    <div className="flex justify-center gap-0.5 sm:gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <svg
                           key={i}
@@ -410,10 +421,19 @@ export default function Home() {
                         </svg>
                       ))}
                     </div>
+                    
+                    {/* Quote icon */}
+                    <div className="text-primary/20 mb-2">
+                      <svg className="h-6 w-6 sm:h-8 sm:w-8 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
+                    </div>
+                    
                     <p className="text-sm sm:text-base text-muted-foreground italic mb-4 leading-relaxed px-2">
                       "{testimonial.text}"
                     </p>
-                    <div className="border-t pt-4 mt-4">
+                    
+                    <div className="border-t border-primary/10 pt-4 mt-4">
                       <p className="font-semibold text-base sm:text-lg">{testimonial.name}</p>
                       <p className="text-xs sm:text-sm text-muted-foreground flex items-center justify-center gap-1 mt-1">
                         <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
