@@ -19,6 +19,7 @@ import Blog from "./pages/Blog.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import PackageDetail from "./pages/PackageDetail.tsx";
 import BookNow from "./pages/BookNow.tsx";
+import BookingHistory from "./pages/BookingHistory.tsx";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -58,6 +59,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:id" element={<PackageDetail />} />
             <Route path="/book" element={<BookNow />} />
+            <Route path="/bookings" element={<BookingHistory />} />
             <Route path="/about" element={<About />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/training" element={<Training />} />

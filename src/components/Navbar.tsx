@@ -15,6 +15,7 @@ export default function Navbar() {
     { href: "/packages", label: "Packages" },
     { href: "/gallery", label: "Gallery" },
     { href: "/faq", label: "FAQ" },
+    { href: "/bookings", label: "My Bookings" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
