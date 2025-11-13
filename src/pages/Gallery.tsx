@@ -132,7 +132,7 @@ export default function Gallery() {
                           <div className="relative">
                             <img
                               src={item.before}
-                              alt={item.title}
+                              alt={`${item.title} - Before and after tattoo removal showing ${item.sessions} of treatment`}
                               loading="lazy"
                               className="w-full h-80 object-cover"
                             />
@@ -174,7 +174,7 @@ export default function Gallery() {
                                 <div className="relative group">
                                   <img
                                     src={item.beforeImageUrl}
-                                    alt="Before treatment"
+                                    alt={`Before tattoo removal treatment - ${item.title}`}
                                     loading="lazy"
                                     className="w-full h-64 object-cover"
                                   />
@@ -187,7 +187,7 @@ export default function Gallery() {
                                 <div className="relative group">
                                   <img
                                     src={item.afterImageUrl}
-                                    alt="After treatment"
+                                    alt={`After ${item.sessions} sessions of tattoo removal - ${item.title}`}
                                     loading="lazy"
                                     className="w-full h-64 object-cover"
                                   />
@@ -234,7 +234,7 @@ export default function Gallery() {
                         <CardContent className="p-0">
                           <img
                             src={item.image}
-                            alt={item.title}
+                            alt={`${item.title} - ${item.description}`}
                             loading="lazy"
                             className="w-full h-80 object-cover"
                           />
@@ -306,7 +306,7 @@ export default function Gallery() {
                         <CardContent className="p-0">
                           <img
                             src={item.image}
-                            alt={item.name}
+                            alt={`Client testimonial - ${item.name}: ${item.description}`}
                             loading="lazy"
                             className="w-full h-96 object-cover"
                           />
