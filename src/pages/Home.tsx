@@ -239,30 +239,38 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              Your Personalized Removal Plan
+              Key Factors That Affect Removal
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Each tattoo is unique. Here are the factors that affect your results:
+              Each tattoo is unique. Here are the factors that influence your treatment timeline and results:
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               {
-                title: "Tattoo Location",
-                description: "Closer to the heart = faster fading due to better circulation.",
+                title: "Lifestyle Choices",
+                description: "Staying hydrated, avoiding alcohol, and protecting your skin from sun exposure significantly improve healing and results between sessions.",
               },
               {
-                title: "Ink Colors",
-                description: "Black fades quickest; green and blue take longer to remove.",
+                title: "Skin Type",
+                description: "Your melanin levels affect laser settings and treatment approach. We customize each session to your unique skin type for optimal safety and effectiveness.",
               },
               {
                 title: "Tattoo Age",
-                description: "Older tattoos fade faster as ink naturally breaks down over time.",
+                description: "Older tattoos fade faster as ink naturally breaks down over time, making them easier to remove with fewer sessions.",
               },
               {
-                title: "Lifestyle",
-                description: "Hydration, less alcohol, and sun protection help recovery.",
+                title: "Tattoo Location",
+                description: "Tattoos closer to the heart fade faster due to better blood circulation, which helps your body flush out fragmented ink particles more efficiently.",
+              },
+              {
+                title: "Ink Colors",
+                description: "Black and dark colors respond best to treatment. Blue, green, and multicolored tattoos require adjusted laser settings and typically need more sessions.",
+              },
+              {
+                title: "Tattoo Size & Density",
+                description: "Larger tattoos and those with dense ink saturation require more sessions, as there's simply more ink for your body to process and eliminate.",
               },
             ].map((factor, index) => (
               <motion.div
@@ -271,13 +279,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start space-x-3"
               >
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-semibold mb-1">{factor.title}</h3>
-                  <p className="text-sm text-muted-foreground">{factor.description}</p>
-                </div>
+                <Card className="h-full border-2 hover:border-primary transition-colors">
+                  <CardContent className="pt-6">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-2 text-lg">{factor.title}</h3>
+                        <p className="text-sm text-muted-foreground">{factor.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
