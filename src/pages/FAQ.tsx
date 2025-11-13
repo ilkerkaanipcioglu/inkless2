@@ -19,11 +19,11 @@ export default function FAQ() {
     },
     {
       question: "How much does it cost?",
-      answer: "Pricing starts from KSh 4,500 per session. We offer discounted multi-session packages ranging from KSh 10,000 to KSh 25,000. The exact cost depends on the size, color, and complexity of your tattoo.",
+      answer: "Pricing starts from KSh 4,500 per session. We offer discounted multi-session packages ranging from KSh 10,000 to KSh 25,000. All pricing applies regardless of tattoo size or number of tattoos.",
     },
     {
       question: "Does it hurt?",
-      answer: "The sensation is similar to getting a tattoo - a quick snapping feeling. Sessions are typically short, and numbing cream is available if needed. Most clients find it very tolerable.",
+      answer: "The sensation is similar to receiving a tattoo - a quick snapping feeling. Sessions are typically short, and numbing cream is available if needed. Most clients find it very tolerable.",
     },
     {
       question: "Will it leave scars?",
@@ -31,7 +31,15 @@ export default function FAQ() {
     },
     {
       question: "How long does complete removal take?",
-      answer: "Most tattoos require 5-12 sessions for complete removal, with 4-week intervals between treatments. You'll see visible lightening after each session. Factors like tattoo age, ink colors, location, and your immune system affect the timeline. Proper aftercare significantly enhances results.",
+      answer: "Most tattoos require 5-12 sessions for complete removal, with 4-week intervals between treatments. You'll see visible lightening after each session. The timeline varies by color, size, and skin type. Proper aftercare significantly enhances results.",
+    },
+    {
+      question: "Is it safe for all skin types?",
+      answer: "Yes, our Picosecond laser is safe for all skin types. We adjust the laser settings based on your melanin levels to ensure optimal safety and effectiveness for your unique skin tone.",
+    },
+    {
+      question: "Do eyebrow tattoos remove safely?",
+      answer: "Yes, eyebrow tattoos can be safely removed. We use specialized settings and techniques specifically designed for sensitive areas around the eyes to ensure both safety and effectiveness.",
     },
     {
       question: "Where are you located?",
