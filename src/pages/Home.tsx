@@ -354,7 +354,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {[
               {
                 name: "Sarah M.",
@@ -387,22 +387,22 @@ export default function Home() {
               >
                 <Card className="h-full border-2 hover:shadow-xl transition-all duration-300">
                   <CardContent className="pt-6 text-center">
-                    <div className="mb-4">
+                    <div className="mb-4 relative">
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-primary/20"
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto object-cover border-4 border-primary/20 shadow-lg"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23ddd" width="80" height="80" rx="40"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="24"%3E' + testimonial.name.charAt(0) + '%3C/text%3E%3C/svg%3E';
                         }}
                       />
                     </div>
-                    <div className="flex justify-center gap-1 mb-3">
+                    <div className="flex justify-center gap-0.5 sm:gap-1 mb-3">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <svg
                           key={i}
-                          className="h-5 w-5 text-yellow-400 fill-yellow-400"
+                          className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 fill-yellow-400 drop-shadow-md"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                         >
@@ -410,12 +410,17 @@ export default function Home() {
                         </svg>
                       ))}
                     </div>
-                    <p className="text-muted-foreground italic mb-4">
+                    <p className="text-sm sm:text-base text-muted-foreground italic mb-4 leading-relaxed px-2">
                       "{testimonial.text}"
                     </p>
-                    <div className="border-t pt-4">
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                    <div className="border-t pt-4 mt-4">
+                      <p className="font-semibold text-base sm:text-lg">{testimonial.name}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground flex items-center justify-center gap-1 mt-1">
+                        <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                        </svg>
+                        {testimonial.location}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
