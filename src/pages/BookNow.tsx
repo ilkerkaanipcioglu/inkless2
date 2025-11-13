@@ -65,6 +65,7 @@ export default function BookNow() {
         message: fullMessage,
       });
       toast.success("Booking confirmed! You'll receive a confirmation email shortly.");
+      // Only clear form after successful submission
       setFormData({ name: "", email: "", phone: "", message: "" });
       setSelectedPackage("");
       setSelectedDate(undefined);
@@ -170,9 +171,11 @@ export default function BookNow() {
                             id="name" 
                             value={formData.name}
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
+                            onFocus={(e) => e.target.select()}
                             required 
                             placeholder="John Doe" 
                             className="h-12 text-base"
+                            autoComplete="name"
                           />
                         </div>
                         <div className="space-y-2">
@@ -185,9 +188,11 @@ export default function BookNow() {
                             type="tel" 
                             value={formData.phone}
                             onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            onFocus={(e) => e.target.select()}
                             required 
                             placeholder="+254 700 000 000" 
                             className="h-12 text-base"
+                            autoComplete="tel"
                           />
                         </div>
                       </div>
@@ -202,9 +207,11 @@ export default function BookNow() {
                           type="email" 
                           value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          onFocus={(e) => e.target.select()}
                           required 
                           placeholder="john@example.com" 
                           className="h-12 text-base"
+                          autoComplete="email"
                         />
                       </div>
 
@@ -244,10 +251,7 @@ export default function BookNow() {
                           <CalendarComponent
                             mode="single"
                             selected={selectedDate}
-                            onSelect={(date) => {
-                              setSelectedDate(date);
-                              setSelectedTime(""); // Reset time when date changes
-                            }}
+                            onSelect={setSelectedDate}
                             disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
                             className="rounded-lg border-2"
                           />
@@ -320,6 +324,7 @@ export default function BookNow() {
                           id="message"
                           value={formData.message}
                           onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          onFocus={(e) => e.target.select()}
                           placeholder="Size, location, colors, age of tattoo, or any questions you have..."
                           rows={4}
                           className="text-base resize-none"

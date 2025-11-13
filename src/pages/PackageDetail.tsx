@@ -76,6 +76,7 @@ export default function PackageDetail() {
         })),
       });
       toast.success("Booking request submitted! We'll contact you shortly.");
+      // Only clear form after successful submission
       setFormData({ name: "", email: "", phone: "", message: "" });
       setSessions([{ time: "" }]);
     } catch (error) {
@@ -284,6 +285,7 @@ export default function PackageDetail() {
                               type="text"
                               value={formData.name}
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              onFocus={(e) => e.target.select()}
                               required
                               placeholder="John Doe"
                               className="h-11 md:h-12 text-sm md:text-base border-2 focus:border-primary transition-all focus:scale-[1.01]"
@@ -301,6 +303,7 @@ export default function PackageDetail() {
                               type="email"
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              onFocus={(e) => e.target.select()}
                               required
                               placeholder="john@example.com"
                               className="h-11 md:h-12 text-sm md:text-base border-2 focus:border-primary transition-all focus:scale-[1.01]"
@@ -318,6 +321,7 @@ export default function PackageDetail() {
                               type="tel"
                               value={formData.phone}
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                              onFocus={(e) => e.target.select()}
                               required
                               placeholder="+254 700 000 000"
                               className="h-11 md:h-12 text-sm md:text-base border-2 focus:border-primary transition-all focus:scale-[1.01]"
@@ -435,6 +439,7 @@ export default function PackageDetail() {
                               id="notes"
                               value={formData.message}
                               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                              onFocus={(e) => e.target.select()}
                               placeholder="Tell us about your tattoo: size, location, colors..."
                               rows={3}
                               className="resize-none text-sm md:text-base border-2 focus:border-primary transition-all focus:scale-[1.01]"
