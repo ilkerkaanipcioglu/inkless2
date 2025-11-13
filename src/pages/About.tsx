@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Award, Heart, MapPin, Mail, Phone, Shield } from "lucide-react";
+import { Award, Heart, MapPin, Mail, Phone, Shield, Sparkles, Users, Target } from "lucide-react";
 
 export default function About() {
   return (
@@ -21,62 +21,131 @@ export default function About() {
                 About Inkless Is More
               </h1>
               <p className="text-lg text-muted-foreground text-center mb-12">
-                Kenya's trusted laser tattoo removal specialists, helping people rediscover their skin and confidence.
+                Kenya's premier laser tattoo removal specialists, helping people rediscover their skin and confidence.
               </p>
 
               <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
                 <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
                 <p className="text-muted-foreground mb-6">
-                  At Inkless Is More, we believe that everyone deserves a fresh start. Whether you're looking to remove an old tattoo, fade ink for a cover-up, or simply reclaim your natural skin, we're here to help you every step of the way.
+                  At Inkless Is More, we are Kenya's premier tattoo removal clinic specializing in advanced Picosecond laser technology. We're focused on safety, comfort, and delivering complete tattoo removal in a non-judgmental, friendly environment for all clients.
                 </p>
                 <p className="text-muted-foreground mb-8">
-                  Using Kenya's most advanced Picosecond laser technology, we provide safe, precise, and completely scar-free tattoo removal services. Our team of certified specialists is dedicated to delivering exceptional results with care and professionalism.
+                  Whether you're looking to remove an old tattoo, fade ink for a cover-up, or simply reclaim your natural skin, we're here to help you every step of the way with personalized care and professionalism.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
-                {[
-                  {
-                    icon: Award,
-                    title: "Quality",
-                    description: "Advanced Picosecond laser systems with top safety standards.",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Integrity",
-                    description: "Transparent pricing and realistic expectations.",
-                  },
-                  {
-                    icon: Heart,
-                    title: "Care",
-                    description: "Calm, supportive experience from consultation to final session.",
-                  },
-                ].map((value, index) => (
-                  <motion.div
-                    key={value.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card className="h-full text-center border-2">
-                      <CardContent className="pt-6">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                          <value.icon className="h-8 w-8 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                        <p className="text-muted-foreground">{value.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+              <div className="mb-12">
+                <Card className="border-2 bg-gradient-to-br from-primary/10 to-accent/10">
+                  <CardContent className="pt-6 space-y-4">
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                      <Sparkles className="h-6 w-6 text-primary" />
+                      Our Story
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Inkless Is More was founded to provide safe, affordable tattoo removal in Kenya. Our clinic was developed from expertise in skin health and laser technology, designed to offer second chances and new beginnings to everyone who walks through our doors.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      We believe that everyone deserves a fresh start, and we're committed to making that possible through cutting-edge technology and compassionate care.
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
 
-              <Card className="bg-primary text-primary-foreground mb-12">
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold mb-6 text-center">Our Vision & Values</h2>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      icon: Award,
+                      title: "Quality",
+                      description: "Highest-grade Picosecond laser systems delivering the best results with top safety standards.",
+                    },
+                    {
+                      icon: Shield,
+                      title: "Integrity",
+                      description: "Transparent pricing with no hidden fees. Realistic expectations and honest guidance.",
+                    },
+                    {
+                      icon: Heart,
+                      title: "Care",
+                      description: "Personalized treatment plans for each client. Calm, supportive experience from consultation to final session.",
+                    },
+                  ].map((value, index) => (
+                    <motion.div
+                      key={value.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Card className="h-full text-center border-2 hover:border-primary transition-colors">
+                        <CardContent className="pt-6">
+                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                            <value.icon className="h-8 w-8 text-primary" />
+                          </div>
+                          <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
+                          <p className="text-muted-foreground">{value.description}</p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold mb-6 text-center">What Makes Us Different</h2>
+                <Card className="border-2">
+                  <CardContent className="pt-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="flex items-start space-x-3">
+                        <Users className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-semibold mb-2">Specialized Laser Technicians</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Our team of certified specialists brings expertise and precision to every treatment.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <Target className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-semibold mb-2">Tailored Treatment Plans</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Each tattoo's color, depth, and age is carefully assessed for customized treatment.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <Award className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-semibold mb-2">Industry-Leading Technology</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Advanced Picosecond laser technology with the highest safety standards.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <Heart className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-semibold mb-2">Compassionate Approach</h3>
+                          <p className="text-sm text-muted-foreground">
+                            We support you throughout the entire removal journey with empathy and understanding.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <Card className="bg-primary text-primary-foreground mb-12 border-2">
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-4">Our Promise</h2>
+                  <p className="text-lg opacity-90 mb-4">
+                    We promise to deliver a comfortable, judgment-free, and effective experience. Tattoo removal is personal, and we guide you with expertise, empathy, and precision.
+                  </p>
                   <p className="text-lg opacity-90">
-                    Tattoo removal is personal. We guide you with expertise, empathy, and precision. Your journey to clear skin starts with a conversation, and we're here to listen.
+                    Your journey to clear skin starts with a conversation, and we're here to listen. We'll guide you step-by-step with detailed aftercare and support every session of the way.
                   </p>
                 </CardContent>
               </Card>
