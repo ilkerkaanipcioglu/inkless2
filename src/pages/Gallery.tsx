@@ -133,6 +133,7 @@ export default function Gallery() {
                             <img
                               src={item.before}
                               alt={item.title}
+                              loading="lazy"
                               className="w-full h-80 object-cover"
                             />
                             <div className="absolute top-4 right-4">
@@ -174,6 +175,7 @@ export default function Gallery() {
                                   <img
                                     src={item.beforeImageUrl}
                                     alt="Before treatment"
+                                    loading="lazy"
                                     className="w-full h-64 object-cover"
                                   />
                                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -186,6 +188,7 @@ export default function Gallery() {
                                   <img
                                     src={item.afterImageUrl}
                                     alt="After treatment"
+                                    loading="lazy"
                                     className="w-full h-64 object-cover"
                                   />
                                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -232,6 +235,7 @@ export default function Gallery() {
                           <img
                             src={item.image}
                             alt={item.title}
+                            loading="lazy"
                             className="w-full h-80 object-cover"
                           />
                         </CardContent>
@@ -303,6 +307,7 @@ export default function Gallery() {
                           <img
                             src={item.image}
                             alt={item.name}
+                            loading="lazy"
                             className="w-full h-96 object-cover"
                           />
                         </CardContent>
