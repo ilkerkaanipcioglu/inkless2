@@ -324,6 +324,87 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Hear from people who've experienced the transformation
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: "Sarah M.",
+                image: "/assets/Gabriel_s_Testimonial.jpg",
+                rating: 5,
+                text: "I was skeptical at first, but after 6 sessions, my tattoo is completely gone! The team was professional, and the process was painless. Highly recommend!",
+                location: "Nairobi"
+              },
+              {
+                name: "James K.",
+                image: "/assets/1111__1_.jpg",
+                rating: 5,
+                text: "Best decision I ever made. The Picosecond laser technology really works. No scars, just clear skin. Thank you Inkless Is More!",
+                location: "Westlands"
+              },
+              {
+                name: "Grace W.",
+                image: "/assets/AA99C17D-3B23-40B0-84E3-901869B56057_480x480.jpg",
+                rating: 5,
+                text: "Amazing results after just 4 sessions! The staff explained everything clearly and made me feel comfortable throughout the entire process.",
+                location: "Karen"
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="h-full border-2 hover:shadow-xl transition-all duration-300">
+                  <CardContent className="pt-6 text-center">
+                    <div className="mb-4">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-primary/20"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23ddd" width="80" height="80" rx="40"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="24"%3E' + testimonial.name.charAt(0) + '%3C/text%3E%3C/svg%3E';
+                        }}
+                      />
+                    </div>
+                    <div className="flex justify-center mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Sparkles key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground italic mb-4">
+                      "{testimonial.text}"
+                    </p>
+                    <div className="border-t pt-4">
+                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
