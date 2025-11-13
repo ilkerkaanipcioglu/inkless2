@@ -53,14 +53,34 @@ export default function Packages() {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 While single sessions work for some, our multi-session packages offer smarter savings and faster results. Each option is designed to suit your goals, tattoo size, and budget — with no hidden fees, ever.
               </p>
-              <div className="max-w-3xl mx-auto bg-primary/10 border-2 border-primary/30 rounded-xl p-6 mt-8">
-                <h2 className="text-xl font-bold mb-3">Flat Rate Pricing - Any Size, Any Tattoo</h2>
-                <p className="text-sm text-muted-foreground mb-4">
-                  All our packages apply regardless of tattoo size or number of tattoos. Save more with multi-session packages and avoid session-by-session costs.
-                </p>
-                <p className="text-sm font-semibold text-primary">
-                  💡 Free consultation included to discuss color, depth, and pain management
-                </p>
+              <div className="max-w-3xl mx-auto bg-gradient-to-br from-primary/15 via-primary/10 to-accent/10 border-2 border-primary/40 rounded-2xl p-8 mt-8 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                {/* Decorative background elements */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -z-10" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -z-10" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <span className="text-3xl">💰</span>
+                    <h2 className="text-2xl md:text-3xl font-bold text-center bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                      Flat Rate Pricing - Any Size, Any Tattoo
+                    </h2>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-card/60 backdrop-blur-sm rounded-xl p-4 border border-primary/20">
+                      <p className="text-base md:text-lg text-center leading-relaxed">
+                        All our packages apply <span className="font-bold text-primary">regardless of tattoo size or number of tattoos</span>. Save more with multi-session packages and avoid session-by-session costs.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-primary/20 backdrop-blur-sm rounded-xl p-4 border-2 border-primary/30 shadow-inner">
+                      <p className="text-base md:text-lg font-semibold text-center flex items-center justify-center gap-2">
+                        <span className="text-2xl">💡</span>
+                        <span>Free consultation included to discuss color, depth, and pain management</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
