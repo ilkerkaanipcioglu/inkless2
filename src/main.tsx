@@ -2,14 +2,13 @@ import { Toaster } from "@/components/ui/sonner";
 import { VlyToolbar } from "../vly-toolbar-readonly.tsx";
 import { InstrumentationProvider } from "@/instrumentation.tsx";
 import AuthPage from "@/pages/Auth.tsx";
+import NotFound from "@/pages/NotFound.tsx";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
-import Landing from "./pages/Landing.tsx";
-import NotFound from "./pages/NotFound.tsx";
 import "./types/global.d.ts";
 import Home from "./pages/Home.tsx";
 import Packages from "./pages/Packages.tsx";
@@ -55,6 +54,7 @@ createRoot(document.getElementById("root")!).render(
           <RouteSyncer />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/landing" element={<Home />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:id" element={<PackageDetail />} />
             <Route path="/book" element={<BookNow />} />
