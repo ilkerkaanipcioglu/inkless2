@@ -128,6 +128,107 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NEW SECTION: Understanding Tattoo Ink */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Understanding Tattoo Ink
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              The science behind why some tattoos fade faster than others
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Card className="border-2">
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <Sparkles className="h-5 w-5 text-primary" />
+                    Natural Fading Over Time
+                  </h3>
+                  <p className="text-muted-foreground mb-3">
+                    Tattoos naturally fade over decades as your body's immune system slowly removes smaller ink particles. However, the majority of tattoo ink particles are too large for your body to eliminate on its own.
+                  </p>
+                  <p className="text-muted-foreground">
+                    This is where laser treatment becomes essential—it breaks down these large particles into fragments small enough for your body's natural removal process to work effectively.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <Card className="border-2">
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-4">
+                    How Different Colors Respond
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-4 h-4 rounded-full bg-black mt-1 flex-shrink-0"></div>
+                      <div>
+                        <p className="font-semibold">Black Ink</p>
+                        <p className="text-sm text-muted-foreground">
+                          The easiest to remove. Black absorbs all laser wavelengths, making it highly responsive to treatment.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-4 h-4 rounded-full bg-blue-600 mt-1 flex-shrink-0"></div>
+                      <div>
+                        <p className="font-semibold">Blue & Green Ink</p>
+                        <p className="text-sm text-muted-foreground">
+                          Require adjusted laser settings and typically need more sessions due to their specific light absorption properties.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-purple-500 mt-1 flex-shrink-0"></div>
+                      <div>
+                        <p className="font-semibold">Multicolored Tattoos</p>
+                        <p className="text-sm text-muted-foreground">
+                          Each color responds differently to laser wavelengths, requiring customized treatment plans and additional sessions for complete removal.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Card className="border-2 bg-primary/5">
+                <CardContent className="pt-6">
+                  <p className="text-center text-sm">
+                    <strong>Our Picosecond laser technology</strong> can be precisely adjusted to target different ink colors, ensuring safe and effective removal regardless of your tattoo's complexity.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* What Affects Your Removal */}
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
