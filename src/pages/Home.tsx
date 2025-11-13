@@ -50,29 +50,29 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              The Science Behind a Fresh Start
+              How Laser Tattoo Removal Works
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our advanced Picosecond laser technology works in three precise steps
+              Picosecond laser technology removes tattoos safely and effectively through a precise, natural process
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {[
               {
                 icon: Target,
                 title: "Target",
-                description: "The laser safely penetrates the outer skin layer, targeting ink particles without harming surrounding tissue.",
+                description: "The laser energy bypasses the top skin layer and targets large ink particles deep in the dermis without damaging surrounding tissue.",
               },
               {
                 icon: Sparkles,
                 title: "Shatter",
-                description: "The ink absorbs laser energy, breaking into microscopic fragments.",
+                description: "The ink absorbs the laser light and breaks into microscopic fragments that are small enough for your body to process.",
               },
               {
                 icon: Shield,
                 title: "Remove",
-                description: "Your immune system gradually clears these fragments over time, fading your tattoo with every session.",
+                description: "Your immune system naturally flushes out the shattered ink particles over time, progressively lightening your tattoo.",
               },
             ].map((step, index) => (
               <motion.div
@@ -94,6 +94,37 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <Card className="border-2 bg-muted/30">
+              <CardContent className="pt-6 space-y-4">
+                <h3 className="text-xl font-semibold text-center mb-4">What to Expect</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm"><strong>Multiple sessions required:</strong> Usually 5 to 12 depending on tattoo size, color, age, and location</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm"><strong>Progressive results:</strong> Each session lightens the tattoo without damaging surrounding skin</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm"><strong>Safe & non-invasive:</strong> No burning, no cutting, no surgical techniques used</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm"><strong>Works on all tattoos:</strong> Suitable for both professional and amateur tattoos</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
