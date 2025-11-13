@@ -1,89 +1,16 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
 import { useQuery } from "convex/react";
+import { GalleryCard } from "@/components/gallery/GalleryCard";
+import { BeforeAfterCard } from "@/components/gallery/BeforeAfterCard";
+import { beforeAfterPhotos, processPhotos, testimonials } from "@/data/galleryData";
 
 export default function Gallery() {
   const gallery = useQuery(api.gallery.list);
-
-  const beforeAfterPhotos = [
-    {
-      title: "Full Back Tattoo Removal",
-      before: "/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg",
-      sessions: "6 Sessions",
-      description: "Complete removal of large back tattoo with excellent results"
-    },
-    {
-      title: "Arm Tattoo Transformation",
-      before: "/assets/Green_Gentle_Before_and_After_Instagram_Post.jpg",
-      sessions: "4 Sessions",
-      description: "Significant fading after just 4 treatment sessions"
-    },
-    {
-      title: "Small Tattoo Removal",
-      before: "/assets/Before_and_After_3b82c4e4-de7b-46a0-a795-ed19791107a3_480x480.jpg",
-      sessions: "3 Sessions",
-      description: "Quick and effective removal of small tattoo"
-    },
-    {
-      title: "Detailed Work Progress",
-      before: "/assets/9578BE17-D6D1-48F4-8525-F0AE08A82211_1_105_c_480x480.jpg",
-      sessions: "5 Sessions",
-      description: "Progressive fading of detailed tattoo work"
-    },
-    {
-      title: "Color Tattoo Removal",
-      before: "/assets/B0A79D7D-80DC-43C6-AC34-23ACC6E164A7_1_105_c_480x480.jpg",
-      sessions: "7 Sessions",
-      description: "Multi-color tattoo removal showing excellent progress"
-    },
-    {
-      title: "Wrist Tattoo Removal",
-      before: "/assets/AA99C17D-3B23-40B0-84E3-901869B56057_480x480.jpg",
-      sessions: "3 Sessions",
-      description: "Clean removal of wrist tattoo with minimal sessions"
-    }
-  ];
-
-  const processPhotos = [
-    {
-      title: "Single Session Treatment",
-      image: "/assets/1-single-laser-tattoo-removal-session-994.webp",
-      description: "Our advanced Picosecond laser in action during a single treatment session"
-    },
-    {
-      title: "Multi-Session Package",
-      image: "/assets/5-laser-tattoo-removal-sessions-medium-size-tattoo-treatment-753.webp",
-      description: "Medium-sized tattoo undergoing comprehensive treatment plan"
-    },
-    {
-      title: "Treatment Process",
-      image: "/assets/IMG_8655_480x480.jpg",
-      description: "Professional application of laser technology for optimal results"
-    },
-    {
-      title: "Specialized Scar Treatment",
-      image: "/assets/Laser_Scar_Removal.jpg",
-      description: "Our laser technology also works effectively on scar tissue"
-    }
-  ];
-
-  const testimonials = [
-    {
-      image: "/assets/Gabriel_s_Testimonial.jpg",
-      name: "Gabriel's Journey",
-      description: "Real client testimonial and transformation story"
-    },
-    {
-      image: "/assets/1111__1_.jpg",
-      name: "Client Success",
-      description: "Another satisfied client's complete removal journey"
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -121,44 +48,15 @@ export default function Gallery() {
               <TabsContent value="transformations" className="space-y-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {beforeAfterPhotos.map((item, index) => (
-                    <motion.div
+                    <GalleryCard
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Card className="border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden backdrop-blur-xl bg-card/90">
-                        <CardContent className="p-0">
-                          <div className="relative">
-                            <img
-                              src={item.before}
-                              alt={`${item.title} - Before and after tattoo removal showing ${item.sessions} of treatment`}
-                              loading="lazy"
-                              className="w-full h-80 object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                const parent = target.parentElement;
-                                if (parent) {
-                                  parent.innerHTML = '<div class="w-full h-80 bg-muted flex items-center justify-center text-muted-foreground">Image not available</div>';
-                                }
-                              }}
-                            />
-                            <div className="absolute top-4 right-4">
-                              <Badge className="bg-primary text-primary-foreground font-bold text-sm px-4 py-2">
-                                {item.sessions}
-                              </Badge>
-                            </div>
-                          </div>
-                        </CardContent>
-                        <CardHeader className="pb-6">
-                          <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            {item.description}
-                          </CardDescription>
-                        </CardHeader>
-                      </Card>
-                    </motion.div>
+                      title={item.title}
+                      description={item.description}
+                      image={item.before}
+                      badge={item.sessions}
+                      index={index}
+                      altText={`${item.title} - Before and after tattoo removal showing ${item.sessions} of treatment`}
+                    />
                   ))}
                 </div>
 
@@ -170,67 +68,16 @@ export default function Gallery() {
                     </div>
                     <div className="grid md:grid-cols-2 gap-8">
                       {gallery.map((item, index) => (
-                        <motion.div
+                        <BeforeAfterCard
                           key={item._id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Card className="border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden backdrop-blur-xl bg-card/90">
-                            <CardContent className="p-0">
-                              <div className="grid grid-cols-2 gap-0">
-                                <div className="relative group">
-                                  <img
-                                    src={item.beforeImageUrl}
-                                    alt={`Before tattoo removal treatment - ${item.title}`}
-                                    loading="lazy"
-                                    className="w-full h-64 object-cover"
-                                    onError={(e) => {
-                                      const target = e.target as HTMLImageElement;
-                                      target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23ddd" width="100" height="100"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3ENo Image%3C/text%3E%3C/svg%3E';
-                                    }}
-                                  />
-                                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                    <Badge className="bg-white text-black font-bold text-sm px-4 py-2">
-                                      BEFORE
-                                    </Badge>
-                                  </div>
-                                </div>
-                                <div className="relative group">
-                                  <img
-                                    src={item.afterImageUrl}
-                                    alt={`After ${item.sessions} sessions of tattoo removal - ${item.title}`}
-                                    loading="lazy"
-                                    className="w-full h-64 object-cover"
-                                    onError={(e) => {
-                                      const target = e.target as HTMLImageElement;
-                                      target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23ddd" width="100" height="100"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3ENo Image%3C/text%3E%3C/svg%3E';
-                                    }}
-                                  />
-                                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                    <Badge className="bg-primary text-primary-foreground font-bold text-sm px-4 py-2">
-                                      AFTER
-                                    </Badge>
-                                  </div>
-                                </div>
-                              </div>
-                            </CardContent>
-                            <CardHeader className="pb-6">
-                              <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-                              <CardDescription className="text-base leading-relaxed mb-3">
-                                {item.description}
-                              </CardDescription>
-                              <div className="flex items-center gap-2">
-                                <Badge variant="secondary" className="font-semibold">
-                                  {item.sessions} {item.sessions === 1 ? "Session" : "Sessions"}
-                                </Badge>
-                                <Badge variant="outline" className="font-medium">
-                                  {item.category}
-                                </Badge>
-                              </div>
-                            </CardHeader>
-                          </Card>
-                        </motion.div>
+                          title={item.title}
+                          description={item.description}
+                          beforeImageUrl={item.beforeImageUrl}
+                          afterImageUrl={item.afterImageUrl}
+                          sessions={item.sessions}
+                          category={item.category}
+                          index={index}
+                        />
                       ))}
                     </div>
                   </>
@@ -240,37 +87,14 @@ export default function Gallery() {
               <TabsContent value="process" className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   {processPhotos.map((item, index) => (
-                    <motion.div
+                    <GalleryCard
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Card className="border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden backdrop-blur-xl bg-card/90">
-                        <CardContent className="p-0">
-                          <img
-                            src={item.image}
-                            alt={`${item.title} - ${item.description}`}
-                            loading="lazy"
-                            className="w-full h-80 object-cover"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                              const parent = target.parentElement;
-                              if (parent) {
-                                parent.innerHTML = '<div class="w-full h-80 bg-muted flex items-center justify-center text-muted-foreground">Image not available</div>';
-                              }
-                            }}
-                          />
-                        </CardContent>
-                        <CardHeader className="pb-6">
-                          <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            {item.description}
-                          </CardDescription>
-                        </CardHeader>
-                      </Card>
-                    </motion.div>
+                      title={item.title}
+                      description={item.description}
+                      image={item.image}
+                      index={index}
+                      altText={`${item.title} - ${item.description}`}
+                    />
                   ))}
                 </div>
 
@@ -320,37 +144,14 @@ export default function Gallery() {
               <TabsContent value="testimonials" className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                   {testimonials.map((item, index) => (
-                    <motion.div
+                    <GalleryCard
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Card className="border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden backdrop-blur-xl bg-card/90">
-                        <CardContent className="p-0">
-                          <img
-                            src={item.image}
-                            alt={`Client testimonial - ${item.name}: ${item.description}`}
-                            loading="lazy"
-                            className="w-full h-96 object-cover"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                              const parent = target.parentElement;
-                              if (parent) {
-                                parent.innerHTML = '<div class="w-full h-96 bg-muted flex items-center justify-center text-muted-foreground">Image not available</div>';
-                              }
-                            }}
-                          />
-                        </CardContent>
-                        <CardHeader className="pb-6">
-                          <CardTitle className="text-xl mb-2">{item.name}</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            {item.description}
-                          </CardDescription>
-                        </CardHeader>
-                      </Card>
-                    </motion.div>
+                      title={item.name}
+                      description={item.description}
+                      image={item.image}
+                      index={index}
+                      altText={`Client testimonial - ${item.name}: ${item.description}`}
+                    />
                   ))}
                 </div>
 
