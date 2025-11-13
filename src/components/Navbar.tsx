@@ -12,12 +12,8 @@ export default function Navbar() {
   const { isAuthenticated, user } = useAuth();
 
   const navLinks = [
-    { href: "/", label: "Home" },
     { href: "/packages", label: "Packages" },
-    { href: "/about", label: "About Us" },
     { href: "/gallery", label: "Gallery" },
-    { href: "/training", label: "Training" },
-    { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQ" },
   ];
 
