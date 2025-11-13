@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { DollarSign, Share2, Users, TrendingUp } from "lucide-react";
+import { DollarSign, Share2, Users, TrendingUp, QrCode, BarChart3, Gift, Zap } from "lucide-react";
 import { useMutation } from "convex/react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -29,7 +29,7 @@ export default function Training() {
         message: formData.get("message") as string,
         type: "training",
       });
-      toast.success("Thank you for your interest! We'll be in touch soon.");
+      toast.success("Thank you for your interest! We'll approve your application within 24 hours.");
       e.currentTarget.reset();
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
@@ -55,7 +55,7 @@ export default function Training() {
                   Become an Inkless Is More Ambassador
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  Share our services, help others discover clear skin, and earn commission on every referral.
+                  Promote our services, help others discover clear skin, and earn commission on every referral.
                 </p>
               </div>
 
@@ -68,18 +68,18 @@ export default function Training() {
                   },
                   {
                     icon: DollarSign,
-                    title: "Competitive Commission",
-                    description: "Earn attractive commissions for every successful referral that books our services.",
+                    title: "Unlimited Earnings",
+                    description: "Earn commission on every first session, with higher rates for packages. Monthly bonuses for top performers with no earning limits.",
                   },
                   {
                     icon: Users,
-                    title: "Build Your Network",
-                    description: "Connect with people seeking tattoo removal and help them start their transformation journey.",
+                    title: "Perfect for Everyone",
+                    description: "Content creators, influencers, barbers, salon owners, tattoo artists, and anyone with a network or audience.",
                   },
                   {
-                    icon: TrendingUp,
-                    title: "Track Your Success",
-                    description: "Access your personalized dashboard to monitor referrals, bookings, and earnings in real-time.",
+                    icon: Zap,
+                    title: "Fast Activation",
+                    description: "Get approved within 24 hours and start earning immediately. Completely free to join with no hidden costs.",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -102,30 +102,108 @@ export default function Training() {
                 ))}
               </div>
 
+              <Card className="mb-12 border-2 bg-gradient-to-br from-primary/10 to-accent/10">
+                <CardContent className="pt-6">
+                  <h2 className="text-2xl font-bold mb-6 text-center">Tools You'll Receive</h2>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-start space-x-3">
+                      <Share2 className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold">Personal Affiliate Link</p>
+                        <p className="text-sm text-muted-foreground">Your unique tracking link for all referrals</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <QrCode className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold">QR Code</p>
+                        <p className="text-sm text-muted-foreground">For posters, shops, and online sharing</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <BarChart3 className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold">Analytics Dashboard</p>
+                        <p className="text-sm text-muted-foreground">Real-time tracking of your referrals and earnings</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Gift className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold">Custom Discount Code</p>
+                        <p className="text-sm text-muted-foreground">Exclusive code for your audience</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
               <Card className="mb-12">
                 <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-4">How It Works</h2>
+                  <h2 className="text-2xl font-bold mb-6">Program Benefits</h2>
                   <ul className="space-y-3">
                     <li className="flex items-start space-x-2">
-                      <span className="text-primary font-bold">1.</span>
-                      <span><strong>Sign Up:</strong> Join our ambassador program and receive your unique referral link</span>
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>Completely free to join</strong> — No signup fees or hidden costs</span>
                     </li>
                     <li className="flex items-start space-x-2">
-                      <span className="text-primary font-bold">2.</span>
-                      <span><strong>Share:</strong> Promote Inkless Is More through social media, word of mouth, or your network</span>
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>Fast onboarding</strong> — Get approved and activated within 24 hours</span>
                     </li>
                     <li className="flex items-start space-x-2">
-                      <span className="text-primary font-bold">3.</span>
-                      <span><strong>Earn:</strong> Get paid commission when your referrals book and complete their sessions</span>
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>High customer satisfaction</strong> — Easy referrals with proven results</span>
                     </li>
                     <li className="flex items-start space-x-2">
-                      <span className="text-primary font-bold">4.</span>
-                      <span><strong>Grow:</strong> Build your income as you help more people discover our services</span>
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>Branded content templates</strong> — Access videos, posters, and captions</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>Commission on first sessions</strong> — Earn from every new client</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>Higher commission for packages</strong> — More earnings on 3, 5, and Unlimited packages</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>Monthly bonuses</strong> — Top performers receive additional rewards</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-primary font-bold">✓</span>
+                      <span><strong>No earning limits</strong> — The more you refer, the more you earn</span>
                     </li>
                   </ul>
-                  <p className="text-sm text-muted-foreground mt-4">
-                    *Ambassador program features and commission tracking dashboard coming soon
-                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="mb-12">
+                <CardContent className="pt-6">
+                  <h2 className="text-2xl font-bold mb-4">How to Apply</h2>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <span className="text-primary font-bold text-xl">1.</span>
+                      <div>
+                        <p className="font-semibold">Submit Application Form</p>
+                        <p className="text-sm text-muted-foreground">Fill out the form below with your name, phone, email, and social profiles</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <span className="text-primary font-bold text-xl">2.</span>
+                      <div>
+                        <p className="font-semibold">Get Approved</p>
+                        <p className="text-sm text-muted-foreground">We'll review and approve your application within 24 hours</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <span className="text-primary font-bold text-xl">3.</span>
+                      <div>
+                        <p className="font-semibold">Receive Your Link & Start Earning</p>
+                        <p className="text-sm text-muted-foreground">Get your affiliate link, QR code, and dashboard access to start earning immediately</p>
+                      </div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -146,11 +224,11 @@ export default function Training() {
                       <Input id="phone" name="phone" type="tel" required />
                     </div>
                     <div>
-                      <Label htmlFor="message">Tell us why you'd be a great ambassador</Label>
+                      <Label htmlFor="message">Tell us about yourself</Label>
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="Share your network size, social media presence, or why you're passionate about helping others..."
+                        placeholder="Share your social media profiles, network size, audience type, or why you'd be a great ambassador..."
                         rows={4}
                       />
                     </div>

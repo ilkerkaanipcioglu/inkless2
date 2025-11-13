@@ -29,14 +29,20 @@ export default function Footer() {
               Kenya's trusted laser tattoo removal specialists, helping people rediscover their skin and confidence.
             </p>
             <div className="flex space-x-3">
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Facebook className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="h-8 w-8" asChild>
+                <a href="https://www.facebook.com/inklessismore" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="h-4 w-4" />
+                </a>
               </Button>
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Instagram className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="h-8 w-8" asChild>
+                <a href="https://www.instagram.com/inklessismore" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-4 w-4" />
+                </a>
               </Button>
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Twitter className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="h-8 w-8" asChild>
+                <a href="https://www.tiktok.com/@inklessismore" target="_blank" rel="noopener noreferrer">
+                  <Twitter className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>
