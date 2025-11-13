@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import { internal } from "./_generated/api";
 import { getCurrentUser } from "./users";
 
 // Query to get available time slots for a specific date
@@ -76,6 +77,13 @@ export const createBooking = mutation({
       throw new Error("This time slot is no longer available. Please select another time.");
     }
 
+    // Get package details for email
+    let packageTitle = undefined;
+    if (args.packageId) {
+      const pkg = await ctx.db.get(args.packageId);
+      packageTitle = pkg?.title;
+    }
+
     // Create the booking
     const bookingId = await ctx.db.insert("bookings", {
       name: args.name,
@@ -85,9 +93,22 @@ export const createBooking = mutation({
       time: args.time,
       packageId: args.packageId,
       message: args.message,
-      status: "pending",
+      status: "confirmed",
       type: "booking",
     });
+
+    // Schedule email confirmation to be sent immediately
+    await ctx.scheduler.runAfter(
+      0,
+      internal.sendEmails.sendBookingConfirmation,
+      {
+        to: args.email,
+        name: args.name,
+        date: args.date,
+        time: args.time,
+        packageTitle,
+      }
+    );
 
     return bookingId;
   },
