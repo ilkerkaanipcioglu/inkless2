@@ -21,7 +21,7 @@ export default function Footer() {
               <img 
                 src="https://harmless-tapir-303.convex.cloud/api/storage/2645f8db-e50b-48c1-b891-e120118b0715" 
                 alt="Inkless Is More" 
-                className="h-16 w-16 object-contain brightness-100 dark:brightness-110 contrast-125 dark:contrast-150" 
+                className="h-16 w-16 object-contain brightness-100 dark:brightness-[1.4] contrast-125 dark:contrast-[1.8] dark:saturate-[1.2] transition-all duration-300" 
               />
               <span className="font-bold text-lg">Inkless Is More</span>
             </Link>
