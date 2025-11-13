@@ -45,6 +45,21 @@ const schema = defineSchema(
       images: v.optional(v.array(v.string())),
     }),
 
+    bookings: defineTable({
+      name: v.string(),
+      email: v.string(),
+      phone: v.string(),
+      date: v.string(),
+      time: v.string(),
+      packageId: v.optional(v.id("packages")),
+      message: v.optional(v.string()),
+      status: v.string(),
+      type: v.string(),
+    })
+      .index("by_date", ["date"])
+      .index("by_date_and_time", ["date", "time"])
+      .index("by_status", ["status"]),
+
     gallery: defineTable({
       title: v.string(),
       description: v.string(),

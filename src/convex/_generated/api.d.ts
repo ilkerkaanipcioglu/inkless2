@@ -17,6 +17,7 @@ import type * as gallery from "../gallery.js";
 import type * as http from "../http.js";
 import type * as packages from "../packages.js";
 import type * as seed from "../seed.js";
+import type * as timeSlots from "../timeSlots.js";
 import type * as users from "../users.js";
 
 import type {
@@ -35,6 +36,7 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   packages: typeof packages;
   seed: typeof seed;
+  timeSlots: typeof timeSlots;
   users: typeof users;
 }>;
 

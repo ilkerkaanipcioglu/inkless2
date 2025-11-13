@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Badge } from "@/components/ui/badge";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin, Phone, User, Mail, MessageSquare, CalendarIcon } from "lucide-react";
@@ -16,13 +17,16 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import BookingCalendar from "@/components/BookingCalendar";
 
 export default function BookNow() {
   const packages = useQuery(api.packages.list);
-  const submitBooking = useMutation(api.contacts.submit);
+  const createBooking = useMutation(api.timeSlots.createBooking);
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string>("");
-  const [sessions, setSessions] = useState<Array<{ date?: Date; time: string }>>([{ time: "" }]);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedTime, setSelectedTime] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,55 +34,43 @@ export default function BookNow() {
     message: ""
   });
 
-  const timeSlots = [
-    "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
-    "12:00 PM", "12:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM",
-    "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM"
-  ];
+  const availableSlots = useQuery(
+    api.timeSlots.getAvailableSlots,
+    selectedDate ? { date: format(selectedDate, "yyyy-MM-dd") } : "skip"
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!selectedDate || !selectedTime) {
+      toast.error("Please select both a date and time for your appointment");
+      return;
+    }
+
     setIsSubmitting(true);
 
     const packageInfo = selectedPackage ? `Package: ${selectedPackage}` : "Package: To be determined during consultation";
-    
-    const sessionsInfo = sessions
-      .filter(s => s.date || s.time)
-      .map((s, i) => {
-        const dateStr = s.date ? format(s.date, "PPP") : "TBD";
-        const timeStr = s.time || "TBD";
-        return `Session ${i + 1}: ${dateStr} at ${timeStr}`;
-      })
-      .join("\n");
-
-    const schedulingNote = sessions.every(s => !s.date && !s.time) 
-      ? "\n\nScheduling: Client prefers to schedule during consultation"
-      : sessionsInfo ? `\n\nPreferred Schedule:\n${sessionsInfo}` : "";
-
-    const additionalInfo = formData.message;
-    const fullMessage = packageInfo + schedulingNote + (additionalInfo ? `\n\nAdditional Information:\n${additionalInfo}` : "");
+    const fullMessage = packageInfo + (formData.message ? `\n\nAdditional Information:\n${formData.message}` : "");
 
     const selectedPkg = packages?.find(p => p.title === selectedPackage);
     
     try {
-      await submitBooking({
+      await createBooking({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        message: fullMessage,
-        type: "booking",
+        date: format(selectedDate, "yyyy-MM-dd"),
+        time: selectedTime,
         packageId: selectedPkg?._id,
-        sessions: sessions.map(s => ({
-          date: s.date ? format(s.date, "yyyy-MM-dd") : undefined,
-          time: s.time || undefined,
-        })),
+        message: fullMessage,
       });
-      toast.success("Booking request submitted! We'll contact you shortly to confirm your appointment.");
+      toast.success("Booking confirmed! You'll receive a confirmation email shortly.");
       setFormData({ name: "", email: "", phone: "", message: "" });
       setSelectedPackage("");
-      setSessions([{ time: "" }]);
-    } catch (error) {
-      toast.error("Something went wrong. Please try again or call us directly.");
+      setSelectedDate(undefined);
+      setSelectedTime("");
+    } catch (error: any) {
+      toast.error(error.message || "Something went wrong. Please try again or call us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -239,95 +231,84 @@ export default function BookNow() {
                       </div>
 
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <Label className="text-base font-medium flex items-center gap-2">
-                            <CalendarIcon className="h-4 w-4" />
-                            Schedule Sessions (Optional)
-                          </Label>
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          Schedule your sessions now or decide during your free consultation
+                        <Label className="text-base font-medium flex items-center gap-2">
+                          <CalendarIcon className="h-4 w-4" />
+                          Select Your Appointment Time *
+                        </Label>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Choose from real-time available slots
                         </p>
 
-                        {sessions.map((session, index) => (
-                          <div key={index} className="p-4 border-2 rounded-lg space-y-3 bg-muted/20">
+                        {/* Calendar */}
+                        <div className="flex justify-center p-4 bg-muted/20 rounded-lg">
+                          <CalendarComponent
+                            mode="single"
+                            selected={selectedDate}
+                            onSelect={(date) => {
+                              setSelectedDate(date);
+                              setSelectedTime(""); // Reset time when date changes
+                            }}
+                            disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                            className="rounded-lg border-2"
+                          />
+                        </div>
+
+                        {/* Time Slots */}
+                        {selectedDate && (
+                          <div className="space-y-3">
                             <div className="flex items-center justify-between">
-                              <span className="text-sm font-semibold">Session {index + 1}</span>
-                              {sessions.length > 1 && (
-                                <Button
-                                  type="button"
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => setSessions(sessions.filter((_, i) => i !== index))}
-                                  className="h-8 text-xs"
-                                >
-                                  Remove
-                                </Button>
-                              )}
+                              <p className="text-sm font-semibold">
+                                Available times for {format(selectedDate, "MMM d, yyyy")}
+                              </p>
+                              <Badge variant="outline" className="text-xs">
+                                Live availability
+                              </Badge>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                              <Popover>
-                                <PopoverTrigger asChild>
+                            {availableSlots === undefined ? (
+                              <div className="text-center py-6">
+                                <div className="animate-pulse space-y-2">
+                                  <div className="h-4 bg-muted rounded w-32 mx-auto"></div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                                {availableSlots.map((slot) => (
                                   <Button
+                                    key={slot.time}
                                     type="button"
-                                    variant="outline"
+                                    variant={selectedTime === slot.time ? "default" : "outline"}
+                                    disabled={!slot.available}
+                                    onClick={() => setSelectedTime(slot.time)}
                                     className={cn(
-                                      "w-full h-10 justify-start text-left font-normal text-sm",
-                                      !session.date && "text-muted-foreground"
+                                      "h-auto py-2 text-xs font-medium",
+                                      !slot.available && "opacity-50",
+                                      selectedTime === slot.time && "ring-2 ring-primary"
                                     )}
                                   >
-                                    <CalendarIcon className="mr-2 h-4 w-4" />
-                                    {session.date ? format(session.date, "MMM d") : "Date"}
+                                    {slot.time}
                                   </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-auto p-0" align="center" side="bottom">
-                                  <CalendarComponent
-                                    mode="single"
-                                    selected={session.date}
-                                    onSelect={(date) => {
-                                      const newSessions = [...sessions];
-                                      newSessions[index].date = date;
-                                      setSessions(newSessions);
-                                    }}
-                                    disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
-                                    initialFocus
-                                  />
-                                </PopoverContent>
-                              </Popover>
+                                ))}
+                              </div>
+                            )}
 
-                              <Select
-                                value={session.time}
-                                onValueChange={(time) => {
-                                  const newSessions = [...sessions];
-                                  newSessions[index].time = time;
-                                  setSessions(newSessions);
-                                }}
-                              >
-                                <SelectTrigger className="h-10 text-sm">
-                                  <SelectValue placeholder="Time" />
-                                </SelectTrigger>
-                                <SelectContent className="max-h-[300px]">
-                                  {timeSlots.map((time) => (
-                                    <SelectItem key={time} value={time}>
-                                      {time}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            </div>
+                            {availableSlots && availableSlots.every(slot => !slot.available) && (
+                              <div className="text-center py-4 bg-muted/50 rounded-lg">
+                                <p className="text-sm text-muted-foreground">
+                                  No slots available. Try another date.
+                                </p>
+                              </div>
+                            )}
                           </div>
-                        ))}
+                        )}
 
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => setSessions([...sessions, { time: "" }])}
-                          className="w-full"
-                        >
-                          + Add Another Session
-                        </Button>
+                        {selectedDate && selectedTime && (
+                          <div className="p-4 bg-primary/10 border-2 border-primary rounded-lg">
+                            <p className="text-sm font-semibold text-center">
+                              ✓ {format(selectedDate, "EEEE, MMMM d, yyyy")} at {selectedTime}
+                            </p>
+                          </div>
+                        )}
                       </div>
 
                       <div className="space-y-2">
@@ -347,8 +328,8 @@ export default function BookNow() {
 
                       <div className="bg-primary/5 p-6 rounded-xl border-2 border-primary/20">
                         <div className="text-center mb-4">
-                          <p className="text-lg font-bold mb-2">✓ Free Consultation</p>
-                          <p className="text-sm text-muted-foreground">No payment required now</p>
+                          <p className="text-lg font-bold mb-2">✓ Instant Confirmation</p>
+                          <p className="text-sm text-muted-foreground">Your slot is reserved immediately</p>
                         </div>
                       </div>
 
@@ -356,9 +337,9 @@ export default function BookNow() {
                         type="submit" 
                         className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]" 
                         size="lg" 
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !selectedDate || !selectedTime}
                       >
-                        {isSubmitting ? "Submitting..." : "Reserve Your Free Consultation →"}
+                        {isSubmitting ? "Confirming Booking..." : "Confirm Instant Booking →"}
                       </Button>
 
                       <div className="bg-muted/50 p-6 rounded-xl border text-center">
