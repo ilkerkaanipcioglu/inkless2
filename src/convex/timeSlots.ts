@@ -1,6 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
-import { internal } from "./_generated/api";
+// import { internal } from "./_generated/api"; // TODO: Uncomment when email feature is ready
 import { getCurrentUser } from "./users";
 
 // Query to get available time slots for a specific date
@@ -97,18 +97,18 @@ export const createBooking = mutation({
       type: "booking",
     });
 
-    // Schedule email confirmation to be sent immediately
-    await ctx.scheduler.runAfter(
-      0,
-      internal.sendEmails.sendBookingConfirmation,
-      {
-        to: args.email,
-        name: args.name,
-        date: args.date,
-        time: args.time,
-        packageTitle,
-      }
-    );
+    // TODO: Email confirmation will be implemented later
+    // await ctx.scheduler.runAfter(
+    //   0,
+    //   internal.sendEmails.sendBookingConfirmation,
+    //   {
+    //     to: args.email,
+    //     name: args.name,
+    //     date: args.date,
+    //     time: args.time,
+    //     packageTitle,
+    //   }
+    // );
 
     return bookingId;
   },
