@@ -341,6 +341,120 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Ambassador Program Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -z-10" />
+        
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center mb-12">
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", duration: 0.6 }}
+                className="inline-block mb-4"
+              >
+                <div className="bg-primary/20 p-4 rounded-full">
+                  <Sparkles className="h-12 w-12 text-primary" />
+                </div>
+              </motion.div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+                Join the Inkless Ambassador Program
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+                Turn your network into income. Earn commission for every client you refer.
+              </p>
+            </div>
+
+            <Card className="border-2 shadow-2xl backdrop-blur-sm bg-card/95 mb-8">
+              <CardContent className="pt-8 pb-8 px-6 md:px-10">
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                        <CheckCircle className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2">Earn 10-20% Commission</h3>
+                        <p className="text-sm text-muted-foreground">
+                          Get paid for every client you refer. Higher rates for package bookings.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                        <CheckCircle className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2">Unique Referral Link</h3>
+                        <p className="text-sm text-muted-foreground">
+                          Track your referrals with a personal dashboard and analytics.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                        <CheckCircle className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2">Monthly Payouts</h3>
+                        <p className="text-sm text-muted-foreground">
+                          Receive payments via M-Pesa or bank transfer every month.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl p-6 border-2 border-primary/20">
+                    <h3 className="font-bold text-xl mb-4 text-center">Perfect For:</h3>
+                    <ul className="space-y-3">
+                      {[
+                        "📱 Influencers & Content Creators",
+                        "💈 Barbers & Salon Owners",
+                        "🎨 Tattoo Artists",
+                        "💪 Gym Trainers & Fitness Coaches",
+                        "🎓 Students & Entrepreneurs",
+                        "👥 Anyone with a Network"
+                      ].map((item, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 }}
+                          className="flex items-center gap-2 text-sm font-medium"
+                        >
+                          <span>{item}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <Button asChild size="lg" className="text-lg px-8">
+                    <Link to="/training">
+                      Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <p className="text-sm text-muted-foreground mt-4">
+                    Free to join • Get approved in 24 hours • Start earning immediately
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
