@@ -28,16 +28,28 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground mb-4">
               Kenya's trusted laser tattoo removal specialists, helping people rediscover their skin and confidence.
             </p>
+            <div className="flex space-x-3">
+              <Button variant="outline" size="icon" className="h-8 w-8">
+                <Facebook className="h-4 w-4" />
+              </Button>
+              <Button variant="outline" size="icon" className="h-8 w-8">
+                <Instagram className="h-4 w-4" />
+              </Button>
+              <Button variant="outline" size="icon" className="h-8 w-8">
+                <Twitter className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary">About Us</Link></li>
-              <li><Link to="/training" className="text-sm text-muted-foreground hover:text-primary">Training</Link></li>
-              <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-primary">Blog</Link></li>
-              <li><Link to="/auth" className="text-sm text-muted-foreground hover:text-primary">Admin Login</Link></li>
+              <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/training" className="text-sm text-muted-foreground hover:text-primary transition-colors">Training & Ambassador Program</Link></li>
+              <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link to="/auth" className="text-sm text-muted-foreground hover:text-primary transition-colors">Admin Login</Link></li>
             </ul>
           </div>
 
@@ -51,46 +63,25 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <a href="tel:+254708901505" className="hover:text-primary">+254 708 901 505</a>
+                <a href="tel:+254708901505" className="hover:text-primary transition-colors">+254 708 901 505</a>
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <a href="mailto:info@inklessismore.ke" className="hover:text-primary">info@inklessismore.ke</a>
+                <a href="mailto:info@inklessismore.ke" className="hover:text-primary transition-colors">info@inklessismore.ke</a>
               </li>
             </ul>
-            <div className="flex space-x-3 mt-4">
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Facebook className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Instagram className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Twitter className="h-4 w-4" />
-              </Button>
-            </div>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h3 className="font-semibold mb-4">Newsletter</h3>
+            <h3 className="font-semibold mb-4">Stay Updated</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Subscribe for tips, updates, and special offers.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="space-y-2">
-              <Input type="email" placeholder="Your email" required />
+              <Input type="email" placeholder="Your email" required className="h-10" />
               <Button type="submit" className="w-full" size="sm">Subscribe</Button>
             </form>
-            <div className="mt-6 pt-4 border-t">
-              <p className="text-xs text-muted-foreground mb-2">
-                <Link to="/training" className="hover:text-primary font-medium">
-                  Ambassador Program
-                </Link>
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Education • Training • Affiliate Opportunities
-              </p>
-            </div>
           </div>
         </div>
 
