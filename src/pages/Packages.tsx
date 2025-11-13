@@ -48,10 +48,10 @@ export default function Packages() {
               className="text-center mb-16"
             >
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
-                Our Packages
+                Smart Packages for Clearer Skin
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Choose a plan that works for you. Book a free consultation to discuss options, or select a package directly if you're ready to start your journey.
+                While single sessions work for some, our multi-session packages offer smarter savings and faster results. Each option is designed to suit your goals, tattoo size, and budget — with no hidden fees, ever.
               </p>
             </motion.div>
 
