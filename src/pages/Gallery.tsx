@@ -125,7 +125,7 @@ export default function Gallery() {
                           <span className="text-2xl">3️⃣</span> Natural Healing
                         </h3>
                         <p className="text-muted-foreground">
-                          Your body naturally eliminates the fragmented ink over 4-6 weeks.
+                          Your body naturally eliminates the fragmented ink over 4 weeks. Proper aftercare during this period significantly enhances results.
                         </p>
                       </div>
                       <div className="space-y-3">
@@ -133,7 +133,7 @@ export default function Gallery() {
                           <span className="text-2xl">4️⃣</span> Progressive Results
                         </h3>
                         <p className="text-muted-foreground">
-                          Each session builds on the last for gradual, safe tattoo fading.
+                          Visible lightening after each session. Full removal typically achieved in 5-12 sessions with 4-week intervals, resulting in completely scar-free skin.
                         </p>
                       </div>
                     </div>

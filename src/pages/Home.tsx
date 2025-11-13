@@ -107,19 +107,23 @@ export default function Home() {
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm"><strong>Multiple sessions required:</strong> Usually 5 to 12 depending on tattoo size, color, age, and location</span>
+                    <span className="text-sm"><strong>Visible lightening after each session:</strong> You'll see progressive fading with every treatment</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm"><strong>Progressive results:</strong> Each session lightens the tattoo without damaging surrounding skin</span>
+                    <span className="text-sm"><strong>Full removal in 5-12 sessions:</strong> Depending on tattoo size, color, age, and location</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm"><strong>Safe & non-invasive:</strong> No burning, no cutting, no surgical techniques used</span>
+                    <span className="text-sm"><strong>4-week intervals required:</strong> Sessions spaced apart for optimal healing and results</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm"><strong>Works on all tattoos:</strong> Suitable for both professional and amateur tattoos</span>
+                    <span className="text-sm"><strong>Proper aftercare is essential:</strong> Following instructions significantly enhances results</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm"><strong>Completely scar-free:</strong> No scarring when aftercare instructions are followed</span>
                   </li>
                 </ul>
               </CardContent>

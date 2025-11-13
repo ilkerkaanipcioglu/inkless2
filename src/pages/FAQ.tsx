@@ -31,7 +31,7 @@ export default function FAQ() {
     },
     {
       question: "How long does complete removal take?",
-      answer: "Most tattoos require 5-12 sessions for complete removal, spaced 4-6 weeks apart. Factors like tattoo age, ink colors, location, and your immune system affect the timeline.",
+      answer: "Most tattoos require 5-12 sessions for complete removal, with 4-week intervals between treatments. You'll see visible lightening after each session. Factors like tattoo age, ink colors, location, and your immune system affect the timeline. Proper aftercare significantly enhances results.",
     },
     {
       question: "Where are you located?",
