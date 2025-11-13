@@ -50,9 +50,18 @@ export default function Packages() {
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
                 Smart Packages for Clearer Skin
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 While single sessions work for some, our multi-session packages offer smarter savings and faster results. Each option is designed to suit your goals, tattoo size, and budget — with no hidden fees, ever.
               </p>
+              <div className="max-w-3xl mx-auto bg-primary/10 border-2 border-primary/30 rounded-xl p-6 mt-8">
+                <h2 className="text-xl font-bold mb-3">Flat Rate Pricing - Any Size, Any Tattoo</h2>
+                <p className="text-sm text-muted-foreground mb-4">
+                  All our packages apply regardless of tattoo size or number of tattoos. Save more with multi-session packages and avoid session-by-session costs.
+                </p>
+                <p className="text-sm font-semibold text-primary">
+                  💡 Free consultation included to discuss color, depth, and pain management
+                </p>
+              </div>
             </motion.div>
 
             {/* Compact Filter Section */}
