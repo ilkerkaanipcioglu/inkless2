@@ -20,6 +20,7 @@ import FAQ from "./pages/FAQ.tsx";
 import PackageDetail from "./pages/PackageDetail.tsx";
 import BookNow from "./pages/BookNow.tsx";
 import BookingHistory from "./pages/BookingHistory.tsx";
+import Admin from "./pages/Admin.tsx";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -66,6 +67,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/blog" element={<Blog />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
