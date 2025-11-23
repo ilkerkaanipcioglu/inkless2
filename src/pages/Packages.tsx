@@ -16,6 +16,7 @@ export default function Packages() {
   const packages = useQuery(api.packages.list);
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [showComparison, setShowComparison] = useState<boolean>(false);
 
   const filteredPackages = useMemo(() => {
     if (!packages) return undefined;
@@ -84,68 +85,87 @@ export default function Packages() {
               </div>
             </motion.div>
 
-            {/* Package Comparison Table */}
+            {/* Toggle Comparison Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-              className="max-w-6xl mx-auto mb-12"
+              transition={{ delay: 0.1 }}
+              className="max-w-6xl mx-auto mb-8 text-center"
             >
-              <Card className="border-2 shadow-xl overflow-hidden">
-                <CardHeader className="bg-primary/5">
-                  <CardTitle className="text-2xl text-center">Package Comparison</CardTitle>
-                  <CardDescription className="text-center">Compare all our packages at a glance</CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead className="bg-muted/50">
-                        <tr>
-                          <th className="px-4 py-3 text-left font-semibold">Package</th>
-                          <th className="px-4 py-3 text-center font-semibold">Sessions</th>
-                          <th className="px-4 py-3 text-center font-semibold">Price</th>
-                          <th className="px-4 py-3 text-center font-semibold">Savings</th>
-                          <th className="px-4 py-3 text-center font-semibold">Best For</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y">
-                        <tr className="hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-4 font-medium">Single Session</td>
-                          <td className="px-4 py-4 text-center">1</td>
-                          <td className="px-4 py-4 text-center font-bold text-primary">KSh 5,000</td>
-                          <td className="px-4 py-4 text-center text-muted-foreground">-</td>
-                          <td className="px-4 py-4 text-center text-sm">Testing or small fading</td>
-                        </tr>
-                        <tr className="hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-4 font-medium">Small Tattoo</td>
-                          <td className="px-4 py-4 text-center">2</td>
-                          <td className="px-4 py-4 text-center font-bold text-primary">KSh 9,000</td>
-                          <td className="px-4 py-4 text-center text-green-600 font-semibold">Save KSh 1,000</td>
-                          <td className="px-4 py-4 text-center text-sm">Small/thin tattoos</td>
-                        </tr>
-                        <tr className="hover:bg-muted/30 transition-colors bg-primary/5">
-                          <td className="px-4 py-4 font-medium flex items-center gap-2">
-                            Medium Tattoo
-                            <Badge className="bg-primary">POPULAR</Badge>
-                          </td>
-                          <td className="px-4 py-4 text-center">5</td>
-                          <td className="px-4 py-4 text-center font-bold text-primary">KSh 20,000</td>
-                          <td className="px-4 py-4 text-center text-green-600 font-semibold">Save KSh 5,000</td>
-                          <td className="px-4 py-4 text-center text-sm">Medium-sized tattoos</td>
-                        </tr>
-                        <tr className="hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-4 font-medium">Unlimited Package</td>
-                          <td className="px-4 py-4 text-center">Unlimited</td>
-                          <td className="px-4 py-4 text-center font-bold text-primary">KSh 35,000</td>
-                          <td className="px-4 py-4 text-center text-green-600 font-semibold">Save KSh 25,000+</td>
-                          <td className="px-4 py-4 text-center text-sm">Complete removal guarantee</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </CardContent>
-              </Card>
+              <Button
+                onClick={() => setShowComparison(!showComparison)}
+                variant="outline"
+                size="lg"
+                className="font-semibold"
+              >
+                {showComparison ? "Hide" : "Show"} Package Comparison
+              </Button>
             </motion.div>
+
+            {/* Package Comparison Table - Conditionally Rendered */}
+            {showComparison && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="max-w-6xl mx-auto mb-12"
+              >
+                <Card className="border-2 shadow-xl overflow-hidden">
+                  <CardHeader className="bg-primary/5">
+                    <CardTitle className="text-2xl text-center">Package Comparison</CardTitle>
+                    <CardDescription className="text-center">Compare all our packages at a glance</CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead className="bg-muted/50">
+                          <tr>
+                            <th className="px-4 py-3 text-left font-semibold">Package</th>
+                            <th className="px-4 py-3 text-center font-semibold">Sessions</th>
+                            <th className="px-4 py-3 text-center font-semibold">Price</th>
+                            <th className="px-4 py-3 text-center font-semibold">Savings</th>
+                            <th className="px-4 py-3 text-center font-semibold">Best For</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                          <tr className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-4 font-medium">Single Session</td>
+                            <td className="px-4 py-4 text-center">1</td>
+                            <td className="px-4 py-4 text-center font-bold text-primary">KSh 5,000</td>
+                            <td className="px-4 py-4 text-center text-muted-foreground">-</td>
+                            <td className="px-4 py-4 text-center text-sm">Testing or small fading</td>
+                          </tr>
+                          <tr className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-4 font-medium">Small Tattoo</td>
+                            <td className="px-4 py-4 text-center">2</td>
+                            <td className="px-4 py-4 text-center font-bold text-primary">KSh 9,000</td>
+                            <td className="px-4 py-4 text-center text-green-600 font-semibold">Save KSh 1,000</td>
+                            <td className="px-4 py-4 text-center text-sm">Small/thin tattoos</td>
+                          </tr>
+                          <tr className="hover:bg-muted/30 transition-colors bg-primary/5">
+                            <td className="px-4 py-4 font-medium flex items-center gap-2">
+                              Medium Tattoo
+                              <Badge className="bg-primary">POPULAR</Badge>
+                            </td>
+                            <td className="px-4 py-4 text-center">5</td>
+                            <td className="px-4 py-4 text-center font-bold text-primary">KSh 20,000</td>
+                            <td className="px-4 py-4 text-center text-green-600 font-semibold">Save KSh 5,000</td>
+                            <td className="px-4 py-4 text-center text-sm">Medium-sized tattoos</td>
+                          </tr>
+                          <tr className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-4 font-medium">Unlimited Package</td>
+                            <td className="px-4 py-4 text-center">Unlimited</td>
+                            <td className="px-4 py-4 text-center font-bold text-primary">KSh 35,000</td>
+                            <td className="px-4 py-4 text-center text-green-600 font-semibold">Save KSh 25,000+</td>
+                            <td className="px-4 py-4 text-center text-sm">Complete removal guarantee</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            )}
 
             {/* Compact Filter Section */}
             <motion.div
