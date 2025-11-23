@@ -22,6 +22,7 @@ import type * as fix_duplicates from "../fix_duplicates.js";
 import type * as gallery from "../gallery.js";
 import type * as http from "../http.js";
 import type * as packages from "../packages.js";
+import type * as remove_broken_gallery_items from "../remove_broken_gallery_items.js";
 import type * as seed from "../seed.js";
 import type * as seed_blog from "../seed_blog.js";
 import type * as seed_gallery from "../seed_gallery.js";
@@ -52,6 +53,7 @@ declare const fullApi: ApiFromModules<{
   gallery: typeof gallery;
   http: typeof http;
   packages: typeof packages;
+  remove_broken_gallery_items: typeof remove_broken_gallery_items;
   seed: typeof seed;
   seed_blog: typeof seed_blog;
   seed_gallery: typeof seed_gallery;

@@ -94,14 +94,6 @@ export const seedGallery = internalMutation({
         category: "tattoo-removal"
       },
       {
-        title: "Leg Tattoo Removal",
-        description: "Visible fading after treatment sessions",
-        beforeImageUrl: "/assets/gallery_leg_1.png",
-        afterImageUrl: "/assets/gallery_leg_1.png",
-        sessions: 4,
-        category: "tattoo-removal"
-      },
-      {
         title: "Shoulder Tattoo Removal",
         description: "High-quality laser removal results",
         beforeImageUrl: "/assets/gallery_shoulder.png",
