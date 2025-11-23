@@ -14,8 +14,8 @@ export default function Navbar() {
   const navLinks = [
     { href: "/packages", label: "Packages" },
     { href: "/gallery", label: "Gallery" },
+    { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQ" },
-    { href: "/bookings", label: "My Bookings" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
