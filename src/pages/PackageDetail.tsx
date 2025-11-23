@@ -19,6 +19,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { LazyImage } from "@/components/LazyImage";
 
 export default function PackageDetail() {
   const { id } = useParams<{ id: string }>();
@@ -163,7 +164,7 @@ export default function PackageDetail() {
                   <Card className="border-2 shadow-2xl overflow-hidden backdrop-blur-xl bg-card/80 hover:shadow-3xl transition-shadow duration-500">
                     {packageData.imageUrl && (
                       <div className="relative w-full h-72 md:h-96 overflow-hidden group">
-                        <img 
+                        <LazyImage 
                           src={packageData.imageUrl} 
                           alt={packageData.title}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

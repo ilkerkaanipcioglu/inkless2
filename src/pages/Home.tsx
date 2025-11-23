@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Heart, Shield, Sparkles, Target } from "lucide-react";
 import { Link } from "react-router";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { LazyImage } from "@/components/LazyImage";
 
 export default function Home() {
   return (
@@ -325,7 +326,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto mb-8"
           >
-            <img
+            <LazyImage
               src="/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg"
               alt="Tattoo removal before and after comparison showing significant fading after 3 sessions"
               className="w-full rounded-lg shadow-lg"

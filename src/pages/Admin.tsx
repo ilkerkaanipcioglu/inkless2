@@ -25,6 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { LazyImage } from "@/components/LazyImage";
 
 export default function Admin() {
   const { user, isLoading: authLoading } = useAuth();
@@ -428,7 +429,12 @@ function GalleryTab() {
         {gallery.map((item) => (
           <Card key={item._id} className="overflow-hidden">
             <div className="aspect-square relative group">
-              <img src={item.afterImageUrl} alt={item.title} className="object-cover w-full h-full" />
+              <LazyImage
+                src={item.afterImageUrl}
+                alt={item.title}
+                containerClassName="w-full h-full"
+                className="object-cover w-full h-full"
+              />
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <Button variant="destructive" size="icon" onClick={() => handleRemove(item._id)}>
                   <Trash2 className="h-4 w-4" />
