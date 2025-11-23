@@ -16,6 +16,17 @@ export const getById = query({
   },
 });
 
+export const getBySlug = query({
+  args: { slug: v.string() },
+  handler: async (ctx, args) => {
+    const post = await ctx.db
+      .query("blogPosts")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+    return post;
+  },
+});
+
 export const create = mutation({
   args: {
     title: v.string(),

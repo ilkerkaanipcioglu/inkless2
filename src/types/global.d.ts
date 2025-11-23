@@ -6,6 +6,11 @@ declare global {
      */
     navigateToAuth: (redirectUrl: string) => void;
   }
+  interface Window {
+    ethereum?: any;
+  }
 }
+
+declare module 'react-markdown';
 
 export {};

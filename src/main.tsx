@@ -16,6 +16,7 @@ import About from "./pages/About.tsx";
 import Gallery from "./pages/Gallery.tsx";
 import Training from "./pages/Training.tsx";
 import Blog from "./pages/Blog.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import PackageDetail from "./pages/PackageDetail.tsx";
 import BookNow from "./pages/BookNow.tsx";
@@ -65,6 +66,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/training" element={<Training />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
             <Route path="/admin" element={<Admin />} />
