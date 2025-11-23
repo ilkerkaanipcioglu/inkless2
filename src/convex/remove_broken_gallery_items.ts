@@ -1,3 +1,5 @@
+// This file is used to remove broken gallery items.
+// It is a one-off script.
 import { internalMutation } from "./_generated/server";
 
 export const removeItems = internalMutation({
