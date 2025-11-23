@@ -112,7 +112,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm"><strong>Full removal in 5-12 sessions:</strong> Depending on tattoo size, color, age, and location</span>
+                    <span className="text-sm"><strong>Full removal in 3-12 sessions:</strong> Depending on tattoo size, color, age, and location</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />

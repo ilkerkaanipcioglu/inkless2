@@ -22,6 +22,7 @@ import type * as seed from "../seed.js";
 import type * as seed_blog from "../seed_blog.js";
 import type * as sendEmails from "../sendEmails.js";
 import type * as timeSlots from "../timeSlots.js";
+import type * as update_prices from "../update_prices.js";
 import type * as users from "../users.js";
 
 import type {
@@ -45,6 +46,7 @@ declare const fullApi: ApiFromModules<{
   seed_blog: typeof seed_blog;
   sendEmails: typeof sendEmails;
   timeSlots: typeof timeSlots;
+  update_prices: typeof update_prices;
   users: typeof users;
 }>;
 

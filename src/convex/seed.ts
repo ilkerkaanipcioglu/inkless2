@@ -13,7 +13,7 @@ export const seedData = internalMutation({
     await ctx.db.insert("packages", {
       title: "Single Session",
       description: "Great for trying out the process or fading a small area.",
-      price: 4500,
+      price: 5000,
       isAvailable: true,
       features: [
         "One laser removal session",
@@ -26,15 +26,15 @@ export const seedData = internalMutation({
     });
 
     await ctx.db.insert("packages", {
-      title: "The Starter Pack (3 Sessions)",
+      title: "The Starter Pack (2 Sessions)",
       description: "Perfect for small tattoos or to see how your skin responds.",
-      price: 10000,
-      originalPrice: 13500,
-      sessions: 3,
+      price: 9000,
+      originalPrice: 10000,
+      sessions: 2,
       isAvailable: true,
       features: [
-        "3 laser removal sessions",
-        "Save KSh 3,500",
+        "2 laser removal sessions",
+        "Save KSh 1,000",
         "Ideal for small tattoos",
         "Flexible scheduling",
         "Complete aftercare support",
@@ -46,13 +46,13 @@ export const seedData = internalMutation({
     await ctx.db.insert("packages", {
       title: "The Popular Choice (5 Sessions)",
       description: "Best-seller — ideal for medium tattoos or full removal of smaller ones.",
-      price: 15000,
-      originalPrice: 22500,
+      price: 20000,
+      originalPrice: 25000,
       sessions: 5,
       isAvailable: true,
       features: [
         "5 laser removal sessions",
-        "Save KSh 7,500",
+        "Save KSh 5,000",
         "Most popular package",
         "Visible results guaranteed",
         "Priority booking",
@@ -64,12 +64,12 @@ export const seedData = internalMutation({
     await ctx.db.insert("packages", {
       title: "Complete Tattoo Removal Package",
       description: "Unlimited sessions until complete removal.",
-      price: 25000,
-      originalPrice: 54000,
+      price: 35000,
+      originalPrice: 60000,
       isAvailable: true,
       features: [
         "Unlimited sessions",
-        "Save KSh 29,000",
+        "Big savings for multiple sessions",
         "Complete removal guarantee",
         "Best value for money",
         "VIP support",
@@ -132,7 +132,7 @@ export const seedData = internalMutation({
       },
       {
         question: "How much does it cost?",
-        answer: "Pricing starts from KSh 4,500 per session. We offer discounted multi-session packages ranging from KSh 10,000 to KSh 25,000. The exact cost depends on the size, color, and complexity of your tattoo.",
+        answer: "Pricing starts from KSh 5,000 per session. We offer discounted multi-session packages ranging from KSh 9,000 to KSh 35,000. The exact cost depends on the size, color, and complexity of your tattoo.",
         order: 2,
       },
       {
@@ -147,7 +147,7 @@ export const seedData = internalMutation({
       },
       {
         question: "How long does complete removal take?",
-        answer: "Most tattoos require 5-12 sessions for complete removal, spaced 4-6 weeks apart. Factors like tattoo age, ink colors, location, and your immune system affect the timeline.",
+        answer: "On average, it takes 3-12 sessions to completely remove a tattoo, spaced 4-6 weeks apart. Factors like tattoo age, ink colors, location, and your immune system affect the timeline.",
         order: 5,
       },
       {
@@ -238,21 +238,21 @@ For a limited time only, we're offering our biggest discounts ever on laser tatt
 
 ## Special Package Pricing
 
-### The Starter Pack (3 Sessions)
-**Was: KSh 13,500 | Now: KSh 10,000**
-- Save KSh 3,500
+### The Starter Pack (2 Sessions)
+**Was: KSh 10,000 | Now: KSh 9,000**
+- Save KSh 1,000
 - Perfect for small tattoos
 - Ideal for first-time clients
 
 ### The Popular Choice (5 Sessions)
-**Was: KSh 22,500 | Now: KSh 15,000**
-- Save KSh 7,500
+**Was: KSh 25,000 | Now: KSh 20,000**
+- Save KSh 5,000
 - Our best-selling package
 - Great for medium-sized tattoos
 
 ### Complete Removal Package
-**Was: KSh 54,000 | Now: KSh 25,000**
-- Save KSh 29,000 - Our biggest discount!
+**Was: KSh 60,000 | Now: KSh 35,000**
+- Save KSh 25,000 - Our biggest discount!
 - Unlimited sessions until complete removal
 - Best value for money
 
@@ -404,21 +404,21 @@ For a limited time only, we're offering our biggest discounts ever on laser tatt
 
 ## Special Package Pricing
 
-### The Starter Pack (3 Sessions)
-**Was: KSh 13,500 | Now: KSh 10,000**
-- Save KSh 3,500
+### The Starter Pack (2 Sessions)
+**Was: KSh 10,000 | Now: KSh 9,000**
+- Save KSh 1,000
 - Perfect for small tattoos
 - Ideal for first-time clients
 
 ### The Popular Choice (5 Sessions)
-**Was: KSh 22,500 | Now: KSh 15,000**
-- Save KSh 7,500
+**Was: KSh 25,000 | Now: KSh 20,000**
+- Save KSh 5,000
 - Our best-selling package
 - Great for medium-sized tattoos
 
 ### Complete Removal Package
-**Was: KSh 54,000 | Now: KSh 25,000**
-- Save KSh 29,000 - Our biggest discount!
+**Was: KSh 60,000 | Now: KSh 35,000**
+- Save KSh 25,000 - Our biggest discount!
 - Unlimited sessions until complete removal
 - Best value for money
 

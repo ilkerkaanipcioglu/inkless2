@@ -19,7 +19,7 @@ export default function FAQ() {
     },
     {
       question: "How much does it cost?",
-      answer: "Pricing starts from KSh 4,500 per session. We offer discounted multi-session packages ranging from KSh 10,000 to KSh 25,000. All pricing applies regardless of tattoo size or number of tattoos.",
+      answer: "Pricing starts from KSh 5,000 per session. We offer discounted multi-session packages ranging from KSh 9,000 to KSh 35,000. All pricing applies regardless of tattoo size or number of tattoos.",
     },
     {
       question: "Does it hurt?",
@@ -31,7 +31,7 @@ export default function FAQ() {
     },
     {
       question: "How long does complete removal take?",
-      answer: "Most tattoos require 5-12 sessions for complete removal, with 4-week intervals between treatments. You'll see visible lightening after each session. The timeline varies by color, size, and skin type. Proper aftercare significantly enhances results.",
+      answer: "On average, it takes 3-12 sessions to completely remove a tattoo, with 4-week intervals between treatments. You'll see visible lightening after each session. The timeline varies by color, size, and skin type. Proper aftercare significantly enhances results.",
     },
     {
       question: "Is it safe for all skin types?",
