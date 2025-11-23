@@ -489,8 +489,6 @@ At Inkless Is More, our mission goes beyond just removing ink—it's about helpi
 
 Our latest campaign, **"Let Your Skin Shine Again,"** celebrates the journeys of our clients who have chosen to move forward from their past tattoos. Whether it's a change in lifestyle, a career move, or simply outgrowing a design, the decision to remove a tattoo is a personal and empowering one.
 
-![Let Your Skin Shine Again](https://harmless-tapir-303.convex.cloud/api/storage/7427e76d-97f4-45d9-b794-a61807aec078)
-
 ## Real Stories, Real Results
 
 We are incredibly proud of the trust our clients place in us. Here is what some of them have to say about their experience with our Picosecond laser technology and our dedicated team:

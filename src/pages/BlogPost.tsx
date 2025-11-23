@@ -83,11 +83,11 @@ export default function BlogPost() {
           </div>
 
           {post.imageUrl && (
-            <div className="mb-10 rounded-xl overflow-hidden shadow-lg">
+            <div className="mb-10 rounded-xl overflow-hidden shadow-lg bg-secondary/10">
               <img
                 src={post.imageUrl}
                 alt={post.title}
-                className="w-full h-auto object-cover max-h-[600px]"
+                className="w-full h-auto max-h-[800px] object-contain mx-auto"
               />
             </div>
           )}
