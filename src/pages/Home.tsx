@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Heart, Shield, Sparkles, Target } from "lucide-react";
 import { Link } from "react-router";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -342,117 +343,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Hear from people who've experienced the transformation
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                name: "Sarah M.",
-                image: "/assets/Gabriel_s_Testimonial.jpg",
-                rating: 5,
-                text: "I was skeptical at first, but after 6 sessions, my tattoo is completely gone! The team was professional, and the process was painless. Highly recommend!",
-                location: "Nairobi"
-              },
-              {
-                name: "James K.",
-                image: "/assets/1111__1_.jpg",
-                rating: 5,
-                text: "Best decision I ever made. The Picosecond laser technology really works. No scars, just clear skin. Thank you Inkless Is More!",
-                location: "Westlands"
-              },
-              {
-                name: "Grace W.",
-                image: "/assets/AA99C17D-3B23-40B0-84E3-901869B56057_480x480.jpg",
-                rating: 5,
-                text: "Amazing results after just 4 sessions! The staff explained everything clearly and made me feel comfortable throughout the entire process.",
-                location: "Karen"
-              }
-            ].map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="h-full border-2 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden backdrop-blur-sm bg-gradient-to-br from-card/95 to-card/80">
-                  <CardContent className="pt-6 text-center relative">
-                    {/* Decorative background element */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10" />
-                    
-                    <div className="mb-4 relative inline-block">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-md" />
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto object-cover border-4 border-background shadow-xl relative z-10"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23ddd" width="80" height="80" rx="40"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="24"%3E' + testimonial.name.charAt(0) + '%3C/text%3E%3C/svg%3E';
-                        }}
-                      />
-                      {/* Verified badge */}
-                      <div className="absolute bottom-0 right-0 bg-primary text-primary-foreground rounded-full p-1 shadow-lg">
-                        <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-center gap-0.5 sm:gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <svg
-                          key={i}
-                          className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 fill-yellow-400 drop-shadow-md"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-                    
-                    {/* Quote icon */}
-                    <div className="text-primary/20 mb-2">
-                      <svg className="h-6 w-6 sm:h-8 sm:w-8 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                    </div>
-                    
-                    <p className="text-sm sm:text-base text-muted-foreground italic mb-4 leading-relaxed px-2">
-                      "{testimonial.text}"
-                    </p>
-                    
-                    <div className="border-t border-primary/10 pt-4 mt-4">
-                      <p className="font-semibold text-base sm:text-lg">{testimonial.name}</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground flex items-center justify-center gap-1 mt-1">
-                        <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                        </svg>
-                        {testimonial.location}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* Final CTA */}
       <section className="py-20 bg-primary text-primary-foreground">
