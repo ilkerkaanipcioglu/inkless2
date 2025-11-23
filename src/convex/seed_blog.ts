@@ -460,3 +460,74 @@ In conclusion, if you find yourself in a situation where a tattoo no longer repr
     console.log("Guide blog post created successfully!");
   },
 });
+
+export const seedTestimonialPost = internalMutation({
+  args: {},
+  handler: async (ctx) => {
+    // Get a user to assign as author (required by schema)
+    const user = await ctx.db.query("users").first();
+    if (!user) {
+      console.log("No user found to assign as author. Please sign up first.");
+      return;
+    }
+
+    const slug = "let-your-skin-shine-again-client-testimonials";
+    
+    // Check if post already exists
+    const existing = await ctx.db
+      .query("blogPosts")
+      .withIndex("by_slug", (q) => q.eq("slug", slug))
+      .first();
+
+    if (existing) {
+      console.log("Blog post already exists.");
+      return;
+    }
+
+    const content = `
+At Inkless Is More, our mission goes beyond just removing ink—it's about helping you reclaim your skin and your confidence. We believe that everyone deserves a second chance to feel comfortable in their own body.
+
+Our latest campaign, **"Let Your Skin Shine Again,"** celebrates the journeys of our clients who have chosen to move forward from their past tattoos. Whether it's a change in lifestyle, a career move, or simply outgrowing a design, the decision to remove a tattoo is a personal and empowering one.
+
+![Let Your Skin Shine Again](https://harmless-tapir-303.convex.cloud/api/storage/7427e76d-97f4-45d9-b794-a61807aec078)
+
+## Real Stories, Real Results
+
+We are incredibly proud of the trust our clients place in us. Here is what some of them have to say about their experience with our Picosecond laser technology and our dedicated team:
+
+### **"The pain is nothing compared to getting a new tattoo." — Faith** ⭐⭐⭐⭐⭐
+
+One of the biggest concerns for many people is the pain. Faith's experience highlights a common realization: while laser removal isn't sensation-free, it is often much more manageable than expected, especially compared to the process of getting inked in the first place. Our advanced cooling systems help minimize discomfort throughout the session.
+
+### **"The service is great. Trustful, fast and very professional." — Gabriel** ⭐⭐⭐⭐⭐
+
+Trust is the foundation of our clinic. Gabriel's feedback underscores our commitment to professionalism and efficiency. We know your time is valuable, which is why we use state-of-the-art technology to ensure treatments are as quick and effective as possible.
+
+### **"It feels good to see my tattoo fading away after each treatment." — Stephen** ⭐⭐⭐⭐⭐
+
+The journey of tattoo removal is a process, but seeing progress is incredibly rewarding. Stephen's testimonial captures the satisfaction of watching the ink fade session by session, bringing him closer to his goal of clear skin.
+
+### **"Only a few sessions and my tattoo is nearly gone. I couldn't be happier with the results." — Isabelle** ⭐⭐⭐⭐⭐
+
+Isabelle's success story is a testament to the power of our Picosecond lasers. By breaking down ink particles into tiny fragments, we can achieve faster clearance with fewer sessions than traditional methods.
+
+## Ready to Start Your Journey?
+
+If you're ready to let your skin shine again, we're here to help. Our team of certified specialists will guide you through every step of the process, from your initial consultation to your final treatment.
+
+Book your consultation today and take the first step towards a fresh start.
+    `;
+
+    await ctx.db.insert("blogPosts", {
+      title: "Let Your Skin Shine Again: Real Stories from Real Clients",
+      slug: slug,
+      excerpt: "Discover the real stories behind the reviews. See why clients like Faith, Gabriel, and Isabelle trust Inkless Is More for their tattoo removal journey.",
+      content: content,
+      imageUrl: "https://harmless-tapir-303.convex.cloud/api/storage/7427e76d-97f4-45d9-b794-a61807aec078",
+      published: true,
+      authorId: user._id,
+    });
+    
+    console.log("Testimonial blog post created successfully!");
+  },
+});
