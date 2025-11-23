@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 import { useQuery } from "convex/react";
 import { Link } from "react-router";
+import { LazyImage } from "@/components/LazyImage";
 
 export default function Blog() {
   const posts = useQuery(api.blog.list);
@@ -54,14 +55,13 @@ export default function Blog() {
                     transition={{ delay: index * 0.1 }}
                   >
                     <Link to={`/blog/${post.slug}`}>
-                      <Card className="h-full border-2 hover:border-primary transition-colors cursor-pointer">
+                      <Card className="h-full border-2 hover:border-primary transition-colors cursor-pointer flex flex-col overflow-hidden">
                         {post.imageUrl && (
-                          <img
+                          <LazyImage
                             src={post.imageUrl}
                             alt={post.title}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-48 object-cover rounded-t-lg"
+                            containerClassName="w-full h-48"
+                            className="w-full h-full object-cover"
                           />
                         )}
                         <CardHeader>

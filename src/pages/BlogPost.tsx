@@ -8,6 +8,7 @@ import { ArrowLeft, Calendar, User } from "lucide-react";
 import { Link, useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LazyImage } from "@/components/LazyImage";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -84,11 +85,10 @@ export default function BlogPost() {
 
           {post.imageUrl && (
             <div className="mb-10 rounded-xl overflow-hidden shadow-lg bg-secondary/10">
-              <img
+              <LazyImage
                 src={post.imageUrl}
                 alt={post.title}
-                loading="lazy"
-                decoding="async"
+                containerClassName="w-full min-h-[300px] md:min-h-[400px]"
                 className="w-full h-auto max-h-[800px] object-contain mx-auto"
               />
             </div>
@@ -99,11 +99,10 @@ export default function BlogPost() {
               components={{
                 img: ({node, ...props}: any) => (
                   <div className="my-8">
-                    <img 
+                    <LazyImage 
                       {...props} 
-                      loading="lazy"
-                      decoding="async"
-                      className="rounded-xl shadow-md w-full" 
+                      containerClassName="rounded-xl shadow-md w-full min-h-[200px]"
+                      className="w-full h-auto" 
                     />
                   </div>
                 ),
