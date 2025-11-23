@@ -19,7 +19,7 @@ export default function Landing() {
         <div className="flex justify-center">
           <img
             src="./logo.svg"
-            alt="Lock Icon"
+            alt="Inkless Is More Logo"
             width={64}
             height={64}
             className="rounded-lg mb-8 mt-24"

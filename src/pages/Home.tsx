@@ -327,7 +327,7 @@ export default function Home() {
           >
             <img
               src="/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg"
-              alt="Before and After 3 Sessions"
+              alt="Tattoo removal before and after comparison showing significant fading after 3 sessions"
               className="w-full rounded-lg shadow-lg"
             />
           </motion.div>
