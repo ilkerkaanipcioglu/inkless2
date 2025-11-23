@@ -11,8 +11,8 @@ export const seedData = internalMutation({
 
     // Seed packages
     await ctx.db.insert("packages", {
-      title: "Single Session",
-      description: "Great for trying out the process or fading a small area.",
+      title: "1 Single Laser Tattoo Removal Session",
+      description: "Our 'pay-per-session' option offers flexibility to the ones willing to fade their tattoos away at their own pace. No colossal saving, no engagement, no rush.",
       price: 5000,
       isAvailable: true,
       features: [
@@ -20,14 +20,15 @@ export const seedData = internalMutation({
         "Professional consultation",
         "Aftercare guidance",
         "Safe and scar-free",
+        "4-week recovery interval",
       ],
       category: "tattoo-removal",
-      imageUrl: "/assets/1-single-laser-tattoo-removal-session-994.webp",
+      imageUrl: "https://www.inklessismore.ke/cdn/shop/files/Single_Session.jpg?v=1763724288&width=1946",
     });
 
     await ctx.db.insert("packages", {
-      title: "The Starter Pack (2 Sessions)",
-      description: "Perfect for small tattoos or to see how your skin responds.",
+      title: "2 Laser Tattoo Removal Sessions (small size tattoo)",
+      description: "Perfect for small tattoos or to see how your skin responds. Very likely to completely remove any small or thin tattoo.",
       price: 9000,
       originalPrice: 10000,
       sessions: 2,
@@ -35,17 +36,17 @@ export const seedData = internalMutation({
       features: [
         "2 laser removal sessions",
         "Save KSh 1,000",
-        "Ideal for small tattoos",
+        "Ideal for small/thin tattoos",
         "Flexible scheduling",
         "Complete aftercare support",
       ],
       category: "tattoo-removal",
-      imageUrl: "/assets/1111__1_.jpg",
+      imageUrl: "https://www.inklessismore.ke/cdn/shop/files/2_Sessions_3948d9a6-f510-4678-b0fe-21d017bcd5dd.jpg?v=1763727082&width=1946",
     });
 
     await ctx.db.insert("packages", {
-      title: "The Popular Choice (5 Sessions)",
-      description: "Best-seller — ideal for medium tattoos or full removal of smaller ones.",
+      title: "5 Laser Tattoo Removal Sessions (medium size tattoo)",
+      description: "Our most popular package. Big saving, big results. Ideal for medium size tattoos.",
       price: 20000,
       originalPrice: 25000,
       sessions: 5,
@@ -58,24 +59,24 @@ export const seedData = internalMutation({
         "Priority booking",
       ],
       category: "tattoo-removal",
-      imageUrl: "/assets/B0A79D7D-80DC-43C6-AC34-23ACC6E164A7_1_105_c_480x480.jpg",
+      imageUrl: "https://www.inklessismore.ke/cdn/shop/files/5_Sessions.jpg?v=1763724687&width=1946",
     });
 
     await ctx.db.insert("packages", {
-      title: "Complete Tattoo Removal Package",
-      description: "Unlimited sessions until complete removal.",
+      title: "Unlimited Laser Tattoo Removal Sessions Package",
+      description: "Pay one price, get the best possible results. Includes as many sessions as it takes to achieve full tattoo removal.",
       price: 35000,
       originalPrice: 60000,
       isAvailable: true,
       features: [
-        "Unlimited sessions",
-        "Big savings for multiple sessions",
+        "Unlimited sessions until removal",
+        "Big savings (est. 60%)",
         "Complete removal guarantee",
-        "Best value for money",
+        "Includes multiple tattoos",
         "VIP support",
       ],
       category: "tattoo-removal",
-      imageUrl: "/assets/1-single-laser-tattoo-removal-session-994.webp",
+      imageUrl: "https://www.inklessismore.ke/cdn/shop/files/Unlimited_Sessions.jpg?v=1763724845&width=1946",
     });
 
     await ctx.db.insert("packages", {
