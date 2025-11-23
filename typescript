@@ -1,0 +1,55 @@
+packages: defineTable({
+  title: v.string(),
+  description: v.string(),
+  price: v.number(),
+  originalPrice: v.optional(v.number()),
+  sessions: v.optional(v.number()),
+  isAvailable: v.boolean(),
+  features: v.array(v.string()),
+  category: v.string(),
+  imageUrl: v.optional(v.string()),
+  images: v.optional(v.array(v.string())),
+}),
+await ctx.db.insert("packages", {
+  title: "1 Single Laser Tattoo Removal Session",
+  description: "...",
+  price: 10000,
+  originalPrice: 10000,
+  // sessions is NOT set
+  isAvailable: true,
+  imageUrl: "...",
+  features: [...],
+  category: "tattoo-removal",
+  // images omitted (optional)
+});
+// 5 Sessions
+else if (pkg.title.includes("Popular") || pkg.sessions === 5 || pkg.price === 20000 || pkg.price === 25000) {
+  {pkg.sessions ? (
+    <p className="text-sm text-muted-foreground mb-6 font-medium">
+      {pkg.sessions} {pkg.sessions === 1 ? "Session" : "Sessions"}
+    </p>
+  ) : (
+     <p className="text-sm text-muted-foreground mb-6 font-medium">
+      Unlimited Sessions
+    </p>
+  )}
+}
+const fiveSessionPackages = packages.filter(p => 
+  p.title.includes("5 Laser Tattoo Removal Sessions") || 
+  (p.sessions === 5 && p.price === 20000)
+);
+// Case 1: We have duplicates of 5 sessions and missing Unlimited
+if (fiveSessionPackages.length >= 2 && unlimitedPackages.length === 0) {
+  // Ensure the remaining 5 session package is correct
+  const remainingFiveSession = await ctx.db.query("packages").collect();
+  const correctFiveSession = remainingFiveSession.find(p => p.title.includes("5 Laser Tattoo Removal Sessions"));
+}
+// Case 2: We have duplicates of 5 sessions AND we have Unlimited (just delete extra 5 sessions)
+else if (fiveSessionPackages.length >= 2 && unlimitedPackages.length > 0) {
+  // Keep the first one, delete the rest
+  const [keep, ...remove] = fiveSessionPackages;
+  for (const pkg of remove) {
+    await ctx.db.delete(pkg._id);
+    messages.push(`Deleted duplicate 5-session package (${pkg._id}).`);
+  }
+}

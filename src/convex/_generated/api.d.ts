@@ -16,6 +16,7 @@ import type * as contacts from "../contacts.js";
 import type * as faqs from "../faqs.js";
 import type * as fix_blog_post from "../fix_blog_post.js";
 import type * as fix_data from "../fix_data.js";
+import type * as fix_duplicates from "../fix_duplicates.js";
 import type * as gallery from "../gallery.js";
 import type * as http from "../http.js";
 import type * as packages from "../packages.js";
@@ -42,6 +43,7 @@ declare const fullApi: ApiFromModules<{
   faqs: typeof faqs;
   fix_blog_post: typeof fix_blog_post;
   fix_data: typeof fix_data;
+  fix_duplicates: typeof fix_duplicates;
   gallery: typeof gallery;
   http: typeof http;
   packages: typeof packages;
