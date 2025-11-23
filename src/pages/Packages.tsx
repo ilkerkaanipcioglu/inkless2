@@ -214,21 +214,20 @@ export default function Packages() {
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {filteredPackages?.map((pkg, index) => {
-                  const isPopular = pkg.originalPrice && pkg.originalPrice > pkg.price;
-                  return (
-                    <motion.div
-                      key={pkg._id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className={isPopular ? "md:col-span-1 lg:row-span-2" : ""}
-                    >
-                      <Card className={`h-full flex flex-col border-2 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
-                        isPopular 
-                          ? "ring-2 ring-primary/50" 
-                          : ""
-                      }`}>
+                  {filteredPackages?.map((pkg, index) => {
+                    const isPopular = pkg.originalPrice && pkg.originalPrice > pkg.price;
+                    return (
+                      <motion.div
+                        key={pkg._id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <Card className={`h-full flex flex-col border-2 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+                          isPopular 
+                            ? "ring-2 ring-primary/50" 
+                            : ""
+                        }`}>
                         <CardHeader className="pb-4">
                           <div className="flex items-start justify-between mb-3">
                             <div>
