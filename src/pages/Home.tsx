@@ -33,7 +33,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg">
-                <Link to="#how-it-works">Learn How It Works</Link>
+                <a href="#how-it-works">Learn How It Works</a>
               </Button>
             </div>
           </motion.div>
