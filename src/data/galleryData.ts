@@ -34,6 +34,54 @@ export const beforeAfterPhotos = [
     before: "/assets/AA99C17D-3B23-40B0-84E3-901869B56057_480x480.jpg",
     sessions: "3 Sessions",
     description: "Clean removal of wrist tattoo with minimal sessions"
+  },
+  {
+    title: "Safe Tattoo Removal",
+    before: "/assets/Screenshot_2025-05-08_at_18.52.48.png",
+    sessions: "Ongoing",
+    description: "Safe and effective removal process"
+  },
+  {
+    title: "Laser Tattoo Removal",
+    before: "/assets/Screenshot_2025-05-08_at_18.53.30.png",
+    sessions: "Ongoing",
+    description: "Advanced laser treatment in progress"
+  },
+  {
+    title: "Complete Removal",
+    before: "/assets/Screenshot_2025-05-08_at_18.56.33.png",
+    sessions: "Completed",
+    description: "Successful complete removal of tattoo"
+  },
+  {
+    title: "Tattoo Removal Progress",
+    before: "/assets/Screenshot_2025-05-08_at_18.57.22.png",
+    sessions: "In Progress",
+    description: "Visible fading after treatment sessions"
+  },
+  {
+    title: "Effective Treatment",
+    before: "/assets/Screenshot_2025-05-08_at_18.58.04.png",
+    sessions: "Ongoing",
+    description: "High-quality laser removal results"
+  },
+  {
+    title: "Eyebrow Tattoo Removal",
+    before: "/assets/Inkless_eyebrow_tattoo_removal.jpg",
+    sessions: "Specialized",
+    description: "Delicate removal of eyebrow tattoos"
+  },
+  {
+    title: "Inkless Eyebrow Removal",
+    before: "/assets/Eyebrow_Tattoo_Removal_Inkless.jpeg",
+    sessions: "Specialized",
+    description: "Safe inkless removal technique for eyebrows"
+  },
+  {
+    title: "Arm Bat Tattoo Removal",
+    before: "/assets/Arm_Bat_Tattoo.jpg",
+    sessions: "In Progress",
+    description: "Removal of large arm tattoo"
   }
 ];
 
