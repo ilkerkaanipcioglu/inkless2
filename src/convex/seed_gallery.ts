@@ -6,8 +6,7 @@ export const seedGallery = internalMutation({
     // Check if gallery items already exist to avoid duplicates
     const existingGallery = await ctx.db.query("gallery").collect();
     if (existingGallery.length > 0) {
-      // Optional: Clear existing to re-seed or just return
-      // For now, let's clear and re-seed to ensure we have the latest
+      // Clear existing to re-seed with new images
       for (const item of existingGallery) {
         await ctx.db.delete(item._id);
       }
@@ -17,113 +16,129 @@ export const seedGallery = internalMutation({
       {
         title: "Full Back Tattoo Removal",
         description: "Complete removal of large back tattoo with excellent results",
-        beforeImageUrl: "/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg",
-        afterImageUrl: "/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg", // Using same for now as it's a collage
+        beforeImageUrl: "/assets/gallery_brown.jpg",
+        afterImageUrl: "/assets/gallery_brown.jpg",
         sessions: 6,
         category: "tattoo-removal"
       },
       {
         title: "Arm Tattoo Transformation",
         description: "Significant fading after just 4 treatment sessions",
-        beforeImageUrl: "/assets/Green_Gentle_Before_and_After_Instagram_Post.jpg",
-        afterImageUrl: "/assets/Green_Gentle_Before_and_After_Instagram_Post.jpg",
+        beforeImageUrl: "/assets/gallery_green.jpg",
+        afterImageUrl: "/assets/gallery_green.jpg",
         sessions: 4,
         category: "tattoo-removal"
       },
       {
         title: "Small Tattoo Removal",
         description: "Quick and effective removal of small tattoo",
-        beforeImageUrl: "/assets/Before_and_After_3b82c4e4-de7b-46a0-a795-ed19791107a3_480x480.jpg",
-        afterImageUrl: "/assets/Before_and_After_3b82c4e4-de7b-46a0-a795-ed19791107a3_480x480.jpg",
+        beforeImageUrl: "/assets/gallery_small.jpg",
+        afterImageUrl: "/assets/gallery_small.jpg",
         sessions: 3,
         category: "tattoo-removal"
       },
       {
         title: "Detailed Work Progress",
         description: "Progressive fading of detailed tattoo work",
-        beforeImageUrl: "/assets/9578BE17-D6D1-48F4-8525-F0AE08A82211_1_105_c_480x480.jpg",
-        afterImageUrl: "/assets/9578BE17-D6D1-48F4-8525-F0AE08A82211_1_105_c_480x480.jpg",
+        beforeImageUrl: "/assets/gallery_detailed.jpg",
+        afterImageUrl: "/assets/gallery_detailed.jpg",
         sessions: 5,
         category: "tattoo-removal"
       },
       {
         title: "Color Tattoo Removal",
         description: "Multi-color tattoo removal showing excellent progress",
-        beforeImageUrl: "/assets/B0A79D7D-80DC-43C6-AC34-23ACC6E164A7_1_105_c_480x480.jpg",
-        afterImageUrl: "/assets/B0A79D7D-80DC-43C6-AC34-23ACC6E164A7_1_105_c_480x480.jpg",
+        beforeImageUrl: "/assets/gallery_color.jpg",
+        afterImageUrl: "/assets/gallery_color.jpg",
         sessions: 7,
         category: "tattoo-removal"
       },
       {
         title: "Wrist Tattoo Removal",
         description: "Clean removal of wrist tattoo with minimal sessions",
-        beforeImageUrl: "/assets/AA99C17D-3B23-40B0-84E3-901869B56057_480x480.jpg",
-        afterImageUrl: "/assets/AA99C17D-3B23-40B0-84E3-901869B56057_480x480.jpg",
+        beforeImageUrl: "/assets/gallery_wrist.jpg",
+        afterImageUrl: "/assets/gallery_wrist.jpg",
         sessions: 3,
         category: "tattoo-removal"
       },
       {
-        title: "Safe Tattoo Removal",
-        description: "Safe and effective removal process",
-        beforeImageUrl: "/assets/Screenshot_2025-05-08_at_18.52.48.png",
-        afterImageUrl: "/assets/Screenshot_2025-05-08_at_18.52.48.png",
-        sessions: 2,
-        category: "tattoo-removal"
-      },
-      {
-        title: "Laser Tattoo Removal",
-        description: "Advanced laser treatment in progress",
-        beforeImageUrl: "/assets/Screenshot_2025-05-08_at_18.53.30.png",
-        afterImageUrl: "/assets/Screenshot_2025-05-08_at_18.53.30.png",
-        sessions: 3,
-        category: "tattoo-removal"
-      },
-      {
-        title: "Complete Removal",
-        description: "Successful complete removal of tattoo",
-        beforeImageUrl: "/assets/Screenshot_2025-05-08_at_18.56.33.png",
-        afterImageUrl: "/assets/Screenshot_2025-05-08_at_18.56.33.png",
-        sessions: 8,
-        category: "tattoo-removal"
-      },
-      {
-        title: "Tattoo Removal Progress",
-        description: "Visible fading after treatment sessions",
-        beforeImageUrl: "/assets/Screenshot_2025-05-08_at_18.57.22.png",
-        afterImageUrl: "/assets/Screenshot_2025-05-08_at_18.57.22.png",
+        title: "Neck Tattoo Removal",
+        description: "Effective removal of neck tattoo",
+        beforeImageUrl: "/assets/gallery_neck.jpg",
+        afterImageUrl: "/assets/gallery_neck.jpg",
         sessions: 4,
         category: "tattoo-removal"
       },
       {
-        title: "Effective Treatment",
+        title: "Chest Tattoo Removal",
+        description: "Safe and effective removal process on chest",
+        beforeImageUrl: "/assets/gallery_chest.png",
+        afterImageUrl: "/assets/gallery_chest.png",
+        sessions: 2,
+        category: "tattoo-removal"
+      },
+      {
+        title: "Arm Tattoo Removal",
+        description: "Advanced laser treatment in progress",
+        beforeImageUrl: "/assets/gallery_arm_1.png",
+        afterImageUrl: "/assets/gallery_arm_1.png",
+        sessions: 3,
+        category: "tattoo-removal"
+      },
+      {
+        title: "Back Tattoo Removal",
+        description: "Successful complete removal of back tattoo",
+        beforeImageUrl: "/assets/gallery_back_1.png",
+        afterImageUrl: "/assets/gallery_back_1.png",
+        sessions: 8,
+        category: "tattoo-removal"
+      },
+      {
+        title: "Leg Tattoo Removal",
+        description: "Visible fading after treatment sessions",
+        beforeImageUrl: "/assets/gallery_leg_1.png",
+        afterImageUrl: "/assets/gallery_leg_1.png",
+        sessions: 4,
+        category: "tattoo-removal"
+      },
+      {
+        title: "Shoulder Tattoo Removal",
         description: "High-quality laser removal results",
-        beforeImageUrl: "/assets/Screenshot_2025-05-08_at_18.58.04.png",
-        afterImageUrl: "/assets/Screenshot_2025-05-08_at_18.58.04.png",
+        beforeImageUrl: "/assets/gallery_shoulder.png",
+        afterImageUrl: "/assets/gallery_shoulder.png",
         sessions: 5,
         category: "tattoo-removal"
       },
       {
-        title: "Eyebrow Tattoo Removal",
-        description: "Delicate removal of eyebrow tattoos",
-        beforeImageUrl: "/assets/Inkless_eyebrow_tattoo_removal.jpg",
-        afterImageUrl: "/assets/Inkless_eyebrow_tattoo_removal.jpg",
-        sessions: 2,
-        category: "specialized"
+        title: "Hand Tattoo Removal",
+        description: "Delicate removal of hand tattoos",
+        beforeImageUrl: "/assets/gallery_hand.png",
+        afterImageUrl: "/assets/gallery_hand.png",
+        sessions: 3,
+        category: "tattoo-removal"
       },
       {
-        title: "Inkless Eyebrow Removal",
-        description: "Safe inkless removal technique for eyebrows",
-        beforeImageUrl: "/assets/Eyebrow_Tattoo_Removal_Inkless.jpeg",
-        afterImageUrl: "/assets/Eyebrow_Tattoo_Removal_Inkless.jpeg",
+        title: "Finger Tattoo Removal",
+        description: "Precise removal of finger tattoos",
+        beforeImageUrl: "/assets/gallery_finger.png",
+        afterImageUrl: "/assets/gallery_finger.png",
         sessions: 2,
-        category: "specialized"
+        category: "tattoo-removal"
       },
       {
-        title: "Arm Bat Tattoo Removal",
-        description: "Removal of large arm tattoo",
-        beforeImageUrl: "/assets/Arm_Bat_Tattoo.jpg",
-        afterImageUrl: "/assets/Arm_Bat_Tattoo.jpg",
-        sessions: 6,
+        title: "Foot Tattoo Removal",
+        description: "Effective removal of foot tattoos",
+        beforeImageUrl: "/assets/gallery_foot.png",
+        afterImageUrl: "/assets/gallery_foot.png",
+        sessions: 4,
+        category: "tattoo-removal"
+      },
+      {
+        title: "Faded Tattoo",
+        description: "Significant fading of old tattoo",
+        beforeImageUrl: "/assets/gallery_faded.jpg",
+        afterImageUrl: "/assets/gallery_faded.jpg",
+        sessions: 5,
         category: "tattoo-removal"
       }
     ];
