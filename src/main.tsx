@@ -10,6 +10,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 import "./types/global.d.ts";
+import { CanonicalUrl } from "@/components/CanonicalUrl";
 import Home from "./pages/Home.tsx";
 import Packages from "./pages/Packages.tsx";
 import About from "./pages/About.tsx";
@@ -54,6 +55,7 @@ createRoot(document.getElementById("root")!).render(
     <InstrumentationProvider>
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
+          <CanonicalUrl />
           <RouteSyncer />
           <Routes>
             <Route path="/" element={<Home />} />
