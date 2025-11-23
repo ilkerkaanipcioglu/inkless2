@@ -15,6 +15,7 @@ import type * as bookingHistory from "../bookingHistory.js";
 import type * as contacts from "../contacts.js";
 import type * as faqs from "../faqs.js";
 import type * as fix_blog_post from "../fix_blog_post.js";
+import type * as fix_data from "../fix_data.js";
 import type * as gallery from "../gallery.js";
 import type * as http from "../http.js";
 import type * as packages from "../packages.js";
@@ -40,6 +41,7 @@ declare const fullApi: ApiFromModules<{
   contacts: typeof contacts;
   faqs: typeof faqs;
   fix_blog_post: typeof fix_blog_post;
+  fix_data: typeof fix_data;
   gallery: typeof gallery;
   http: typeof http;
   packages: typeof packages;
