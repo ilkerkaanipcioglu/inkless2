@@ -1,1 +1,1 @@
-npx convex run cleanup_gallery:removeEmptyGalleryItems
+npm install jimp
