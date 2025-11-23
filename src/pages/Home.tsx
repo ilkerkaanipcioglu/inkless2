@@ -326,7 +326,7 @@ export default function Home() {
             className="max-w-3xl mx-auto mb-8"
           >
             <img
-              src="https://harmless-tapir-303.convex.cloud/api/storage/08647076-bb2b-45e1-a230-3adf8c90a821"
+              src="/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg"
               alt="Before and After 3 Sessions"
               className="w-full rounded-lg shadow-lg"
             />
