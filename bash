@@ -1,1 +1,1 @@
-npx convex run fix_duplicates:fixDuplicates
+npx convex run cleanup_gallery:removeEmptyGalleryItems

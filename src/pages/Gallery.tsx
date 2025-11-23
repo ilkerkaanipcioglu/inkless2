@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "convex/react";
 import { GalleryCard } from "@/components/gallery/GalleryCard";
 import { BeforeAfterCard } from "@/components/gallery/BeforeAfterCard";
-import { beforeAfterPhotos, processPhotos, testimonials } from "@/data/galleryData";
+import { processPhotos, testimonials } from "@/data/galleryData";
 
 export default function Gallery() {
   const gallery = useQuery(api.gallery.list);
@@ -46,28 +46,32 @@ export default function Gallery() {
               </TabsList>
 
               <TabsContent value="transformations" className="space-y-8">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {beforeAfterPhotos.map((item, index) => (
-                    <GalleryCard
-                      key={index}
-                      title={item.title}
-                      description={item.description}
-                      image={item.before}
-                      badge={item.sessions}
-                      index={index}
-                      altText={`${item.title} - Before and after tattoo removal showing ${item.sessions} of treatment`}
-                    />
-                  ))}
-                </div>
-
-                {gallery && gallery.length > 0 && (
-                  <>
-                    <div className="text-center my-12">
-                      <h2 className="text-3xl font-bold mb-4">More Client Results</h2>
-                      <p className="text-muted-foreground">Additional transformations from our database</p>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-8">
-                      {gallery.map((item, index) => (
+                {gallery === undefined ? (
+                  <div className="text-center py-12">Loading gallery...</div>
+                ) : gallery.length === 0 ? (
+                  <div className="text-center py-12 text-muted-foreground">No gallery items found.</div>
+                ) : (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {gallery.map((item, index) => {
+                      // If before and after images are the same, it's likely a collage or single image
+                      // So we use the GalleryCard instead of BeforeAfterCard
+                      const isSingleImage = item.beforeImageUrl === item.afterImageUrl;
+                      
+                      if (isSingleImage) {
+                        return (
+                          <GalleryCard
+                            key={item._id}
+                            title={item.title}
+                            description={item.description}
+                            image={item.beforeImageUrl}
+                            badge={`${item.sessions} ${item.sessions === 1 ? "Session" : "Sessions"}`}
+                            index={index}
+                            altText={`${item.title} - ${item.description}`}
+                          />
+                        );
+                      }
+                      
+                      return (
                         <BeforeAfterCard
                           key={item._id}
                           title={item.title}
@@ -78,9 +82,9 @@ export default function Gallery() {
                           category={item.category}
                           index={index}
                         />
-                      ))}
-                    </div>
-                  </>
+                      );
+                    })}
+                  </div>
                 )}
               </TabsContent>
 
