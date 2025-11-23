@@ -60,6 +60,7 @@ export default function Blog() {
                             src={post.imageUrl}
                             alt={post.title}
                             loading="lazy"
+                            decoding="async"
                             className="w-full h-48 object-cover rounded-t-lg"
                           />
                         )}

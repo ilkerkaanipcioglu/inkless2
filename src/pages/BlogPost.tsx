@@ -87,6 +87,8 @@ export default function BlogPost() {
               <img
                 src={post.imageUrl}
                 alt={post.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-[800px] object-contain mx-auto"
               />
             </div>
@@ -97,7 +99,12 @@ export default function BlogPost() {
               components={{
                 img: ({node, ...props}: any) => (
                   <div className="my-8">
-                    <img {...props} className="rounded-xl shadow-md w-full" />
+                    <img 
+                      {...props} 
+                      loading="lazy"
+                      decoding="async"
+                      className="rounded-xl shadow-md w-full" 
+                    />
                   </div>
                 ),
               }}
