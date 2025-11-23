@@ -15,7 +15,6 @@ import { useState, useMemo } from "react";
 export default function Packages() {
   const packages = useQuery(api.packages.list);
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
-  const [availabilityFilter, setAvailabilityFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredPackages = useMemo(() => {
@@ -26,14 +25,12 @@ export default function Packages() {
         pkg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         pkg.description.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = categoryFilter === "all" || pkg.category === categoryFilter;
-      const matchesAvailability = 
-        availabilityFilter === "all" || 
-        (availabilityFilter === "available" && pkg.isAvailable) ||
-        (availabilityFilter === "coming-soon" && !pkg.isAvailable);
+      // Only show available packages
+      const matchesAvailability = pkg.isAvailable;
       
       return matchesSearch && matchesCategory && matchesAvailability;
     });
-  }, [packages, searchQuery, categoryFilter, availabilityFilter]);
+  }, [packages, searchQuery, categoryFilter]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -114,25 +111,13 @@ export default function Packages() {
                   </SelectContent>
                 </Select>
 
-                <Select value={availabilityFilter} onValueChange={setAvailabilityFilter}>
-                  <SelectTrigger className="h-9 w-full sm:w-40 text-sm">
-                    <SelectValue placeholder="Availability" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Packages</SelectItem>
-                    <SelectItem value="available">Available</SelectItem>
-                    <SelectItem value="coming-soon">Coming Soon</SelectItem>
-                  </SelectContent>
-                </Select>
-
-                {(searchQuery !== "" || categoryFilter !== "all" || availabilityFilter !== "all") && (
+                {(searchQuery !== "" || categoryFilter !== "all") && (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => {
                       setSearchQuery("");
                       setCategoryFilter("all");
-                      setAvailabilityFilter("all");
                     }}
                     className="h-9 text-sm"
                   >
@@ -154,7 +139,6 @@ export default function Packages() {
                     <Button
                       onClick={() => {
                         setCategoryFilter("all");
-                        setAvailabilityFilter("all");
                       }}
                     >
                       Clear Filters
@@ -188,9 +172,6 @@ export default function Packages() {
                             </div>
                             {isPopular && (
                               <Badge className="bg-primary text-primary-foreground font-semibold">✨ POPULAR</Badge>
-                            )}
-                            {!pkg.isAvailable && (
-                              <Badge variant="secondary">Coming Soon</Badge>
                             )}
                           </div>
                           <CardDescription>
@@ -229,29 +210,21 @@ export default function Packages() {
                         </CardContent>
 
                         <CardFooter className="flex gap-3 pt-6">
-                          {pkg.isAvailable ? (
-                            <>
-                              <Button 
-                                asChild 
-                                variant={isPopular ? "secondary" : "outline"} 
-                                className="flex-1"
-                              >
-                                <Link to={`/packages/${pkg._id}`} className="flex items-center justify-center gap-2">
-                                  Details <ArrowRight className="h-4 w-4" />
-                                </Link>
-                              </Button>
-                              <Button 
-                                asChild 
-                                className="flex-1"
-                              >
-                                <Link to={`/packages/${pkg._id}`}>Book Now</Link>
-                              </Button>
-                            </>
-                          ) : (
-                            <Button asChild variant="outline" className="w-full">
-                              <Link to="/about#contact">Enquire</Link>
-                            </Button>
-                          )}
+                          <Button 
+                            asChild 
+                            variant={isPopular ? "secondary" : "outline"} 
+                            className="flex-1"
+                          >
+                            <Link to={`/packages/${pkg._id}`} className="flex items-center justify-center gap-2">
+                              Details <ArrowRight className="h-4 w-4" />
+                            </Link>
+                          </Button>
+                          <Button 
+                            asChild 
+                            className="flex-1"
+                          >
+                            <Link to={`/packages/${pkg._id}`}>Book Now</Link>
+                          </Button>
                         </CardFooter>
                       </Card>
                     </motion.div>

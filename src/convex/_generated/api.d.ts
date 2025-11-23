@@ -12,6 +12,7 @@ import type * as auth from "../auth.js";
 import type * as auth_emailOtp from "../auth/emailOtp.js";
 import type * as blog from "../blog.js";
 import type * as bookingHistory from "../bookingHistory.js";
+import type * as cleanup_packages from "../cleanup_packages.js";
 import type * as contacts from "../contacts.js";
 import type * as faqs from "../faqs.js";
 import type * as fix_blog_post from "../fix_blog_post.js";
@@ -39,6 +40,7 @@ declare const fullApi: ApiFromModules<{
   "auth/emailOtp": typeof auth_emailOtp;
   blog: typeof blog;
   bookingHistory: typeof bookingHistory;
+  cleanup_packages: typeof cleanup_packages;
   contacts: typeof contacts;
   faqs: typeof faqs;
   fix_blog_post: typeof fix_blog_post;
