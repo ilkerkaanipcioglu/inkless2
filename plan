@@ -1,0 +1,2 @@
+1.  Explain to the user that they need to redeploy their application on Dokploy for these changes to take effect.
+2.  The `Dockerfile` will build the React app and the `nginx.conf` will ensure that routes like `/admin` are correctly redirected to `index.html` so the app can handle them.
