@@ -363,7 +363,7 @@ export default function Home() {
               Let's plan your journey to clear, ink-free skin.
             </p>
             <Button asChild size="lg" variant="secondary" className="text-lg">
-              <Link to="/packages">
+              <Link to="/book?package=consultation-only">
                 Get Your Free Consultation Today <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

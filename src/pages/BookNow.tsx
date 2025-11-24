@@ -18,13 +18,15 @@ import { toast } from "sonner";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import BookingCalendar from "@/components/BookingCalendar";
+import { useSearchParams } from "react-router";
 
 export default function BookNow() {
   const packages = useQuery(api.packages.list);
   const createBooking = useMutation(api.timeSlots.createBooking);
+  const [searchParams] = useSearchParams();
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState<string>("");
+  const [selectedPackage, setSelectedPackage] = useState<string>(searchParams.get("package") || "");
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [formData, setFormData] = useState({
