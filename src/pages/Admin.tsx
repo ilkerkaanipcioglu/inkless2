@@ -33,9 +33,13 @@ export default function Admin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!authLoading && (!user || user.role !== "admin")) {
-      toast.error("Unauthorized access");
-      navigate("/");
+    if (!authLoading) {
+      if (!user) {
+        navigate("/auth?redirect=/admin");
+      } else if (user.role !== "admin") {
+        toast.error("Unauthorized access");
+        navigate("/");
+      }
     }
   }, [user, authLoading, navigate]);
 
