@@ -1,1 +1,1 @@
-npm install jimp
+pnpm add @tiptap/react @tiptap/starter-kit @tiptap/extension-image @tiptap/extension-link @tiptap/extension-youtube @tiptap/extension-underline @tiptap/extension-text-align dompurify @types/dompurify

@@ -6,9 +6,9 @@ import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { Link, useParams } from "react-router";
-import ReactMarkdown from "react-markdown";
 import { Skeleton } from "@/components/ui/skeleton";
 import { LazyImage } from "@/components/LazyImage";
+import DOMPurify from "dompurify";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -94,23 +94,10 @@ export default function BlogPost() {
             </div>
           )}
 
-          <div className="prose prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-headings:font-bold prose-a:text-primary">
-            <ReactMarkdown
-              components={{
-                img: ({node, ...props}: any) => (
-                  <div className="my-8">
-                    <LazyImage 
-                      {...props} 
-                      containerClassName="rounded-xl shadow-md w-full min-h-[200px]"
-                      className="w-full h-auto" 
-                    />
-                  </div>
-                ),
-              }}
-            >
-              {post.content}
-            </ReactMarkdown>
-          </div>
+          <div 
+            className="prose prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-headings:font-bold prose-a:text-primary"
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+          />
         </article>
         
         <section className="bg-muted/30 py-16 mt-12">

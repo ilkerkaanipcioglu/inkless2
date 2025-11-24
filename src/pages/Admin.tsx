@@ -26,6 +26,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { LazyImage } from "@/components/LazyImage";
+import TiptapEditor from "@/components/TiptapEditor";
 
 export default function Admin() {
   const { user, isLoading: authLoading } = useAuth();
@@ -454,6 +455,29 @@ function GalleryTab() {
 
 function BlogTab() {
   const posts = useQuery(api.blog.list);
+  const createPost = useMutation(api.blog.create);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [content, setContent] = useState("");
+
+  const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    try {
+      await createPost({
+        title: formData.get("title") as string,
+        slug: formData.get("slug") as string,
+        excerpt: formData.get("excerpt") as string,
+        content: content, // Use the content from Tiptap
+        imageUrl: formData.get("imageUrl") as string,
+        published: true,
+      });
+      toast.success("Blog post created");
+      setIsCreateOpen(false);
+      setContent(""); // Reset content
+    } catch (error) {
+      toast.error("Failed to create blog post");
+    }
+  };
   
   if (!posts) return <div>Loading posts...</div>;
 
@@ -461,7 +485,47 @@ function BlogTab() {
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-medium">Blog Posts</h3>
-        <Button disabled><Plus className="mr-2 h-4 w-4" /> New Post (Coming Soon)</Button>
+        <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
+          <DialogTrigger asChild>
+            <Button><Plus className="mr-2 h-4 w-4" /> New Post</Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Create New Blog Post</DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleCreate} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="title">Title</Label>
+                  <Input id="title" name="title" required placeholder="Post Title" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="slug">Slug</Label>
+                  <Input id="slug" name="slug" required placeholder="post-url-slug" />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="excerpt">Excerpt</Label>
+                <Input id="excerpt" name="excerpt" required placeholder="Short description for the card" />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="imageUrl">Cover Image URL</Label>
+                <Input id="imageUrl" name="imageUrl" placeholder="https://..." />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Content</Label>
+                <TiptapEditor content={content} onChange={setContent} />
+              </div>
+
+              <DialogFooter>
+                <Button type="submit">Publish Post</Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
       
       <div className="space-y-4">
@@ -472,8 +536,13 @@ function BlogTab() {
             <Card key={post._id}>
               <CardHeader>
                 <CardTitle>{post.title}</CardTitle>
-                <CardDescription>{new Date(post._creationTime).toLocaleDateString()}</CardDescription>
+                <CardDescription>
+                  {new Date(post._creationTime).toLocaleDateString()} • {post.slug}
+                </CardDescription>
               </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+              </CardContent>
             </Card>
           ))
         )}
