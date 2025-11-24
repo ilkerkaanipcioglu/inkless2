@@ -16,6 +16,7 @@ import type * as cleanup_gallery from "../cleanup_gallery.js";
 import type * as cleanup_packages from "../cleanup_packages.js";
 import type * as contacts from "../contacts.js";
 import type * as faqs from "../faqs.js";
+import type * as fix_admin from "../fix_admin.js";
 import type * as fix_blog_post from "../fix_blog_post.js";
 import type * as fix_data from "../fix_data.js";
 import type * as fix_duplicates from "../fix_duplicates.js";
@@ -48,6 +49,7 @@ declare const fullApi: ApiFromModules<{
   cleanup_packages: typeof cleanup_packages;
   contacts: typeof contacts;
   faqs: typeof faqs;
+  fix_admin: typeof fix_admin;
   fix_blog_post: typeof fix_blog_post;
   fix_data: typeof fix_data;
   fix_duplicates: typeof fix_duplicates;
