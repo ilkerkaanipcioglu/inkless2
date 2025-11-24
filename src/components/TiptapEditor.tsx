@@ -20,9 +20,14 @@ import {
   AlignLeft,
   AlignCenter,
   AlignRight,
-  Underline as UnderlineIcon
+  Underline as UnderlineIcon,
+  Upload
 } from 'lucide-react';
 import { Toggle } from './ui/toggle';
+import { useRef } from 'react';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { toast } from 'sonner';
 
 interface TiptapEditorProps {
   content: string;
@@ -30,6 +35,9 @@ interface TiptapEditorProps {
 }
 
 export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const generateUploadUrl = useMutation(api.storage.generateUploadUrl);
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -61,6 +69,40 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
     const url = window.prompt('URL');
     if (url) {
       editor.chain().focus().setImage({ src: url }).run();
+    }
+  };
+
+  const triggerUpload = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const postUrl = await generateUploadUrl();
+      const result = await fetch(postUrl, {
+        method: "POST",
+        headers: { "Content-Type": file.type },
+        body: file,
+      });
+
+      if (!result.ok) throw new Error("Upload failed");
+
+      const { storageId } = await result.json();
+      
+      const convexUrl = import.meta.env.VITE_CONVEX_URL as string;
+      const baseUrl = convexUrl.replace("wss://", "https://").replace("ws://", "http://");
+      const imageUrl = `${baseUrl}/api/storage/${storageId}`;
+
+      editor.chain().focus().setImage({ src: imageUrl }).run();
+      
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      toast.success("Image uploaded successfully");
+    } catch (error) {
+      console.error("Failed to upload image:", error);
+      toast.error("Failed to upload image");
     }
   };
 
@@ -199,9 +241,19 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
         <Button type="button" size="sm" variant="ghost" onClick={setLink} className={editor.isActive('link') ? 'bg-accent' : ''}>
           <LinkIcon className="h-4 w-4" />
         </Button>
-        <Button type="button" size="sm" variant="ghost" onClick={addImage}>
+        <Button type="button" size="sm" variant="ghost" onClick={addImage} title="Add Image from URL">
           <ImageIcon className="h-4 w-4" />
         </Button>
+        <Button type="button" size="sm" variant="ghost" onClick={triggerUpload} title="Upload Image">
+          <Upload className="h-4 w-4" />
+        </Button>
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="hidden"
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
         
         <div className="w-px h-6 bg-border mx-1 self-center" />
 

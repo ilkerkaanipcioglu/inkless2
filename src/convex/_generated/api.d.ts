@@ -27,6 +27,7 @@ import type * as seed from "../seed.js";
 import type * as seed_blog from "../seed_blog.js";
 import type * as seed_gallery from "../seed_gallery.js";
 import type * as sendEmails from "../sendEmails.js";
+import type * as storage from "../storage.js";
 import type * as timeSlots from "../timeSlots.js";
 import type * as update_packages_v2 from "../update_packages_v2.js";
 import type * as update_prices from "../update_prices.js";
@@ -58,6 +59,7 @@ declare const fullApi: ApiFromModules<{
   seed_blog: typeof seed_blog;
   seed_gallery: typeof seed_gallery;
   sendEmails: typeof sendEmails;
+  storage: typeof storage;
   timeSlots: typeof timeSlots;
   update_packages_v2: typeof update_packages_v2;
   update_prices: typeof update_prices;
