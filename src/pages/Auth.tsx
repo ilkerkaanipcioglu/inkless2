@@ -108,14 +108,22 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
             <>
               <CardHeader className="text-center">
               <div className="flex justify-center">
-                    <img
-                      src="./logo.svg"
-                      alt="Inkless Is More Logo"
-                      width={64}
-                      height={64}
-                      className="rounded-lg mb-4 mt-4 cursor-pointer"
-                      onClick={() => navigate("/")}
-                    />
+                    <div className="mb-4 mt-4 cursor-pointer" onClick={() => navigate("/")}>
+                      <img
+                        src="https://harmless-tapir-303.convex.cloud/api/storage/b4a1990e-1875-48ea-8922-9a5b34202220"
+                        alt="Inkless Is More Logo"
+                        width={64}
+                        height={64}
+                        className="rounded-lg dark:hidden"
+                      />
+                      <img
+                        src="https://harmless-tapir-303.convex.cloud/api/storage/b9bbb6cf-b996-4939-b8fd-c60c94a19033"
+                        alt="Inkless Is More Logo"
+                        width={64}
+                        height={64}
+                        className="rounded-lg hidden dark:block"
+                      />
+                    </div>
                   </div>
                 <CardTitle className="text-xl">Get Started</CardTitle>
                 <CardDescription>
