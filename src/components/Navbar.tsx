@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="https://harmless-tapir-303.convex.cloud/api/storage/b4a1990e-1875-48ea-8922-9a5b34202220" 
+              src="/logo.png" 
               alt="Inkless Is More" 
               width={80}
               height={80}

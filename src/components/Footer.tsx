@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center space-x-2 mb-4">
               <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/b4a1990e-1875-48ea-8922-9a5b34202220" 
+                src="/logo.png" 
                 alt="Inkless Is More" 
                 width={64}
                 height={64}
