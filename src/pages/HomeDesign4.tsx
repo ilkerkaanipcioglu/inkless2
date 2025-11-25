@@ -45,7 +45,12 @@ export default function HomeDesign4() {
               <img 
                 src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644" 
                 alt="Inkless Is More" 
-                className="h-24 w-auto object-contain"
+                className="h-24 w-auto object-contain dark:hidden"
+              />
+              <img 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/ba49a31b-21d8-4178-9c33-6a76d199fbb6" 
+                alt="Inkless Is More" 
+                className="h-24 w-auto object-contain hidden dark:block"
               />
             </div>
             <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground dark:text-white">

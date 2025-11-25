@@ -27,7 +27,7 @@ export default function Footer() {
                 className="h-16 w-16 object-contain dark:hidden transition-all duration-300" 
               />
               <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/ba49a31b-21d8-4178-9c33-6a76d199fbb6" 
                 alt="Inkless Is More" 
                 width={64}
                 height={64}
