@@ -26,10 +26,7 @@ export default function HomeDesign3() {
                 #1 Laser Tattoo Removal in Nairobi
               </Badge>
               <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-neutral-900 dark:text-white mb-6 leading-[1.1]">
-                Rewrite Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-pink-600">
-                  Skin's Story.
-                </span>
+                Just Undo It.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed font-light">
                 Advanced Picosecond technology for safe, effective, and scar-free tattoo removal. Transform your skin with precision and care.

@@ -12,7 +12,7 @@ export default function HomeLegacy() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full bg-black overflow-hidden">
+      <section className="relative h-[85vh] w-full bg-white dark:bg-black overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -21,7 +21,7 @@ export default function HomeLegacy() {
             className="w-full h-full object-cover object-center opacity-90"
           />
           {/* Gradient Overlay for text readability if needed, though the image is dark */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-white/30 dark:from-black/80 dark:via-transparent dark:to-black/30" />
         </div>
 
         {/* Hero Content */}
@@ -30,22 +30,22 @@ export default function HomeLegacy() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl text-white"
+            className="max-w-2xl text-black dark:text-white"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 hidden">
-              JUST UNDO IT.
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+              Just Undo It.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 font-light max-w-lg">
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-light max-w-lg">
               Nairobi's Premier Laser Tattoo Removal. <br/>
               Safe. Precise. Scar-free.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="text-lg px-8 h-14 bg-white text-black hover:bg-gray-200 border-none rounded-full">
+              <Button asChild size="lg" className="text-lg px-8 h-14 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 border-none rounded-full">
                 <Link to="/book?package=consultation-only">
                   Book Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-14 border-white text-white hover:bg-white/10 rounded-full bg-transparent">
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent">
                 <Link to="/packages">
                   View Packages
                 </Link>
