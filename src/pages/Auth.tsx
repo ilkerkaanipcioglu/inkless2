@@ -50,11 +50,17 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
       setIsLoading(false);
     } catch (error) {
       console.error("Email sign-in error:", error);
-      setError(
-        error instanceof Error
-          ? error.message
-          : "Failed to send verification code. Please try again.",
-      );
+      let errorMessage = "Failed to send verification code. Please try again.";
+      
+      if (error instanceof Error) {
+        if (error.message.includes("Failed to fetch") || error.message.includes("Network request failed")) {
+          errorMessage = "Network error: Unable to connect to the server. Please check your internet connection.";
+        } else {
+          errorMessage = error.message;
+        }
+      }
+
+      setError(errorMessage);
       setIsLoading(false);
     }
   };
@@ -73,7 +79,13 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
     } catch (error) {
       console.error("OTP verification error:", error);
 
-      setError("The verification code you entered is incorrect.");
+      let errorMessage = "The verification code you entered is incorrect.";
+      
+      if (error instanceof Error && (error.message.includes("Failed to fetch") || error.message.includes("Network request failed"))) {
+        errorMessage = "Network error: Unable to connect to the server. Please check your internet connection.";
+      }
+
+      setError(errorMessage);
       setIsLoading(false);
 
       setOtp("");
@@ -91,7 +103,14 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
     } catch (error) {
       console.error("Guest login error:", error);
       console.error("Error details:", JSON.stringify(error, null, 2));
-      setError(`Failed to sign in as guest: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      
+      let errorMessage = `Failed to sign in as guest: ${error instanceof Error ? error.message : 'Unknown error'}`;
+      
+      if (error instanceof Error && (error.message.includes("Failed to fetch") || error.message.includes("Network request failed"))) {
+        errorMessage = "Network error: Unable to connect to the server. Please check your internet connection.";
+      }
+
+      setError(errorMessage);
       setIsLoading(false);
     }
   };

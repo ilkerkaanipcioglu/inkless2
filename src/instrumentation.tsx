@@ -61,6 +61,8 @@ function ErrorDialog({
   error: GenericError;
   setError: (error: GenericError | null) => void;
 }) {
+  const isNetworkError = error.error.includes("Failed to fetch") || error.error.includes("NetworkError") || error.error.includes("Network request failed");
+
   return (
     <Dialog
       defaultOpen={true}
@@ -70,10 +72,20 @@ function ErrorDialog({
     >
       <DialogContent className="bg-red-700 text-white max-w-4xl">
         <DialogHeader>
-          <DialogTitle>Runtime Error</DialogTitle>
+          <DialogTitle>{isNetworkError ? "Connection Error" : "Runtime Error"}</DialogTitle>
         </DialogHeader>
-        A runtime error occurred. Open the vly editor to automatically debug the
-        error.
+        {isNetworkError ? (
+          <div className="space-y-2">
+            <p className="font-medium">Unable to connect to the server.</p>
+            <p>Please check your internet connection. If the problem persists, the server might be temporarily unavailable.</p>
+            <p className="text-sm opacity-80 mt-2">Technical details: {error.error}</p>
+          </div>
+        ) : (
+          <>
+            A runtime error occurred. Open the vly editor to automatically debug the
+            error.
+          </>
+        )}
         <div className="mt-4">
           <Collapsible>
             <CollapsibleTrigger>

@@ -88,7 +88,9 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
         body: file,
       });
 
-      if (!result.ok) throw new Error("Upload failed");
+      if (!result.ok) {
+        throw new Error(`Upload failed: Server responded with ${result.status} ${result.statusText}`);
+      }
 
       const { storageId } = await result.json();
       
