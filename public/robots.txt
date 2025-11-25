@@ -1,0 +1,24 @@
+# Inkless Is More - robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /auth
+Disallow: /api/
+Crawl-delay: 1
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+# Sitemap location
+Sitemap: https://www.inklessismore.ke/sitemap.xml
