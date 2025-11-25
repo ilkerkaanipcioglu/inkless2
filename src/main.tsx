@@ -14,6 +14,7 @@ import { CanonicalUrl } from "@/components/CanonicalUrl";
 import Home from "./pages/Home.tsx";
 import HomeLegacy from "./pages/HomeLegacy.tsx";
 import HomeDesign3 from "./pages/HomeDesign3.tsx";
+import HomeDesign4 from "./pages/HomeDesign4.tsx";
 import Packages from "./pages/Packages.tsx";
 import About from "./pages/About.tsx";
 import Gallery from "./pages/Gallery.tsx";
@@ -69,6 +70,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/landing" element={<Home />} />
             <Route path="/home-legacy" element={<HomeLegacy />} />
             <Route path="/home-design-3" element={<HomeDesign3 />} />
+            <Route path="/home-design-4" element={<HomeDesign4 />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:id" element={<PackageDetail />} />
             <Route path="/book" element={<BookNow />} />
