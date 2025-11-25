@@ -43,10 +43,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 uppercase">
+            <h1 className="sr-only">
               Just Undo It.
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 font-light max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-200 mb-8 font-light max-w-2xl mx-auto mt-[40vh] md:mt-0">
               Safe, scar-free laser tattoo removal in Nairobi.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
