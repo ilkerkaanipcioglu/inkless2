@@ -26,6 +26,7 @@ import PackageDetail from "./pages/PackageDetail.tsx";
 import BookNow from "./pages/BookNow.tsx";
 import BookingHistory from "./pages/BookingHistory.tsx";
 import Admin from "./pages/Admin.tsx";
+import Contact from "./pages/Contact.tsx";
 
 const convexUrl = import.meta.env.VITE_CONVEX_URL as string;
 if (!convexUrl) {
@@ -76,6 +77,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/book" element={<BookNow />} />
             <Route path="/bookings" element={<BookingHistory />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/training" element={<Training />} />
             <Route path="/blog" element={<Blog />} />

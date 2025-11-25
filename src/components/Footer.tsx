@@ -76,7 +76,14 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Two Rivers Mall, 1st Floor, Nairobi, Kenya</span>
+                <a 
+                  href="https://maps.app.goo.gl/bSozKVB9tNeVrYnr6" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Two Rivers Mall, 1st Floor, Nairobi, Kenya
+                </a>
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 flex-shrink-0" />
