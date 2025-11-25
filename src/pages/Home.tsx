@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils";
 
 export default function Home() {
   const [heroLoaded, setHeroLoaded] = useState(false);
-  const [featureLoaded, setFeatureLoaded] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -68,45 +67,26 @@ export default function Home() {
       {/* Simplified Features / About - Reduced Padding */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.div
-               initial={{ opacity: 0, x: -20 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl max-h-[500px]"
-            >
-              {!featureLoaded && (
-                <Skeleton className="absolute inset-0 w-full h-full" />
-              )}
-              <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/0671de72-a8a6-4ecf-ad85-ab15da925141" 
-                alt="Laser Treatment" 
-                onLoad={() => setFeatureLoaded(true)}
-                className={cn(
-                  "w-full h-full object-cover transition-opacity duration-700",
-                  featureLoaded ? "opacity-100" : "opacity-0"
-                )}
-              />
-            </motion.div>
-            <motion.div
-               initial={{ opacity: 0, x: 20 }}
-               whileInView={{ opacity: 1, x: 0 }}
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold mb-4">Inkless Is More</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-8">
                 We believe that your skin is your best accessory. Our advanced Picosecond laser technology safely shatters ink particles, allowing your body to naturally eliminate them.
               </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
+              <ul className="flex flex-wrap justify-center gap-6 mb-8">
+                <li className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-primary" />
                   <span className="font-medium">Minimal discomfort & downtime</span>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-primary" />
                   <span className="font-medium">Effective on all ink colors</span>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-primary" />
                   <span className="font-medium">Safe for all skin types</span>
                 </li>
