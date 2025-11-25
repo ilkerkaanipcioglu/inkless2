@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center space-x-2 mb-4">
               <img 
-                src="/logo.png" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644" 
                 alt="Inkless Is More" 
                 width={64}
                 height={64}
@@ -27,12 +27,12 @@ export default function Footer() {
                 className="h-16 w-16 object-contain dark:hidden transition-all duration-300" 
               />
               <img 
-                src="/logo.png" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644" 
                 alt="Inkless Is More" 
                 width={64}
                 height={64}
                 loading="lazy"
-                className="h-16 w-16 object-contain hidden dark:block transition-all duration-300 invert" 
+                className="h-16 w-16 object-contain hidden dark:block transition-all duration-300" 
               />
               <span className="font-bold text-lg">Inkless Is More</span>
             </Link>

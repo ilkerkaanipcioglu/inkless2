@@ -19,18 +19,18 @@ export default function Landing() {
         <div className="flex justify-center">
           <div className="mb-8 mt-24">
             <img
-              src="/logo.png"
+              src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644"
               alt="Inkless Is More Logo"
               width={64}
               height={64}
               className="rounded-lg dark:hidden"
             />
             <img
-              src="/logo.png"
+              src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644"
               alt="Inkless Is More Logo"
               width={64}
               height={64}
-              className="rounded-lg hidden dark:block invert"
+              className="rounded-lg hidden dark:block"
             />
           </div>
         </div>
