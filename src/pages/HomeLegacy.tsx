@@ -25,27 +25,27 @@ export default function HomeLegacy() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-end pb-24 md:pb-32">
+        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center md:justify-end pb-12 md:pb-32 pt-16 md:pt-0">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl text-foreground dark:text-white"
+            className="max-w-2xl text-foreground dark:text-white mx-auto md:mx-0 text-center md:text-left"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6">
               Just Undo It.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground dark:text-gray-200 mb-8 font-light max-w-lg">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground dark:text-gray-200 mb-8 font-light max-w-lg mx-auto md:mx-0">
               Nairobi's Premier Laser Tattoo Removal. <br/>
               Safe. Precise. Scar-free.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="text-lg px-8 h-14 bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 border-none rounded-full">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <Button asChild size="lg" className="text-lg px-8 h-14 bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 border-none rounded-full w-full sm:w-auto">
                 <Link to="/book?package=consultation-only">
                   Book Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-14 border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent">
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-14 border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent w-full sm:w-auto">
                 <Link to="/packages">
                   View Packages
                 </Link>

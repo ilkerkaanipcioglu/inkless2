@@ -22,40 +22,40 @@ export default function HomeDesign3() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center pt-12 md:pt-0">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Badge variant="outline" className="mb-8 px-6 py-2 text-base border-primary/30 text-primary bg-primary/5 backdrop-blur-sm">
+              <Badge variant="outline" className="mb-6 md:mb-8 px-4 md:px-6 py-2 text-sm md:text-base border-primary/30 text-primary bg-primary/5 backdrop-blur-sm">
                 #1 Laser Tattoo Removal in Nairobi
               </Badge>
               
-              <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-black tracking-tighter text-foreground mb-8 leading-[0.9]">
+              <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] font-black tracking-tighter text-foreground mb-6 md:mb-8 leading-[0.9]">
                 Just <br className="md:hidden" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-primary bg-[length:200%_auto] animate-gradient">Undo</span> <br className="md:hidden" />
                 It.
               </h1>
               
-              <p className="text-xl md:text-3xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-lg md:text-3xl text-muted-foreground mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed font-light px-2">
                 Advanced Picosecond technology for safe, effective, and scar-free tattoo removal. Transform your skin with precision and care.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-                <Button asChild size="lg" className="h-16 px-12 text-xl rounded-full shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all hover:scale-105">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-12 md:mb-16 w-full sm:w-auto">
+                <Button asChild size="lg" className="h-14 md:h-16 px-8 md:px-12 text-lg md:text-xl rounded-full shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all hover:scale-105 w-full sm:w-auto">
                   <Link to="/book?package=consultation-only">
                     Book Free Consultation
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="h-16 px-12 text-xl rounded-full border-2 hover:bg-muted/50 transition-all hover:scale-105">
+                <Button asChild size="lg" variant="outline" className="h-14 md:h-16 px-8 md:px-12 text-lg md:text-xl rounded-full border-2 hover:bg-muted/50 transition-all hover:scale-105 w-full sm:w-auto">
                   <Link to="/gallery">
                     View Results
                   </Link>
                 </Button>
               </div>
               
-              <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-medium text-muted-foreground">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-12 text-sm md:text-base font-medium text-muted-foreground">
                 <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-5 py-3 rounded-full border shadow-sm">
                   <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span>FDA Approved</span>

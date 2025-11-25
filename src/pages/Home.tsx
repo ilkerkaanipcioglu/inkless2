@@ -41,20 +41,21 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="pt-20 md:pt-0"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6">
               Just Undo It.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-200 mb-8 font-light max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground dark:text-gray-200 mb-8 font-light max-w-2xl mx-auto px-4">
               Safe, scar-free laser tattoo removal in Nairobi.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="text-lg px-8 h-12 bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 rounded-full">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Button asChild size="lg" className="text-lg px-8 h-12 bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 rounded-full w-full sm:w-auto">
                 <Link to="/book?package=consultation-only">
                   Book Free Consultation
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-12 border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent">
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-12 border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent w-full sm:w-auto">
                 <Link to="/packages">
                   View Packages
                 </Link>

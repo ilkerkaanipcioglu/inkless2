@@ -39,36 +39,36 @@ export default function HomeDesign4() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl lg:col-start-2"
+            className="max-w-2xl lg:col-start-2 pt-12 lg:pt-0 text-center lg:text-left"
           >
             <div className="mb-6 inline-block">
               <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/3a0cc6c8-2026-4e31-a67c-013dc2ce5644" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/2f68af04-43d6-47b9-94a4-007af4ce9220" 
                 alt="Inkless Is More" 
-                className="h-24 w-auto object-contain dark:hidden"
+                className="h-20 md:h-24 w-auto object-contain dark:hidden"
               />
               <img 
                 src="https://harmless-tapir-303.convex.cloud/api/storage/ba49a31b-21d8-4178-9c33-6a76d199fbb6" 
                 alt="Inkless Is More" 
-                className="h-24 w-auto object-contain hidden dark:block"
+                className="h-20 md:h-24 w-auto object-contain hidden dark:block"
               />
             </div>
-            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground dark:text-white">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-6 md:mb-8 uppercase text-foreground dark:text-white">
               Just <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Undo</span> <br />
               It.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-200 mb-10 max-w-md font-light border-l-4 border-primary pl-6 leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-200 mb-8 md:mb-10 max-w-md font-light border-l-0 lg:border-l-4 border-primary lg:pl-6 leading-relaxed mx-auto lg:mx-0">
               Nairobi's Premier Laser Tattoo Removal. <br />
               <span className="text-primary dark:text-yellow-300 font-semibold">Safe. Precise. Scar-free.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide w-full sm:w-auto">
                 <Link to="/book?package=consultation-only">
                   BOOK CONSULTATION
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-none px-8 h-14 text-lg tracking-wide">
+              <Button asChild size="lg" variant="outline" className="border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-none px-8 h-14 text-lg tracking-wide w-full sm:w-auto">
                 <Link to="/gallery">
                   VIEW RESULTS
                 </Link>
