@@ -129,7 +129,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
               <div className="flex justify-center">
                     <div className="mb-4 mt-4 cursor-pointer" onClick={() => navigate("/")}>
                       <img
-                        src="/logo.png"
+                        src="https://harmless-tapir-303.convex.cloud/api/storage/8d973c32-f642-43f0-a24f-5d16720922c9"
                         alt="Inkless Is More Logo"
                         width={64}
                         height={64}
