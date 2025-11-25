@@ -12,6 +12,7 @@ import "./index.css";
 import "./types/global.d.ts";
 import { CanonicalUrl } from "@/components/CanonicalUrl";
 import { SeoManager } from "@/components/SeoManager";
+import { StructuredData } from "@/components/StructuredData";
 import Home from "./pages/Home.tsx";
 import HomeLegacy from "./pages/HomeLegacy.tsx";
 import HomeDesign3 from "./pages/HomeDesign3.tsx";
@@ -67,6 +68,7 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <CanonicalUrl />
           <SeoManager />
+          <StructuredData />
           <RouteSyncer />
           <Routes>
             <Route path="/" element={<Home />} />
