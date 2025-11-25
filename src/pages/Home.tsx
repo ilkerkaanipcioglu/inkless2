@@ -25,7 +25,7 @@ export default function Home() {
             <Skeleton className="w-full h-full bg-neutral-900" />
           )}
           <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/0c8b2cc6-828d-4c76-a0b0-df3484525a74" 
+            src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
             alt="Just Undo It"
             onLoad={() => setHeroLoaded(true)}
             className={cn(

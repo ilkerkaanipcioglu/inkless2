@@ -68,7 +68,7 @@ export default function HomeDesign3() {
               <div className="relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10" />
                 <img 
-                  src="https://harmless-tapir-303.convex.cloud/api/storage/0c8b2cc6-828d-4c76-a0b0-df3484525a74" 
+                  src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
                   alt="Laser Tattoo Removal" 
                   className="w-full h-full object-cover"
                 />

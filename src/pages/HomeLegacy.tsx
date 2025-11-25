@@ -16,7 +16,7 @@ export default function HomeLegacy() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/0c8b2cc6-828d-4c76-a0b0-df3484525a74" 
+            src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
             alt="Just Undo It - Inkless Is More"
             className="w-full h-full object-cover object-center opacity-90"
           />

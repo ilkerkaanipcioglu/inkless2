@@ -16,14 +16,9 @@ export default function HomeDesign4() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-16 bg-white dark:bg-black">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/9dbadfe4-1d13-4610-99ae-cdb367f89994" 
+            src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
             alt="Just Undo It" 
-            className="w-full h-full object-cover opacity-100 dark:hidden"
-          />
-          <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/0c8b2cc6-828d-4c76-a0b0-df3484525a74" 
-            alt="Just Undo It" 
-            className="w-full h-full object-cover opacity-60 hidden dark:block"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent dark:from-black dark:via-black/50 dark:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-black dark:via-transparent dark:to-transparent" />
