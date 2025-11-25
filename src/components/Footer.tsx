@@ -41,17 +41,17 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3">
               <Button variant="outline" size="icon" className="h-8 w-8" asChild>
-                <a href="https://www.facebook.com/inklessismore" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/share/1Fpjgbt6dm/" target="_blank" rel="noopener noreferrer">
                   <Facebook className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="outline" size="icon" className="h-8 w-8" asChild>
-                <a href="https://www.instagram.com/inklessismore" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/inklessismore_?igsh=MWl4ZDR4ODZ3bDZjcQ==" target="_blank" rel="noopener noreferrer">
                   <Instagram className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="outline" size="icon" className="h-8 w-8" asChild>
-                <a href="https://www.tiktok.com/@inklessismore" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@inkless_is_more_?_t=ZM-8wtKsaOIx4o&_r=1" target="_blank" rel="noopener noreferrer">
                   <Twitter className="h-4 w-4" />
                 </a>
               </Button>
