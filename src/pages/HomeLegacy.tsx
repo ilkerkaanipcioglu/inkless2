@@ -8,11 +8,11 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function HomeLegacy() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full bg-white dark:bg-black overflow-hidden">
+      <section className="relative h-[85vh] w-full bg-background dark:bg-black overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -21,7 +21,7 @@ export default function HomeLegacy() {
             className="w-full h-full object-cover object-center opacity-90"
           />
           {/* Gradient Overlay for text readability if needed, though the image is dark */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-white/30 dark:from-black/80 dark:via-transparent dark:to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30 dark:from-black/80 dark:via-transparent dark:to-black/30" />
         </div>
 
         {/* Hero Content */}
@@ -30,22 +30,22 @@ export default function HomeLegacy() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl text-black dark:text-white"
+            className="max-w-2xl text-foreground dark:text-white"
           >
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
               Just Undo It.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-light max-w-lg">
+            <p className="text-xl md:text-2xl text-muted-foreground dark:text-gray-200 mb-8 font-light max-w-lg">
               Nairobi's Premier Laser Tattoo Removal. <br/>
               Safe. Precise. Scar-free.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="text-lg px-8 h-14 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 border-none rounded-full">
+              <Button asChild size="lg" className="text-lg px-8 h-14 bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 border-none rounded-full">
                 <Link to="/book?package=consultation-only">
                   Book Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent">
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 h-14 border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-full bg-transparent">
                 <Link to="/packages">
                   View Packages
                 </Link>
@@ -126,16 +126,16 @@ export default function HomeLegacy() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="aspect-square rounded-xl overflow-hidden bg-gray-100">
+            <div className="aspect-square rounded-xl overflow-hidden bg-muted">
               <img src="/assets/Brown_Minimalist_Skincare_Before_After_Collage_Instagram_Post.jpg" alt="Tattoo removal result" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
-            <div className="aspect-square rounded-xl overflow-hidden bg-gray-100">
+            <div className="aspect-square rounded-xl overflow-hidden bg-muted">
               <img src="/assets/Eyebrow_Tattoo_Removal_Inkless.jpeg" alt="Eyebrow tattoo removal" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
-            <div className="aspect-square rounded-xl overflow-hidden bg-gray-100">
+            <div className="aspect-square rounded-xl overflow-hidden bg-muted">
               <img src="/assets/gallery_neck.jpg" alt="Neck tattoo removal" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
-            <div className="aspect-square rounded-xl overflow-hidden bg-gray-100">
+            <div className="aspect-square rounded-xl overflow-hidden bg-muted">
               <img src="/assets/gallery_hand.png" alt="Hand tattoo removal" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
@@ -146,13 +146,13 @@ export default function HomeLegacy() {
       <TestimonialsSection />
 
       {/* Final CTA */}
-      <section className="py-24 bg-black text-white text-center">
+      <section className="py-24 bg-foreground text-background text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Undo It?</h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground/80 mb-10 max-w-2xl mx-auto">
             Start your journey to clear skin today. Consultations are free and informative.
           </p>
-          <Button asChild size="lg" className="text-lg px-10 h-16 bg-white text-black hover:bg-gray-200 rounded-full">
+          <Button asChild size="lg" className="text-lg px-10 h-16 bg-background text-foreground hover:bg-background/90 rounded-full">
             <Link to="/book?package=consultation-only">
               Get Your Free Consultation
             </Link>
