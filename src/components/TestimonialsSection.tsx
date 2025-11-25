@@ -32,10 +32,10 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-muted/30 relative overflow-hidden">
+    <section className="py-16 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
             What Our Clients Say
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -54,26 +54,26 @@ export default function TestimonialsSection() {
             >
               <Card className="h-full border-none shadow-md bg-background/60 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
                 <CardContent className="pt-6 flex flex-col h-full">
-                  <div className="flex items-center gap-1 mb-4 text-yellow-500">
+                  <div className="flex items-center gap-1 mb-3 text-yellow-500">
                     {[...Array(t.rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
                   
-                  <div className="mb-6 flex-grow">
-                    <Quote className="h-8 w-8 text-primary/20 mb-2" />
-                    <p className="text-muted-foreground italic relative z-10">
+                  <div className="mb-4 flex-grow">
+                    <Quote className="h-6 w-6 text-primary/20 mb-2" />
+                    <p className="text-sm text-muted-foreground italic relative z-10">
                       "{t.text}"
                     </p>
                   </div>
 
                   <div className="flex items-center gap-3 mt-auto pt-4 border-t">
-                    <Avatar className="h-10 w-10 border">
-                      <AvatarFallback className="bg-primary/10 text-primary font-semibold">{t.initials}</AvatarFallback>
+                    <Avatar className="h-8 w-8 border">
+                      <AvatarFallback className="bg-primary/10 text-primary font-semibold text-xs">{t.initials}</AvatarFallback>
                     </Avatar>
                     <div>
                       <p className="font-semibold text-sm">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">Verified Client</p>
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Verified Client</p>
                     </div>
                   </div>
                 </CardContent>
