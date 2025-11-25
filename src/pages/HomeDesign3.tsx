@@ -25,14 +25,14 @@ export default function HomeDesign3() {
               <Badge variant="outline" className="mb-6 px-4 py-1 text-sm border-primary/30 text-primary bg-primary/5">
                 #1 Laser Tattoo Removal in Nairobi
               </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6 leading-tight">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-neutral-900 dark:text-white mb-6 leading-[1.1]">
                 Rewrite Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-pink-600">
                   Skin's Story.
                 </span>
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
-                Advanced Picosecond technology for safe, effective, and scar-free tattoo removal. It's time to undo what you've outgrown.
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed font-light">
+                Advanced Picosecond technology for safe, effective, and scar-free tattoo removal. Transform your skin with precision and care.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
@@ -132,9 +132,9 @@ export default function HomeDesign3() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-background p-8 rounded-2xl border hover:border-primary/50 transition-colors group"
+                className="bg-background p-8 rounded-2xl border hover:border-primary/50 transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
               >
-                <div className="text-6xl font-bold text-muted/20 mb-6 group-hover:text-primary/20 transition-colors">
+                <div className="text-6xl font-bold text-muted/20 mb-6 group-hover:text-primary/30 transition-colors duration-300">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>

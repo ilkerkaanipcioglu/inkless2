@@ -38,14 +38,14 @@ export default function HomeDesign4() {
                 className="h-24 w-auto object-contain"
               />
             </div>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8 uppercase">
+            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8 uppercase">
               Just <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Undo</span> <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500">Undo</span> <br />
               It.
             </h1>
-            <p className="text-xl text-gray-300 mb-10 max-w-md font-light border-l-2 border-yellow-500 pl-6">
+            <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-md font-light border-l-4 border-yellow-400 pl-6 leading-relaxed">
               Nairobi's Premier Laser Tattoo Removal. <br />
-              Safe. Precise. Scar-free.
+              <span className="text-yellow-300 font-semibold">Safe. Precise. Scar-free.</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-yellow-500 text-black hover:bg-yellow-400 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
@@ -78,7 +78,7 @@ export default function HomeDesign4() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/50 border border-neutral-800 p-8 rounded-3xl hover:border-yellow-500/50 transition-colors group"
+              className="bg-neutral-900/50 border border-neutral-800 p-8 rounded-3xl hover:border-yellow-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10 hover:-translate-y-1 group"
             >
               <div className="flex items-start gap-6">
                 <div className="p-3 rounded-full bg-yellow-500/10 text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-colors">
@@ -98,7 +98,7 @@ export default function HomeDesign4() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-neutral-900/50 border border-neutral-800 p-8 rounded-3xl hover:border-yellow-500/50 transition-colors group"
+              className="bg-neutral-900/50 border border-neutral-800 p-8 rounded-3xl hover:border-yellow-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10 hover:-translate-y-1 group"
             >
               <div className="flex items-start gap-6">
                 <div className="p-3 rounded-full bg-yellow-500/10 text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-colors">
@@ -199,11 +199,13 @@ export default function HomeDesign4() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-neutral-900 p-8 rounded-3xl border border-neutral-800"
+                className="bg-neutral-900 p-8 rounded-3xl border border-neutral-800 hover:border-yellow-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10"
               >
                 <div className="flex gap-1 mb-6">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                    <motion.div key={star} initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: star * 0.1 }}>
+                      <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                    </motion.div>
                   ))}
                 </div>
                 <Quote className="w-10 h-10 text-neutral-700 mb-4" />
