@@ -5,8 +5,14 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [featureLoaded, setFeatureLoaded] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -15,10 +21,17 @@ export default function Home() {
       <section className="relative h-[90vh] w-full bg-black overflow-hidden flex items-center justify-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
+          {!heroLoaded && (
+            <Skeleton className="w-full h-full bg-neutral-900" />
+          )}
           <img 
             src="https://harmless-tapir-303.convex.cloud/api/storage/0c8b2cc6-828d-4c76-a0b0-df3484525a74" 
             alt="Just Undo It"
-            className="w-full h-full object-cover opacity-80"
+            onLoad={() => setHeroLoaded(true)}
+            className={cn(
+              "w-full h-full object-cover opacity-80 transition-opacity duration-1000",
+              heroLoaded ? "opacity-80" : "opacity-0"
+            )}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90" />
         </div>
@@ -28,7 +41,7 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 uppercase">
               Just Undo It.
@@ -60,11 +73,19 @@ export default function Home() {
                initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
+               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
+              {!featureLoaded && (
+                <Skeleton className="absolute inset-0 w-full h-full" />
+              )}
               <img 
                 src="https://harmless-tapir-303.convex.cloud/api/storage/0671de72-a8a6-4ecf-ad85-ab15da925141" 
                 alt="Laser Treatment" 
-                className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/5]"
+                onLoad={() => setFeatureLoaded(true)}
+                className={cn(
+                  "w-full h-full object-cover transition-opacity duration-700",
+                  featureLoaded ? "opacity-100" : "opacity-0"
+                )}
               />
             </motion.div>
             <motion.div
