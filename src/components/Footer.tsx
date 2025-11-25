@@ -66,6 +66,7 @@ export default function Footer() {
               <li><Link to="/training" className="text-sm text-muted-foreground hover:text-primary transition-colors">Ambassador Program</Link></li>
               <li><Link to="/bookings" className="text-sm text-muted-foreground hover:text-primary transition-colors">My Bookings</Link></li>
               <li><Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
               <li><Link to="/auth" className="text-sm text-muted-foreground hover:text-primary transition-colors">Admin Login</Link></li>
             </ul>
           </div>
@@ -76,14 +77,17 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a 
-                  href="https://maps.app.goo.gl/bSozKVB9tNeVrYnr6" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  Two Rivers Mall, 1st Floor, Nairobi, Kenya
-                </a>
+                <div className="flex flex-col">
+                  <span>Two Rivers Mall, 1st Floor, Nairobi, Kenya</span>
+                  <a 
+                    href="https://maps.app.goo.gl/bSozKVB9tNeVrYnr6" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors underline mt-1"
+                  >
+                    Get Directions
+                  </a>
+                </div>
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 flex-shrink-0" />
