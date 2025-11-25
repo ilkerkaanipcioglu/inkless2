@@ -27,12 +27,12 @@ export default function Footer() {
                 className="h-16 w-16 object-contain dark:hidden transition-all duration-300" 
               />
               <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/b9bbb6cf-b996-4939-b8fd-c60c94a19033" 
+                src="/logo.png" 
                 alt="Inkless Is More" 
                 width={64}
                 height={64}
                 loading="lazy"
-                className="h-16 w-16 object-contain hidden dark:block transition-all duration-300" 
+                className="h-16 w-16 object-contain hidden dark:block transition-all duration-300 invert" 
               />
               <span className="font-bold text-lg">Inkless Is More</span>
             </Link>

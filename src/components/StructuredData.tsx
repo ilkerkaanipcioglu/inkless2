@@ -10,7 +10,7 @@ export function StructuredData() {
       "@type": "Organization",
       "name": "Inkless Is More",
       "url": "https://www.inklessismore.ke",
-      "logo": "https://harmless-tapir-303.convex.cloud/api/storage/8d973c32-f642-43f0-a24f-5d16720922c9",
+      "logo": "https://www.inklessismore.ke/logo.png",
       "description": "Premier laser tattoo removal clinic in Nairobi, Kenya using advanced Picosecond technology",
       "sameAs": [
         "https://www.facebook.com/share/1Fpjgbt6dm/",
@@ -36,7 +36,7 @@ export function StructuredData() {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Inkless Is More",
-      "image": "https://harmless-tapir-303.convex.cloud/api/storage/8d973c32-f642-43f0-a24f-5d16720922c9",
+      "image": "https://www.inklessismore.ke/logo.png",
       "description": "Laser tattoo removal clinic in Nairobi",
       "address": {
         "@type": "PostalAddress",

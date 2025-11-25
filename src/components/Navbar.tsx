@@ -31,18 +31,18 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="https://harmless-tapir-303.convex.cloud/api/storage/8d973c32-f642-43f0-a24f-5d16720922c9" 
+              src="/logo.png" 
               alt="Inkless Is More" 
               width={80}
               height={80}
               className="h-16 w-16 sm:h-20 sm:w-20 object-contain dark:hidden transition-all duration-300" 
             />
             <img 
-              src="https://harmless-tapir-303.convex.cloud/api/storage/b9bbb6cf-b996-4939-b8fd-c60c94a19033" 
+              src="/logo.png" 
               alt="Inkless Is More" 
               width={80}
               height={80}
-              className="h-16 w-16 sm:h-20 sm:w-20 object-contain hidden dark:block transition-all duration-300" 
+              className="h-16 w-16 sm:h-20 sm:w-20 object-contain hidden dark:block transition-all duration-300 invert" 
             />
             <span className="font-bold text-lg hidden sm:inline-block">Inkless Is More</span>
           </Link>
