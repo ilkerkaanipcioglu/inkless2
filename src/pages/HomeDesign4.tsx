@@ -13,14 +13,19 @@ export default function HomeDesign4() {
       <Navbar />
 
       {/* Hero Section - Inspired by Image 1 */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-16 bg-white dark:bg-black">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-16 bg-gray-50 dark:bg-black">
         <div className="absolute inset-0 z-0">
+          {/* Light mode background accent */}
+          <div className="absolute inset-0 bg-gray-50 dark:hidden" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(0,0,0,0.05),transparent_50%)] dark:hidden" />
+          
           <img 
             src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
             alt="Just Undo It" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[20%_center]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent dark:from-black dark:via-black/50 dark:to-transparent" />
+          {/* Gradient to fade image into background for text readability on the right */}
+          <div className="absolute inset-0 bg-gradient-to-l from-white via-white/80 to-transparent dark:from-black dark:via-black/80 dark:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-black dark:via-transparent dark:to-transparent" />
         </div>
 
