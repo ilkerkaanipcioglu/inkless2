@@ -11,6 +11,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 import "./types/global.d.ts";
 import { CanonicalUrl } from "@/components/CanonicalUrl";
+import { SeoManager } from "@/components/SeoManager";
 import Home from "./pages/Home.tsx";
 import HomeLegacy from "./pages/HomeLegacy.tsx";
 import HomeDesign3 from "./pages/HomeDesign3.tsx";
@@ -65,6 +66,7 @@ createRoot(document.getElementById("root")!).render(
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
           <CanonicalUrl />
+          <SeoManager />
           <RouteSyncer />
           <Routes>
             <Route path="/" element={<Home />} />
