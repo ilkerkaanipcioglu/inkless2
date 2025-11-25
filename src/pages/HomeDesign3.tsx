@@ -12,86 +12,63 @@ export default function HomeDesign3() {
     <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-950">
       <Navbar />
 
-      {/* Hero Section - Split Layout */}
-      <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Hero Section - Creative Typographic Layout */}
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background">
+        {/* Abstract Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-500/10 blur-[120px] animate-pulse delay-1000" />
+          <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] rounded-full bg-blue-500/10 blur-[100px] animate-pulse delay-500" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative z-10"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <Badge variant="outline" className="mb-6 px-4 py-1 text-sm border-primary/30 text-primary bg-primary/5">
+              <Badge variant="outline" className="mb-8 px-6 py-2 text-base border-primary/30 text-primary bg-primary/5 backdrop-blur-sm">
                 #1 Laser Tattoo Removal in Nairobi
               </Badge>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-neutral-900 dark:text-white mb-6 leading-[1.1]">
-                Just Undo It.
+              
+              <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-black tracking-tighter text-foreground mb-8 leading-[0.9]">
+                Just <br className="md:hidden" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-primary bg-[length:200%_auto] animate-gradient">Undo</span> <br className="md:hidden" />
+                It.
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed font-light">
+              
+              <p className="text-xl md:text-3xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-light">
                 Advanced Picosecond technology for safe, effective, and scar-free tattoo removal. Transform your skin with precision and care.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <Button asChild size="lg" className="h-16 px-12 text-xl rounded-full shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all hover:scale-105">
                   <Link to="/book?package=consultation-only">
                     Book Free Consultation
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-muted/50">
+                <Button asChild size="lg" variant="outline" className="h-16 px-12 text-xl rounded-full border-2 hover:bg-muted/50 transition-all hover:scale-105">
                   <Link to="/gallery">
                     View Results
                   </Link>
                 </Button>
               </div>
               
-              <div className="mt-12 flex items-center gap-6 text-sm font-medium text-muted-foreground">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-medium text-muted-foreground">
+                <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-5 py-3 rounded-full border shadow-sm">
                   <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span>FDA Approved</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-5 py-3 rounded-full border shadow-sm">
                   <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span>Safe for All Skin Types</span>
                 </div>
+                <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-5 py-3 rounded-full border shadow-sm">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  <span>Minimal Discomfort</span>
+                </div>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10" />
-                <img 
-                  src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
-                  alt="Laser Tattoo Removal" 
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Floating Card */}
-                <motion.div 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="absolute bottom-8 left-8 right-8 bg-white/90 dark:bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl z-20"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Sparkles className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">Visible Fading</p>
-                      <p className="text-sm text-muted-foreground">Results often seen after just one session</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-              
-              {/* Decorative Elements */}
-              <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10" />
-              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -z-10" />
             </motion.div>
           </div>
         </div>
