@@ -24,7 +24,12 @@ import BookNow from "./pages/BookNow.tsx";
 import BookingHistory from "./pages/BookingHistory.tsx";
 import Admin from "./pages/Admin.tsx";
 
-const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
+const convexUrl = import.meta.env.VITE_CONVEX_URL as string;
+if (!convexUrl) {
+  console.error("VITE_CONVEX_URL is not set. Please configure it in your deployment settings.");
+}
+
+const convex = new ConvexReactClient(convexUrl);
 
 function RouteSyncer() {
   const location = useLocation();
