@@ -7,6 +7,13 @@ import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
 import { useState, useRef } from "react";
 import { testimonials } from "@/data/testimonials";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -290,29 +297,46 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {keyFactors.map((factor, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group ${i === 3 || i === 4 ? 'lg:col-span-1 lg:last:col-start-2 lg:last:col-end-3' : ''}`}
-              >
-                <div className="flex items-start gap-6">
-                  <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
-                    <factor.icon className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-foreground">{factor.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      {factor.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {keyFactors.map((factor, i) => (
+                  <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <div className="h-full">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        className="bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 h-full flex flex-col"
+                      >
+                        <div className="flex items-start gap-6 h-full">
+                          <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                            <factor.icon className="w-8 h-8" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold mb-3 text-foreground">{factor.title}</h3>
+                            <p className="text-muted-foreground leading-relaxed text-sm">
+                              {factor.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-8">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
           </div>
           
           <div className="mt-12 text-center max-w-3xl mx-auto">
