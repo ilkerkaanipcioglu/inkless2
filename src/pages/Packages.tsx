@@ -193,7 +193,7 @@ export default function Packages() {
                   <SelectContent>
                     <SelectItem value="all">All Categories</SelectItem>
                     <SelectItem value="tattoo-removal">Tattoo Removal</SelectItem>
-                    <SelectItem value="specialized">Specialized</SelectItem>
+                    <SelectItem value="other-laser-treatments">Other Laser Treatments</SelectItem>
                   </SelectContent>
                 </Select>
 
