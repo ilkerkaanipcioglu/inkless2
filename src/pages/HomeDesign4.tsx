@@ -2,88 +2,88 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Sun, Droplets, Target, Zap, Sparkles, Star, Quote } from "lucide-react";
+import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export default function HomeDesign4() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground selection:bg-primary/30">
       <Navbar />
 
-      {/* Hero Section - Inspired by Image 1 */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-16 bg-muted/20 dark:bg-black">
-        <div className="absolute inset-0 z-0">
-          {/* Light mode background accent */}
-          <div className="absolute inset-0 bg-muted/20 dark:hidden" />
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,var(--primary)/5,transparent_50%)] dark:hidden" />
-          
-          <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
-            alt="Just Undo It" 
-            className="w-full h-full object-cover object-[20%_center] dark:hidden"
-          />
-          <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/064ce72b-b70d-4359-8497-f37c4409994d" 
-            alt="Just Undo It" 
-            className="w-full h-full object-cover object-[20%_center] hidden dark:block"
-          />
-          {/* Gradient to fade image into background for text readability on the right */}
-          <div className="absolute inset-0 bg-gradient-to-l from-background via-background/80 to-transparent dark:from-black dark:via-black/80 dark:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent dark:from-black dark:via-transparent dark:to-transparent" />
+      {/* Hero Section - Redesigned: Clean, Typographic, No Banner Image */}
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16 bg-background">
+        {/* Abstract Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,var(--primary)/10,transparent_50%)]" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/3 left-10 w-24 h-24 border border-primary/20 rounded-full opacity-20 animate-bounce duration-[3000ms]" />
+          <div className="absolute bottom-1/3 right-10 w-32 h-32 border border-foreground/10 rounded-full opacity-20 animate-pulse" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl lg:col-start-2 pt-12 lg:pt-0 text-center lg:text-left"
+            className="max-w-4xl mx-auto"
           >
-            <div className="mb-6 inline-block">
-              <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/2f68af04-43d6-47b9-94a4-007af4ce9220" 
-                alt="Inkless Is More" 
-                className="h-20 md:h-24 w-auto object-contain dark:hidden"
-              />
-              <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/ba49a31b-21d8-4178-9c33-6a76d199fbb6" 
-                alt="Inkless Is More" 
-                className="h-20 md:h-24 w-auto object-contain hidden dark:block"
-              />
+            <div className="mb-8 flex justify-center">
+              <Badge variant="outline" className="px-4 py-1.5 text-sm border-primary/30 bg-primary/5 text-primary rounded-full">
+                <Sparkles className="w-3 h-3 mr-2" />
+                Nairobi's Premier Laser Tattoo Removal
+              </Badge>
             </div>
-            <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-6 md:mb-8 uppercase text-foreground dark:text-white">
+
+            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8 uppercase text-foreground">
               Just <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Undo</span> <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">
+                Undo
+              </span> <br />
               It.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-200 mb-8 md:mb-10 max-w-md font-light border-l-0 lg:border-l-4 border-primary lg:pl-6 leading-relaxed mx-auto lg:mx-0">
-              Nairobi's Premier Laser Tattoo Removal. <br />
-              <span className="text-primary dark:text-yellow-300 font-semibold">Safe. Precise. Scar-free.</span>
+
+            <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+              Regret is a thing of the past. Experience safe, precise, and scar-free tattoo removal with advanced Picosecond technology.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide w-full sm:w-auto">
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-10 h-14 text-lg font-bold tracking-wide w-full sm:w-auto shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-1">
                 <Link to="/book?package=consultation-only">
-                  BOOK CONSULTATION
+                  Book Free Consultation
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-foreground/20 text-foreground hover:bg-foreground/5 dark:border-white dark:text-white dark:hover:bg-white/10 rounded-none px-8 h-14 text-lg tracking-wide w-full sm:w-auto">
+              <Button asChild size="lg" variant="outline" className="border-foreground/10 text-foreground hover:bg-foreground/5 rounded-full px-10 h-14 text-lg tracking-wide w-full sm:w-auto hover:-translate-y-1 transition-transform">
                 <Link to="/gallery">
-                  VIEW RESULTS
+                  View Results <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
+            </div>
+
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {[
+                { label: "Safe", sub: "For All Skin Types" },
+                { label: "Fast", sub: "Fewer Sessions" },
+                { label: "Precise", sub: "Picosecond Tech" },
+                { label: "Scar-Free", sub: "Skin Integrity" }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center justify-center p-4 rounded-2xl bg-muted/30 border border-border/50">
+                  <CheckCircle2 className="w-6 h-6 text-primary mb-2" />
+                  <span className="font-bold text-foreground">{item.label}</span>
+                  <span className="text-xs text-muted-foreground">{item.sub}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Key Factors Section - Inspired by Image 2 */}
-      <section className="py-24 bg-muted/30 dark:bg-neutral-950">
+      {/* Key Factors Section - Refined */}
+      <section className="py-24 bg-muted/30 dark:bg-neutral-950/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground dark:text-white">Key Factors That Affect Removal</h2>
-            <p className="text-muted-foreground dark:text-gray-400 text-lg">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Key Factors That Affect Removal</h2>
+            <p className="text-muted-foreground text-lg">
               Each tattoo is unique. Here are the factors that influence your treatment timeline and results:
             </p>
           </div>
@@ -93,15 +93,15 @@ export default function HomeDesign4() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-card dark:bg-neutral-900/50 border border-border dark:border-neutral-800 p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group"
+              className="bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group"
             >
               <div className="flex items-start gap-6">
-                <div className="p-3 rounded-full bg-primary/10 text-primary dark:text-yellow-500 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Droplets className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground dark:text-white">Lifestyle Choices</h3>
-                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed">
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">Lifestyle Choices</h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     Staying hydrated, avoiding alcohol, and protecting your skin from sun exposure significantly improve healing and results between sessions.
                   </p>
                 </div>
@@ -113,15 +113,15 @@ export default function HomeDesign4() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-card dark:bg-neutral-900/50 border border-border dark:border-neutral-800 p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group"
+              className="bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group"
             >
               <div className="flex items-start gap-6">
-                <div className="p-3 rounded-full bg-primary/10 text-primary dark:text-yellow-500 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Sun className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground dark:text-white">Skin Type</h3>
-                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed">
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">Skin Type</h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     Your melanin levels affect laser settings and treatment approach. We customize each session to your unique skin type for optimal safety.
                   </p>
                 </div>
@@ -131,14 +131,12 @@ export default function HomeDesign4() {
         </div>
       </section>
 
-      {/* Process Section - Inspired by Image 4 */}
-      <section className="py-24 bg-background dark:bg-black relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -z-10" />
-        
+      {/* Process Section - Refined */}
+      <section className="py-24 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground dark:text-white">The Science of Removal</h2>
-            <p className="text-muted-foreground dark:text-gray-400 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">The Science of Removal</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Picosecond laser technology removes tattoos safely and effectively through a precise, natural process.
             </p>
           </div>
@@ -167,13 +165,13 @@ export default function HomeDesign4() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="bg-muted/30 dark:bg-neutral-900 rounded-[2rem] p-8 text-center border border-border dark:border-neutral-800 relative group hover:-translate-y-2 transition-transform duration-300"
+                className="bg-muted/20 rounded-[2rem] p-8 text-center border border-border relative group hover:-translate-y-2 transition-transform duration-300 hover:bg-muted/40"
               >
-                <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-background dark:bg-neutral-950 border border-primary/20 flex items-center justify-center group-hover:border-primary transition-colors">
-                  <step.icon className="w-10 h-10 text-primary dark:text-yellow-500" />
+                <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-background border border-primary/20 flex items-center justify-center group-hover:border-primary transition-colors shadow-sm">
+                  <step.icon className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground dark:text-white">{step.title}</h3>
-                <p className="text-muted-foreground dark:text-gray-400 leading-relaxed">
+                <h3 className="text-2xl font-bold mb-4 text-foreground">{step.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   {step.desc}
                 </p>
               </motion.div>
@@ -182,8 +180,8 @@ export default function HomeDesign4() {
         </div>
       </section>
 
-      {/* Testimonials - Inspired by Image 3 */}
-      <section className="py-24 bg-muted/30 dark:bg-neutral-950">
+      {/* Testimonials - Refined */}
+      <section className="py-24 bg-muted/30 dark:bg-neutral-950/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">What Our Clients Say</h2>
@@ -214,7 +212,7 @@ export default function HomeDesign4() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-card dark:bg-neutral-900 p-8 rounded-3xl border border-border dark:border-neutral-800 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
+                className="bg-background p-8 rounded-3xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
                 <div className="flex gap-1 mb-6">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -223,8 +221,8 @@ export default function HomeDesign4() {
                     </motion.div>
                   ))}
                 </div>
-                <Quote className="w-10 h-10 text-muted-foreground/50 mb-4" />
-                <p className="text-xl font-medium mb-8 text-foreground dark:text-gray-200">"{t.text}"</p>
+                <Quote className="w-10 h-10 text-muted-foreground/20 mb-4" />
+                <p className="text-xl font-medium mb-8 text-foreground">"{t.text}"</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
                     {t.initial}
