@@ -28,7 +28,7 @@ export const updatePackages = internalMutation({
         updates.imageUrl = "https://www.inklessismore.ke/cdn/shop/files/Laser_Stretch_Marks_Removal.jpg?v=1753974523&width=533";
         updates.isAvailable = true;
         updates.category = "other-laser-treatments";
-      } else if (pkg.title.includes("Eyebrow")) {
+      } else if (pkg.title.includes("Eyebrow") || pkg.title.includes("Microblading")) {
         updates.title = "Microblading/Eyebrow Tattoo Removal";
         updates.price = 10000;
         updates.originalPrice = 45000;

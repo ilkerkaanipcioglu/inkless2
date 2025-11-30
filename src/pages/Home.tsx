@@ -60,6 +60,20 @@ export default function Home() {
       original: "KSh 50,000",
       desc: "Advanced scar reduction therapy.",
       image: "https://www.inklessismore.ke/cdn/shop/files/Laser_Scar_Removal_Package.jpg?v=1753974281&width=533"
+    },
+    {
+      title: "Laser Stretch Marks Removal",
+      price: "KSh 15,000",
+      original: "KSh 35,000",
+      desc: "Improves skin texture, reduces stretch marks.",
+      image: "https://www.inklessismore.ke/cdn/shop/files/Laser_Stretch_Marks_Removal.jpg?v=1753974523&width=533"
+    },
+    {
+      title: "Microblading/Eyebrow Tattoo Removal",
+      price: "KSh 10,000",
+      original: "KSh 45,000",
+      desc: "Specialized eyebrow tattoo/microblading removal.",
+      image: "https://www.inklessismore.ke/cdn/shop/files/Copyof3sessions.jpg?v=1753972609&width=533"
     }
   ];
 
