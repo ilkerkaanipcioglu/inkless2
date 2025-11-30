@@ -141,7 +141,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
             {[
               {
                 icon: Target,
@@ -165,7 +165,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="bg-muted/20 rounded-[2rem] p-8 text-center border border-border relative group hover:-translate-y-2 transition-transform duration-300 hover:bg-muted/40"
+                className="min-w-[85vw] md:min-w-[350px] flex-1 snap-center bg-muted/20 rounded-[2rem] p-8 text-center border border-border relative group hover:-translate-y-2 transition-transform duration-300 hover:bg-muted/40"
               >
                 <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-background border border-primary/20 flex items-center justify-center group-hover:border-primary transition-colors shadow-sm">
                   <step.icon className="w-10 h-10 text-primary" />
