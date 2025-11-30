@@ -27,6 +27,7 @@ import type * as remove_broken_gallery_items from "../remove_broken_gallery_item
 import type * as seed from "../seed.js";
 import type * as seed_blog from "../seed_blog.js";
 import type * as seed_gallery from "../seed_gallery.js";
+import type * as seed_specific_blog from "../seed_specific_blog.js";
 import type * as sendEmails from "../sendEmails.js";
 import type * as storage from "../storage.js";
 import type * as timeSlots from "../timeSlots.js";
@@ -60,6 +61,7 @@ declare const fullApi: ApiFromModules<{
   seed: typeof seed;
   seed_blog: typeof seed_blog;
   seed_gallery: typeof seed_gallery;
+  seed_specific_blog: typeof seed_specific_blog;
   sendEmails: typeof sendEmails;
   storage: typeof storage;
   timeSlots: typeof timeSlots;
