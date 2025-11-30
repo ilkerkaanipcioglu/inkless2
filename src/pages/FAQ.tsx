@@ -121,42 +121,6 @@ export default function FAQ() {
             </motion.div>
           </div>
         </section>
-
-        {/* Contact CTA */}
-        <section className="py-8 md:py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="bg-[#FDB913] rounded-[2rem] p-6 md:p-12 text-center shadow-lg max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-neutral-950">Still Have Questions?</h2>
-              <p className="text-neutral-900/80 mb-6 md:mb-8 max-w-xl mx-auto text-sm md:text-base">
-                We're here to help! Get in touch with our team.
-              </p>
-
-              <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 md:mb-8 text-neutral-950">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="text-sm md:text-base">Two Rivers Mall, 1st Floor, Nairobi, Kenya</span>
-                </div>
-              </div>
-              
-              <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 md:mb-8 text-neutral-950">
-                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                  <a href="tel:+254708901505" className="hover:underline text-sm md:text-base">+254 708 901 505</a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 md:w-5 md:h-5" />
-                  <a href="mailto:info@inklessismore.ke" className="hover:underline text-sm md:text-base">info@inklessismore.ke</a>
-                </div>
-              </div>
-
-              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-6 md:px-8 h-10 md:h-12 text-sm md:text-base font-semibold shadow-xl hover:scale-105 transition-transform">
-                <Link to="/packages">
-                  View Our Packages
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
       </div>
 
       <Footer />
