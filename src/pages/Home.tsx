@@ -6,6 +6,7 @@ import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCir
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
 import { useState, useRef } from "react";
+import { testimonials } from "@/data/testimonials";
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
