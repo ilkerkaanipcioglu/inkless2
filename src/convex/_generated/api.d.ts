@@ -20,6 +20,7 @@ import type * as fix_admin from "../fix_admin.js";
 import type * as fix_blog_post from "../fix_blog_post.js";
 import type * as fix_data from "../fix_data.js";
 import type * as fix_duplicates from "../fix_duplicates.js";
+import type * as fix_packages_category from "../fix_packages_category.js";
 import type * as gallery from "../gallery.js";
 import type * as http from "../http.js";
 import type * as packages from "../packages.js";
@@ -55,6 +56,7 @@ declare const fullApi: ApiFromModules<{
   fix_blog_post: typeof fix_blog_post;
   fix_data: typeof fix_data;
   fix_duplicates: typeof fix_duplicates;
+  fix_packages_category: typeof fix_packages_category;
   gallery: typeof gallery;
   http: typeof http;
   packages: typeof packages;
