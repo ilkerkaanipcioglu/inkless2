@@ -595,22 +595,22 @@ export default function Home() {
       </section>
 
       {/* CTA Section - "Ready to clear the canvas?" */}
-      <section className="py-10 md:py-20 bg-background">
+      <section className="py-6 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="relative rounded-[2rem] md:rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-12 md:py-24 text-center shadow-2xl">
+          <div className="relative rounded-[1.5rem] md:rounded-[3rem] bg-[#FDB913] overflow-hidden px-4 py-8 md:px-6 md:py-24 text-center shadow-2xl">
             {/* Background Pattern/Curve */}
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[140%] h-[80%] bg-white/10 rounded-[100%] blur-sm" />
             </div>
             
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-5xl font-bold text-neutral-950 mb-3 md:mb-5 tracking-tight">
+              <h2 className="text-2xl md:text-5xl font-bold text-neutral-950 mb-2 md:mb-5 tracking-tight">
                 Ready to Break Up with Your Ink?
               </h2>
-              <p className="text-base md:text-lg text-neutral-900/80 mb-6 md:mb-8 font-medium max-w-xl mx-auto">
+              <p className="text-sm md:text-lg text-neutral-900/80 mb-4 md:mb-8 font-medium max-w-xl mx-auto">
                 Get a <span className="font-black text-neutral-950">50% OFF VOUCHER</span> to help you start your journey now. Book your free consultation today.
               </p>
-              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-8 md:px-10 h-12 md:h-14 text-base md:text-base font-semibold shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
+              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-6 md:px-10 h-10 md:h-14 text-sm md:text-base font-semibold shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
                 <Link to="/book?package=consultation-only">
                   Get Started Now <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Link>
