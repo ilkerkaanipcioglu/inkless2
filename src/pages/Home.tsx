@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCircle2, Tag } from "lucide-react";
+import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCircle2, Tag, Clock, HeartPulse, Palette } from "lucide-react";
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
 import { useState, useRef } from "react";
@@ -14,6 +14,34 @@ export default function Home() {
 
   const [testimonialActiveIndex, setTestimonialActiveIndex] = useState(0);
   const testimonialScrollRef = useRef<HTMLDivElement>(null);
+
+  const keyFactors = [
+    {
+      icon: Droplets,
+      title: "Your Lifestyle",
+      desc: "It's a partnership between your body and our laser. Drinking lots of water, avoiding alcohol and staying out of the sun will help improve your ability to flush out the ink."
+    },
+    {
+      icon: Sun,
+      title: "Your Skin Type",
+      desc: "Skin type considerations are crucial. The type and amount of melanin, skin pigmentation, and whether you tan or burn easily determine the best treatment settings for your safety."
+    },
+    {
+      icon: Clock,
+      title: "Tattoo Age",
+      desc: "Older tattoos fade. A tattoo that is 15+ years old has fewer pigment particles than a new one. Less pigment means fewer treatments and a faster removal process."
+    },
+    {
+      icon: HeartPulse,
+      title: "Location",
+      desc: "Circulation matters. Tattoos closer to your heart (neck, chest, back) tend to clear faster than those on extremities (ankles, feet) due to better blood flow."
+    },
+    {
+      icon: Palette,
+      title: "Ink Color",
+      desc: "Black ink is the easiest to remove. Warm and cool colored pigments or tattoos with multiple layers may require different settings and take longer to clear completely."
+    }
+  ];
 
   const processSteps = [
     {
@@ -262,45 +290,35 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group"
-            >
-              <div className="flex items-start gap-6">
-                <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Droplets className="w-8 h-8" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {keyFactors.map((factor, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group ${i === 3 || i === 4 ? 'lg:col-span-1 lg:last:col-start-2 lg:last:col-end-3' : ''}`}
+              >
+                <div className="flex items-start gap-6">
+                  <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                    <factor.icon className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-foreground">{factor.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">
+                      {factor.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground">Lifestyle Choices</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Staying hydrated, avoiding alcohol, and protecting your skin from sun exposure significantly improve healing and results between sessions.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-background border border-border p-8 rounded-3xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group"
-            >
-              <div className="flex items-start gap-6">
-                <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Sun className="w-8 h-8" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground">Skin Type</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Your melanin levels affect laser settings and treatment approach. We customize each session to your unique skin type for optimal safety.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center max-w-3xl mx-auto">
+             <p className="text-muted-foreground italic">
+               At Inkless is More, our experienced technicians understand these factors and use a personalized approach for each client to ensure the best results.
+             </p>
           </div>
         </div>
       </section>
