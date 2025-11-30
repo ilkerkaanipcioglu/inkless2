@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCircle2, Tag } from "lucide-react";
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
 import { useState, useRef } from "react";
@@ -29,6 +29,37 @@ export default function Home() {
       icon: Sparkles,
       title: "Eliminate",
       desc: "Your body's immune system naturally flushes out these tiny ink particles over the coming weeks, fading the tattoo."
+    }
+  ];
+
+  const packages = [
+    {
+      title: "Single Session",
+      price: "KSh 5,000",
+      original: null,
+      desc: "Perfect for trying out the service or final touch-ups.",
+      image: "/assets/1-single-laser-tattoo-removal-session-994.webp"
+    },
+    {
+      title: "2 Sessions (Small)",
+      price: "KSh 9,000",
+      original: "KSh 15,000",
+      desc: "Ideal for small tattoos. Save KSh 6,000.",
+      image: "/assets/5-laser-tattoo-removal-sessions-medium-size-tattoo-treatment-753.webp"
+    },
+    {
+      title: "5 Sessions (Medium)",
+      price: "KSh 20,000",
+      original: "KSh 25,000",
+      desc: "Comprehensive package for medium tattoos.",
+      image: "/assets/Arm_Bat_Tattoo.jpg"
+    },
+    {
+      title: "Laser Scar Removal",
+      price: "KSh 15,000",
+      original: "KSh 50,000",
+      desc: "Advanced scar reduction therapy.",
+      image: "/assets/Laser_Scar_Removal.jpg"
     }
   ];
 
@@ -162,7 +193,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-              Regret is a thing of the past. Experience safe, precise, and scar-free tattoo removal with advanced Picosecond technology.
+              Uncover flawless skin. We combine advanced Picosecond technology with negative cold therapy to fade or remove unwanted tattoos safely and comfortably.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -255,7 +286,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">The Science of Removal</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Picosecond laser technology removes tattoos safely and effectively through a precise, natural process.
+              We use advanced Picosecond laser technology combined with negative cold therapy to remove tattoos safely, effectively, and with minimal discomfort.
             </p>
           </div>
 
@@ -298,6 +329,67 @@ export default function Home() {
                 aria-label={`Go to step ${i + 1}`}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Exclusive Packages Section */}
+      <section className="py-24 bg-muted/30 dark:bg-neutral-950/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Exclusive Offers</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Start your journey with our special packages designed for every need.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {packages.map((pkg, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-background rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col"
+              >
+                <div className="aspect-square relative overflow-hidden bg-muted">
+                  {pkg.image && (
+                    <img 
+                      src={pkg.image} 
+                      alt={pkg.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  )}
+                  {pkg.original && (
+                    <div className="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                      SALE
+                    </div>
+                  )}
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="font-bold text-lg mb-2">{pkg.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 flex-grow">{pkg.desc}</p>
+                  <div className="mt-auto">
+                    <div className="flex items-baseline gap-2 mb-4">
+                      <span className="text-xl font-bold text-primary">{pkg.price}</span>
+                      {pkg.original && (
+                        <span className="text-sm text-muted-foreground line-through">{pkg.original}</span>
+                      )}
+                    </div>
+                    <Button asChild className="w-full rounded-full" variant={pkg.original ? "default" : "outline"}>
+                      <Link to="/book">Book Now</Link>
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+             <Button asChild variant="link" className="text-primary text-lg">
+                <Link to="/packages">View All Packages <ArrowRight className="ml-2 w-4 h-4" /></Link>
+             </Button>
           </div>
         </div>
       </section>
@@ -365,22 +457,22 @@ export default function Home() {
       </section>
 
       {/* CTA Section - "Ready to clear the canvas?" */}
-      <section className="py-12 md:py-24 bg-background">
+      <section className="py-10 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="relative rounded-[2rem] md:rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-12 md:py-28 text-center shadow-2xl">
+          <div className="relative rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-16 md:py-24 text-center shadow-2xl">
             {/* Background Pattern/Curve */}
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[140%] h-[80%] bg-white/10 rounded-[100%] blur-sm" />
             </div>
             
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-6xl font-bold text-neutral-950 mb-4 md:mb-6 tracking-tight">
-                Ready to clear the canvas?
+              <h2 className="text-3xl md:text-5xl font-bold text-neutral-950 mb-3 md:mb-5 tracking-tight">
+                Ready to Break Up with Your Ink?
               </h2>
-              <p className="text-base md:text-xl text-neutral-900/80 mb-8 md:mb-10 font-medium max-w-xl mx-auto">
-                Book your free consultation today and take the first step towards your new look.
+              <p className="text-base md:text-lg text-neutral-900/80 mb-6 md:mb-8 font-medium max-w-xl mx-auto">
+                Get a <span className="font-black text-neutral-950">50% OFF VOUCHER</span> to help you start your journey now. Book your free consultation today.
               </p>
-              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-8 md:px-10 h-12 md:h-14 text-base md:text-lg font-semibold shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
+              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-8 md:px-10 h-12 md:h-14 text-base md:text-base font-semibold shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
                 <Link to="/book?package=consultation-only">
                   Get Started Now <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Link>

@@ -74,17 +74,24 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/packages" className="text-sm text-muted-foreground hover:text-primary transition-colors">Packages & Pricing</Link></li>
+              <li><Link to="/gallery" className="text-sm text-muted-foreground hover:text-primary transition-colors">Results Gallery</Link></li>
               <li><Link to="/training" className="text-sm text-muted-foreground hover:text-primary transition-colors">Ambassador Program</Link></li>
               <li><Link to="/bookings" className="text-sm text-muted-foreground hover:text-primary transition-colors">My Bookings</Link></li>
               <li><Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
-              <li><Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
-              <li><Link to="/auth" className="text-sm text-muted-foreground hover:text-primary transition-colors">Admin Login</Link></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Policies & Contact */}
           <div>
-            <h3 className="font-semibold mb-4">Contact Us</h3>
+            <h3 className="font-semibold mb-4">Policies & Contact</h3>
+            <ul className="space-y-2 mb-6">
+               <li><Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
+               <li><Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
+               <li><Link to="/refund-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Refund Policy</Link></li>
+            </ul>
+            
+            <h4 className="font-semibold text-sm mb-2">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
