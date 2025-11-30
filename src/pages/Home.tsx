@@ -38,28 +38,28 @@ export default function Home() {
       price: "KSh 5,000",
       original: null,
       desc: "Perfect for trying out the service or final touch-ups.",
-      image: "/assets/1-single-laser-tattoo-removal-session-994.webp"
+      image: "https://www.inklessismore.ke/cdn/shop/files/Single_Session.jpg?v=1763724288&width=533"
     },
     {
       title: "2 Sessions (Small)",
       price: "KSh 9,000",
       original: "KSh 15,000",
       desc: "Ideal for small tattoos. Save KSh 6,000.",
-      image: "/assets/5-laser-tattoo-removal-sessions-medium-size-tattoo-treatment-753.webp"
+      image: "https://www.inklessismore.ke/cdn/shop/files/2_Sessions_3948d9a6-f510-4678-b0fe-21d017bcd5dd.jpg?v=1763727082&width=533"
     },
     {
       title: "5 Sessions (Medium)",
       price: "KSh 20,000",
       original: "KSh 25,000",
       desc: "Comprehensive package for medium tattoos.",
-      image: "/assets/Arm_Bat_Tattoo.jpg"
+      image: "https://www.inklessismore.ke/cdn/shop/files/5_Sessions.jpg?v=1763724687&width=533"
     },
     {
       title: "Laser Scar Removal",
       price: "KSh 15,000",
       original: "KSh 50,000",
       desc: "Advanced scar reduction therapy.",
-      image: "/assets/Laser_Scar_Removal.jpg"
+      image: "https://www.inklessismore.ke/cdn/shop/files/Laser_Scar_Removal_Package.jpg?v=1753974281&width=533"
     }
   ];
 
@@ -360,11 +360,6 @@ export default function Home() {
                       alt={pkg.title}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
-                  )}
-                  {pkg.original && (
-                    <div className="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                      SALE
-                    </div>
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
