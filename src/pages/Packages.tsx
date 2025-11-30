@@ -319,6 +319,53 @@ export default function Packages() {
             )}
           </div>
         </section>
+
+        {/* Treatment Process Section */}
+        <section className="py-16 bg-muted/30 dark:bg-neutral-950/50">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <Card className="border-2 shadow-xl overflow-hidden bg-card">
+              <CardHeader className="bg-muted/50 border-b">
+                <CardTitle className="text-2xl font-bold">Our Treatment Process</CardTitle>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {[
+                    {
+                      step: 1,
+                      title: "Free Consultation",
+                      desc: "We assess your tattoo, discuss your goals, and create a personalized treatment plan."
+                    },
+                    {
+                      step: 2,
+                      title: "Picosecond Laser Treatment",
+                      desc: "Our advanced laser breaks down ink particles safely and effectively."
+                    },
+                    {
+                      step: 3,
+                      title: "Natural Healing",
+                      desc: "Your body naturally eliminates the fragmented ink over 4 weeks. Proper aftercare during this period significantly enhances results."
+                    },
+                    {
+                      step: 4,
+                      title: "Progressive Results",
+                      desc: "Visible lightening after each session. Full removal typically achieved in 5-12 sessions with 4-week intervals, resulting in completely scar-free skin."
+                    }
+                  ].map((item) => (
+                    <div key={item.step} className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground font-bold rounded flex items-center justify-center mt-1">
+                        {item.step}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                        <p className="text-muted-foreground">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </div>
 
       <Footer />
