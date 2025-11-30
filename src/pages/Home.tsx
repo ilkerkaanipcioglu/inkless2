@@ -55,7 +55,7 @@ export default function Home() {
       image: "https://www.inklessismore.ke/cdn/shop/files/5_Sessions.jpg?v=1763724687&width=533"
     },
     {
-      title: "Unlimited Sessions",
+      title: "Unlimited Sessions Package",
       price: "KSh 35,000",
       original: "KSh 60,000",
       desc: "Pay one price, get the best possible results. Unlimited sessions until removal.",
@@ -79,7 +79,7 @@ export default function Home() {
       image: "https://www.inklessismore.ke/cdn/shop/files/Laser_Stretch_Marks_Removal.jpg?v=1753974523&width=533"
     },
     {
-      title: "Microblading/Eyebrow Tattoo Removal",
+      title: "Eyebrow Tattoo Removal Package",
       price: "KSh 10,000",
       original: "KSh 45,000",
       desc: "Specialized eyebrow tattoo/microblading removal.",
