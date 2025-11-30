@@ -11,6 +11,9 @@ export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const [testimonialActiveIndex, setTestimonialActiveIndex] = useState(0);
+  const testimonialScrollRef = useRef<HTMLDivElement>(null);
+
   const processSteps = [
     {
       icon: Target,
@@ -26,6 +29,24 @@ export default function Home() {
       icon: Sparkles,
       title: "Eliminate",
       desc: "Your body's immune system naturally flushes out these tiny ink particles over the coming weeks, fading the tattoo."
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Faith",
+      text: "The pain is nothing compared to getting a new tattoo.",
+      initial: "F"
+    },
+    {
+      name: "Stephen",
+      text: "It feels good to see my tattoo fading away after each treatment.",
+      initial: "S"
+    },
+    {
+      name: "Gabriel",
+      text: "The service is great. Trustful, fast and very professional.",
+      initial: "G"
     }
   ];
 
@@ -53,12 +74,48 @@ export default function Home() {
     }
   };
 
+  const handleTestimonialScroll = () => {
+    if (testimonialScrollRef.current) {
+      const container = testimonialScrollRef.current;
+      const scrollPosition = container.scrollLeft;
+      const center = scrollPosition + container.clientWidth / 2;
+      
+      let closestIndex = 0;
+      let minDistance = Number.MAX_VALUE;
+
+      Array.from(container.children).forEach((child, index) => {
+        const childCenter = (child as HTMLElement).offsetLeft + (child as HTMLElement).offsetWidth / 2;
+        const distance = Math.abs(center - childCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setTestimonialActiveIndex(closestIndex);
+    }
+  };
+
   const scrollTo = (index: number) => {
     if (scrollRef.current) {
       const container = scrollRef.current;
       const child = container.children[index] as HTMLElement;
       if (child) {
         // Center the item
+        const scrollLeft = child.offsetLeft - (container.clientWidth - child.offsetWidth) / 2;
+        container.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const scrollToTestimonial = (index: number) => {
+    if (testimonialScrollRef.current) {
+      const container = testimonialScrollRef.current;
+      const child = container.children[index] as HTMLElement;
+      if (child) {
         const scrollLeft = child.offsetLeft - (container.clientWidth - child.offsetWidth) / 2;
         container.scrollTo({
           left: scrollLeft,
@@ -253,31 +310,19 @@ export default function Home() {
             <p className="text-muted-foreground">Don't just take our word for it.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Faith",
-                text: "The pain is nothing compared to getting a new tattoo.",
-                initial: "F"
-              },
-              {
-                name: "Stephen",
-                text: "It feels good to see my tattoo fading away after each treatment.",
-                initial: "S"
-              },
-              {
-                name: "Gabriel",
-                text: "The service is great. Trustful, fast and very professional.",
-                initial: "G"
-              }
-            ].map((t, i) => (
+          <div 
+            ref={testimonialScrollRef}
+            onScroll={handleTestimonialScroll}
+            className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+          >
+            {testimonials.map((t, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-background p-8 rounded-3xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                className="min-w-[85vw] md:min-w-[350px] flex-1 snap-center bg-background p-8 rounded-3xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
                 <div className="flex gap-1 mb-6">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -298,6 +343,22 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
+            ))}
+          </div>
+
+          {/* Testimonial Indicators */}
+          <div className="flex justify-center gap-3 mt-4">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToTestimonial(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === testimonialActiveIndex 
+                    ? "bg-primary w-8" 
+                    : "bg-primary/20 w-2 hover:bg-primary/40"
+                }`}
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
             ))}
           </div>
         </div>
