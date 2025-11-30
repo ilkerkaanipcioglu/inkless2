@@ -33,12 +33,9 @@ export default function Gallery() {
             </motion.div>
 
             <Tabs defaultValue="transformations" className="max-w-7xl mx-auto">
-              <TabsList className="grid w-full grid-cols-3 mb-12 h-auto">
+              <TabsList className="grid w-full grid-cols-2 mb-12 h-auto">
                 <TabsTrigger value="transformations" className="text-sm md:text-base py-3">
                   Transformations
-                </TabsTrigger>
-                <TabsTrigger value="process" className="text-sm md:text-base py-3">
-                  Our Process
                 </TabsTrigger>
                 <TabsTrigger value="testimonials" className="text-sm md:text-base py-3">
                   Testimonials
@@ -71,63 +68,6 @@ export default function Gallery() {
                     ))}
                   </div>
                 )}
-              </TabsContent>
-
-              <TabsContent value="process" className="space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {processPhotos.map((item, index) => (
-                    <GalleryCard
-                      key={index}
-                      title={item.title}
-                      description={item.description}
-                      image={item.image}
-                      index={index}
-                      altText={`${item.title} - ${item.description}`}
-                    />
-                  ))}
-                </div>
-
-                <Card className="border-2 shadow-xl backdrop-blur-xl bg-card/90 mt-12">
-                  <CardHeader>
-                    <CardTitle className="text-2xl">Our Treatment Process</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-3">
-                        <h3 className="font-semibold text-lg flex items-center gap-2">
-                          <span className="text-2xl">1️⃣</span> Free Consultation
-                        </h3>
-                        <p className="text-muted-foreground">
-                          We assess your tattoo, discuss your goals, and create a personalized treatment plan.
-                        </p>
-                      </div>
-                      <div className="space-y-3">
-                        <h3 className="font-semibold text-lg flex items-center gap-2">
-                          <span className="text-2xl">2️⃣</span> Picosecond Laser Treatment
-                        </h3>
-                        <p className="text-muted-foreground">
-                          Our advanced laser breaks down ink particles safely and effectively.
-                        </p>
-                      </div>
-                      <div className="space-y-3">
-                        <h3 className="font-semibold text-lg flex items-center gap-2">
-                          <span className="text-2xl">3️⃣</span> Natural Healing
-                        </h3>
-                        <p className="text-muted-foreground">
-                          Your body naturally eliminates the fragmented ink over 4 weeks. Proper aftercare during this period significantly enhances results.
-                        </p>
-                      </div>
-                      <div className="space-y-3">
-                        <h3 className="font-semibold text-lg flex items-center gap-2">
-                          <span className="text-2xl">4️⃣</span> Progressive Results
-                        </h3>
-                        <p className="text-muted-foreground">
-                          Visible lightening after each session. Full removal typically achieved in 5-12 sessions with 4-week intervals, resulting in completely scar-free skin.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </TabsContent>
 
               <TabsContent value="testimonials" className="space-y-8">
