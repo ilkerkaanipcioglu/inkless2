@@ -5,8 +5,69 @@ import { motion } from "framer-motion";
 import { ArrowRight, Droplets, Sun, Target, Zap, Sparkles, Star, Quote, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
+import { useState, useRef } from "react";
 
 export default function Home() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const processSteps = [
+    {
+      icon: Target,
+      title: "Target",
+      desc: "The laser energy bypasses the top skin layer and targets large ink particles deep in the dermis without damaging surrounding tissue."
+    },
+    {
+      icon: Zap,
+      title: "Shatter",
+      desc: "The ink absorbs the laser light and shatters into tiny, dust-like fragments instantly due to the photo-acoustic effect."
+    },
+    {
+      icon: Sparkles,
+      title: "Eliminate",
+      desc: "Your body's immune system naturally flushes out these tiny ink particles over the coming weeks, fading the tattoo."
+    }
+  ];
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const scrollPosition = container.scrollLeft;
+      const itemWidth = container.clientWidth; // Approximate for full width items or calculate based on child
+      // For more precision with multiple items visible, we can find the center element
+      const center = scrollPosition + container.clientWidth / 2;
+      
+      let closestIndex = 0;
+      let minDistance = Number.MAX_VALUE;
+
+      Array.from(container.children).forEach((child, index) => {
+        const childCenter = (child as HTMLElement).offsetLeft + (child as HTMLElement).offsetWidth / 2;
+        const distance = Math.abs(center - childCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    }
+  };
+
+  const scrollTo = (index: number) => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const child = container.children[index] as HTMLElement;
+      if (child) {
+        // Center the item
+        const scrollLeft = child.offsetLeft - (container.clientWidth - child.offsetWidth) / 2;
+        container.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground selection:bg-primary/30">
       <Navbar />
@@ -141,24 +202,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-            {[
-              {
-                icon: Target,
-                title: "Target",
-                desc: "The laser energy bypasses the top skin layer and targets large ink particles deep in the dermis without damaging surrounding tissue."
-              },
-              {
-                icon: Zap,
-                title: "Shatter",
-                desc: "The ink absorbs the laser light and shatters into tiny, dust-like fragments instantly due to the photo-acoustic effect."
-              },
-              {
-                icon: Sparkles,
-                title: "Eliminate",
-                desc: "Your body's immune system naturally flushes out these tiny ink particles over the coming weeks, fading the tattoo."
-              }
-            ].map((step, i) => (
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+          >
+            {processSteps.map((step, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -175,6 +224,22 @@ export default function Home() {
                   {step.desc}
                 </p>
               </motion.div>
+            ))}
+          </div>
+
+          {/* Carousel Indicators */}
+          <div className="flex justify-center gap-3 mt-4">
+            {processSteps.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === activeIndex 
+                    ? "bg-primary w-8" 
+                    : "bg-primary/20 w-2 hover:bg-primary/40"
+                }`}
+                aria-label={`Go to step ${i + 1}`}
+              />
             ))}
           </div>
         </div>
