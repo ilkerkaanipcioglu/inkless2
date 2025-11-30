@@ -125,10 +125,5 @@ export const testimonials = [
     image: "/assets/testimonial_gabriel.jpg",
     name: "Gabriel's Journey",
     description: "Real client testimonial and transformation story"
-  },
-  {
-    image: "/assets/gallery_neck_2.png",
-    name: "Client Success",
-    description: "Another satisfied client's complete removal journey"
   }
 ];
