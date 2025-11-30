@@ -32,7 +32,7 @@ export default function Home() {
     }
   ];
 
-  const packages = [
+  const tattooPackages = [
     {
       title: "Single Session",
       price: "KSh 5,000",
@@ -60,7 +60,10 @@ export default function Home() {
       original: "KSh 60,000",
       desc: "Pay one price, get the best possible results. Unlimited sessions until removal.",
       image: "https://www.inklessismore.ke/cdn/shop/files/Unlimited_Sessions.jpg?v=1763724845&width=533"
-    },
+    }
+  ];
+
+  const otherPackages = [
     {
       title: "Laser Scar Removal",
       price: "KSh 15,000",
@@ -364,8 +367,50 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {packages.map((pkg, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {tattooPackages.map((pkg, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-background rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col"
+              >
+                <div className="aspect-square relative overflow-hidden bg-muted">
+                  {pkg.image && (
+                    <img 
+                      src={pkg.image} 
+                      alt={pkg.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  )}
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="font-bold text-lg mb-2">{pkg.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 flex-grow">{pkg.desc}</p>
+                  <div className="mt-auto">
+                    <div className="flex items-baseline gap-2 mb-4">
+                      <span className="text-xl font-bold text-primary">{pkg.price}</span>
+                      {pkg.original && (
+                        <span className="text-sm text-muted-foreground line-through">{pkg.original}</span>
+                      )}
+                    </div>
+                    <Button asChild className="w-full rounded-full" variant={pkg.original ? "default" : "outline"}>
+                      <Link to="/book">Book Now</Link>
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground">Other Laser Treatments</h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {otherPackages.map((pkg, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
