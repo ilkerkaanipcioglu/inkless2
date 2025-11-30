@@ -221,7 +221,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section - Redesigned: Clean, Typographic, No Banner Image */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16 bg-background">
+      <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden pt-24 pb-12 md:pt-16 md:pb-0 bg-background">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,var(--primary)/10,transparent_50%)]" />
@@ -237,14 +237,14 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="mb-8 flex justify-center">
+            <div className="mb-6 md:mb-8 flex justify-center">
               <Badge variant="outline" className="px-4 py-1.5 text-sm border-primary/30 bg-primary/5 text-primary rounded-full">
                 <Sparkles className="w-3 h-3 mr-2" />
                 Kenya's Laser Tattoo Removal Experts
               </Badge>
             </div>
 
-            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8 uppercase text-foreground">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-6 md:mb-8 uppercase text-foreground">
               Just <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">
                 Undo
@@ -252,7 +252,7 @@ export default function Home() {
               It.
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-lg md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
               Uncover flawless skin. We combine advanced Picosecond technology with negative cold therapy to fade or remove unwanted tattoos safely and comfortably.
             </p>
 
@@ -269,7 +269,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
               {[
                 { label: "Safe", sub: "For All Skin Types" },
                 { label: "Fast", sub: "Fewer Sessions" },
@@ -288,10 +288,10 @@ export default function Home() {
       </section>
 
       {/* Key Factors Section - Refined */}
-      <section className="py-24 bg-muted/30 dark:bg-neutral-950/50">
+      <section className="py-12 md:py-24 bg-muted/30 dark:bg-neutral-950/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Key Factors That Affect Removal</h2>
+          <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-foreground">Key Factors That Affect Removal</h2>
             <p className="text-muted-foreground text-lg">
               Each tattoo is unique. Here are the factors that influence your treatment timeline and results:
             </p>
@@ -339,7 +339,7 @@ export default function Home() {
             </Carousel>
           </div>
           
-          <div className="mt-12 text-center max-w-3xl mx-auto">
+          <div className="mt-8 md:mt-12 text-center max-w-3xl mx-auto">
              <p className="text-muted-foreground italic">
                At Inkless is More, our experienced technicians understand these factors and use a personalized approach for each client to ensure the best results.
              </p>
@@ -348,9 +348,9 @@ export default function Home() {
       </section>
 
       {/* Process Section - Refined */}
-      <section className="py-24 bg-background relative overflow-hidden">
+      <section className="py-12 md:py-24 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">The Science of Removal</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We use advanced Picosecond laser technology combined with negative cold therapy to remove tattoos safely, effectively, and with minimal discomfort.
@@ -401,16 +401,16 @@ export default function Home() {
       </section>
 
       {/* Exclusive Packages Section */}
-      <section className="py-24 bg-muted/30 dark:bg-neutral-950/50">
+      <section className="py-12 md:py-24 bg-muted/30 dark:bg-neutral-950/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Exclusive Offers</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Start your journey with our special packages designed for every need.
             </p>
           </div>
 
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <Carousel
               opts={{
                 align: "start",
@@ -465,7 +465,7 @@ export default function Home() {
             </Carousel>
           </div>
 
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground">Other Laser Treatments</h3>
           </div>
 
@@ -524,7 +524,7 @@ export default function Home() {
             </Carousel>
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 md:mt-12">
              <Button asChild variant="link" className="text-primary text-lg">
                 <Link to="/packages">View All Packages <ArrowRight className="ml-2 w-4 h-4" /></Link>
              </Button>
@@ -533,9 +533,9 @@ export default function Home() {
       </section>
 
       {/* Testimonials - Refined */}
-      <section className="py-24 bg-muted/30 dark:bg-neutral-950/50">
+      <section className="py-12 md:py-24 bg-muted/30 dark:bg-neutral-950/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-4xl font-bold mb-4">What Our Clients Say</h2>
             <p className="text-muted-foreground">Don't just take our word for it.</p>
           </div>
@@ -597,7 +597,7 @@ export default function Home() {
       {/* CTA Section - "Ready to clear the canvas?" */}
       <section className="py-10 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="relative rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-16 md:py-24 text-center shadow-2xl">
+          <div className="relative rounded-[2rem] md:rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-12 md:py-24 text-center shadow-2xl">
             {/* Background Pattern/Curve */}
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[140%] h-[80%] bg-white/10 rounded-[100%] blur-sm" />

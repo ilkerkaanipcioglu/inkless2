@@ -17,14 +17,14 @@ export default function Gallery() {
       <Navbar />
 
       <div className="flex-1">
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
+        <section className="py-12 md:py-20 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-16"
             >
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
                 Before & After Gallery
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -33,7 +33,7 @@ export default function Gallery() {
             </motion.div>
 
             <Tabs defaultValue="transformations" className="max-w-7xl mx-auto">
-              <TabsList className="grid w-full grid-cols-2 mb-12 h-auto">
+              <TabsList className="grid w-full grid-cols-2 mb-8 md:mb-12 h-auto">
                 <TabsTrigger value="transformations" className="text-sm md:text-base py-3">
                   Transformations
                 </TabsTrigger>

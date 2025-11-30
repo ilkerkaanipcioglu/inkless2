@@ -41,20 +41,20 @@ export default function Packages() {
       <Navbar />
 
       <div className="flex-1">
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
+        <section className="py-12 md:py-20 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-16"
             >
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
                 Smart Packages for Clearer Skin
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 While single sessions work for some, our multi-session packages offer smarter savings and faster results. Each option is designed to suit your goals, tattoo size, and budget — with no hidden fees, ever.
               </p>
-              <div className="max-w-3xl mx-auto bg-gradient-to-br from-primary/15 via-primary/10 to-accent/10 border-2 border-primary/40 rounded-2xl p-8 mt-8 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+              <div className="max-w-3xl mx-auto bg-gradient-to-br from-primary/15 via-primary/10 to-accent/10 border-2 border-primary/40 rounded-2xl p-6 md:p-8 mt-8 shadow-2xl backdrop-blur-sm relative overflow-hidden">
                 {/* Decorative background elements */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -z-10" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -z-10" />
@@ -321,14 +321,14 @@ export default function Packages() {
         </section>
 
         {/* Treatment Process Section */}
-        <section className="py-16 bg-muted/30 dark:bg-neutral-950/50">
+        <section className="py-10 md:py-16 bg-muted/30 dark:bg-neutral-950/50">
           <div className="container mx-auto px-4 max-w-6xl">
             <Card className="border-2 shadow-xl overflow-hidden bg-card">
-              <CardHeader className="bg-muted/50 border-b">
-                <CardTitle className="text-2xl font-bold">Our Treatment Process</CardTitle>
+              <CardHeader className="bg-muted/50 border-b p-6">
+                <CardTitle className="text-xl md:text-2xl font-bold">Our Treatment Process</CardTitle>
               </CardHeader>
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 gap-8">
+              <CardContent className="p-6 md:p-8">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   {[
                     {
                       step: 1,
