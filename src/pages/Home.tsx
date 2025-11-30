@@ -149,7 +149,7 @@ export default function Home() {
             <div className="mb-8 flex justify-center">
               <Badge variant="outline" className="px-4 py-1.5 text-sm border-primary/30 bg-primary/5 text-primary rounded-full">
                 <Sparkles className="w-3 h-3 mr-2" />
-                Nairobi's Premier Laser Tattoo Removal
+                Kenya's Laser Tattoo Removal Experts
               </Badge>
             </div>
 
