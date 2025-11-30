@@ -52,38 +52,23 @@ export default function Gallery() {
                   <div className="text-center py-12 text-muted-foreground">No gallery items found.</div>
                 ) : (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {gallery.map((item, index) => {
-                      // If before and after images are the same, it's likely a collage or single image
-                      // So we use the GalleryCard instead of BeforeAfterCard
-                      const isSingleImage = item.beforeImageUrl === item.afterImageUrl;
-                      
-                      if (isSingleImage) {
-                        return (
-                          <GalleryCard
-                            key={item._id}
-                            title={item.title}
-                            description={item.description}
-                            image={item.beforeImageUrl}
-                            badge={`${item.sessions} ${item.sessions === 1 ? "Session" : "Sessions"}`}
-                            index={index}
-                            altText={`${item.title} - ${item.description}`}
-                          />
-                        );
-                      }
-                      
-                      return (
-                        <BeforeAfterCard
-                          key={item._id}
-                          title={item.title}
-                          description={item.description}
-                          beforeImageUrl={item.beforeImageUrl}
-                          afterImageUrl={item.afterImageUrl}
-                          sessions={item.sessions}
-                          category={item.category}
-                          index={index}
+                    {gallery.map((item, index) => (
+                      <motion.div
+                        key={item._id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-muted"
+                      >
+                        <img
+                          src={item.beforeImageUrl}
+                          alt="Transformation result"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
                         />
-                      );
-                    })}
+                      </motion.div>
+                    ))}
                   </div>
                 )}
               </TabsContent>
