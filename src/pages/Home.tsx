@@ -55,6 +55,13 @@ export default function Home() {
       image: "https://www.inklessismore.ke/cdn/shop/files/5_Sessions.jpg?v=1763724687&width=533"
     },
     {
+      title: "Unlimited Sessions",
+      price: "KSh 35,000",
+      original: "KSh 60,000",
+      desc: "Pay one price, get the best possible results. Unlimited sessions until removal.",
+      image: "https://www.inklessismore.ke/cdn/shop/files/Unlimited_Sessions.jpg?v=1763724845&width=533"
+    },
+    {
       title: "Laser Scar Removal",
       price: "KSh 15,000",
       original: "KSh 50,000",
