@@ -238,6 +238,32 @@ export default function HomeDesign4() {
         </div>
       </section>
 
+      {/* CTA Section - "Ready to clear the canvas?" */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="relative rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-20 md:py-28 text-center shadow-2xl">
+            {/* Background Pattern/Curve */}
+            <div className="absolute inset-0 pointer-events-none">
+               <div className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[140%] h-[80%] bg-white/10 rounded-[100%] blur-sm" />
+            </div>
+            
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-6xl font-bold text-neutral-950 mb-6 tracking-tight">
+                Ready to clear the canvas?
+              </h2>
+              <p className="text-lg md:text-xl text-neutral-900/80 mb-10 font-medium max-w-xl mx-auto">
+                Book your free consultation today and take the first step towards your new look.
+              </p>
+              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-10 h-14 text-lg font-semibold shadow-xl hover:scale-105 transition-transform">
+                <Link to="/book?package=consultation-only">
+                  Get Started Now <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
