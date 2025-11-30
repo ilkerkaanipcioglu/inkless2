@@ -1,1 +1,1 @@
-pnpm add @tiptap/react @tiptap/starter-kit @tiptap/extension-image @tiptap/extension-link @tiptap/extension-youtube @tiptap/extension-underline @tiptap/extension-text-align dompurify @types/dompurify
+rm src/pages/HomeLegacy.tsx src/pages/HomeDesign3.tsx src/pages/HomeDesign4.tsx
