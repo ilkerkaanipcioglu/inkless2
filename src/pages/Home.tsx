@@ -304,24 +304,24 @@ export default function Home() {
       </section>
 
       {/* CTA Section - "Ready to clear the canvas?" */}
-      <section className="py-24 bg-background">
+      <section className="py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="relative rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-20 md:py-28 text-center shadow-2xl">
+          <div className="relative rounded-[2rem] md:rounded-[3rem] bg-[#FDB913] overflow-hidden px-6 py-12 md:py-28 text-center shadow-2xl">
             {/* Background Pattern/Curve */}
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[140%] h-[80%] bg-white/10 rounded-[100%] blur-sm" />
             </div>
             
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-6xl font-bold text-neutral-950 mb-6 tracking-tight">
+              <h2 className="text-3xl md:text-6xl font-bold text-neutral-950 mb-4 md:mb-6 tracking-tight">
                 Ready to clear the canvas?
               </h2>
-              <p className="text-lg md:text-xl text-neutral-900/80 mb-10 font-medium max-w-xl mx-auto">
+              <p className="text-base md:text-xl text-neutral-900/80 mb-8 md:mb-10 font-medium max-w-xl mx-auto">
                 Book your free consultation today and take the first step towards your new look.
               </p>
-              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-10 h-14 text-lg font-semibold shadow-xl hover:scale-105 transition-transform">
+              <Button asChild size="lg" className="bg-[#2A2A2A] text-white hover:bg-black border-none rounded-full px-8 md:px-10 h-12 md:h-14 text-base md:text-lg font-semibold shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
                 <Link to="/book?package=consultation-only">
-                  Get Started Now <ArrowRight className="ml-2 w-5 h-5" />
+                  Get Started Now <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Link>
               </Button>
             </div>
